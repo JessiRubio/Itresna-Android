@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTresna-Android</string>
+    <string name="id_usuario">ID Erabiltzailea</string>
+    <string name="contrasena">Pasahitza</string>
 </resources>
