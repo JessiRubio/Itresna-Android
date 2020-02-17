@@ -131,16 +131,16 @@
         app:layout_constraintGuide_percent="0.94" />
 
     <ImageView
-        android:id="@+id/fotoIcono"
-        android:layout_width="184dp"
-        android:layout_height="153dp"
-        app:srcCompat="@drawable/icono_login"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="239dp"
-        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
-        app:layout_constraintEnd_toEndOf="@id/guiavertical6"
-        app:layout_constraintStart_toStartOf="@id/guiavertical5"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
+      android:id="@+id/fotoIcono"
+      android:layout_width="184dp"
+      android:layout_height="153dp"
+      app:srcCompat="@drawable/icono_login"
+      tools:layout_editor_absoluteX="113dp"
+      tools:layout_editor_absoluteY="239dp"
+      app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
+      app:layout_constraintEnd_toEndOf="@id/guiavertical6"
+      app:layout_constraintStart_toStartOf="@id/guiavertical5"
+      app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
 
     <Button
         android:id="@+id/botonEntrar"
@@ -152,22 +152,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/guiahorizontal10"
-        app:layout_constraintEnd_toEndOf="@id/guiavertical2"
-        app:layout_constraintStart_toStartOf="@id/guiavertical7"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal9" />
-
-    <Button
-        android:id="@+id/botonRegistrar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/boton_negro_redondeado"
-        android:text="Registro"
-        android:textColor="@color/blanco"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal10"
-        app:layout_constraintEnd_toEndOf="@id/guiavertical8"
-        app:layout_constraintStart_toStartOf="@id/guiavertical1"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical7"
+        app:layout_constraintStart_toStartOf="@id/guiavertical8"
         app:layout_constraintTop_toTopOf="@id/guiahorizontal9" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -203,14 +189,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiavertical8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.43065694" />
+        app:layout_constraintGuide_percent="0.34" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiahorizontal9"
