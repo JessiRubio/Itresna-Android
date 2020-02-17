@@ -12,26 +12,21 @@
         android:id="@+id/Titulo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fontFamily="sans-serif-black"
-        android:text="iTresna"
-        android:textColor="@color/colorPrimary"
-        android:autoSizeMinTextSize="12sp"
         android:autoSizeMaxTextSize="150sp"
+        android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"
+        android:text="iTresna"
         android:textAlignment="center"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="65dp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@id/guiahorizontal6"
         app:layout_constraintEnd_toEndOf="@id/guiavertical4"
         app:layout_constraintStart_toStartOf="@id/guiavertical3"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal5"
-        />
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal5" />
 
     <EditText
         android:id="@+id/nombreUsuario"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fontFamily="sans-serif-black"
         android:ems="10"
         android:paddingStart="12dp"
         android:hint="@string/id_usuario"
@@ -58,7 +53,6 @@
             android:id="@+id/contraseñaUsuario"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="sans-serif-black"
             android:inputType="textPassword"
             android:paddingStart="12dp"
             android:hint="@string/contrasena"
@@ -137,16 +131,16 @@
         app:layout_constraintGuide_percent="0.94" />
 
     <ImageView
-        android:id="@+id/fotoIcono"
-        android:layout_width="184dp"
-        android:layout_height="153dp"
-        app:srcCompat="@drawable/icono_login"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="239dp"
-        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
-        app:layout_constraintEnd_toEndOf="@id/guiavertical6"
-        app:layout_constraintStart_toStartOf="@id/guiavertical5"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
+      android:id="@+id/fotoIcono"
+      android:layout_width="184dp"
+      android:layout_height="153dp"
+      app:srcCompat="@drawable/icono_login"
+      tools:layout_editor_absoluteX="113dp"
+      tools:layout_editor_absoluteY="239dp"
+      app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
+      app:layout_constraintEnd_toEndOf="@id/guiavertical6"
+      app:layout_constraintStart_toStartOf="@id/guiavertical5"
+      app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
 
     <Button
         android:id="@+id/botonEntrar"
