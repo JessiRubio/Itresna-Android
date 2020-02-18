@@ -6,5 +6,6 @@
     <string name="menu_administracion">Administración</string>
     <string name="menu_idioma">Cambiar Idioma</string>
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
+    <string name="title_activity_psenales">PSenales</string>
     <!-- -->
 </resources>
