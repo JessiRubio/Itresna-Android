@@ -1,5 +1,6 @@
 package com.example.itresna_android;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.itresna_android.Senales.PSenales;
 
 import java.util.List;
 
@@ -43,7 +46,11 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(view.getContext(), "Recycle Click: " + nombre, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), PSenales.class);
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("nombreImagen", imgRecycler);
+                intent.putExtra("senal", senal);
+                view.getContext().startActivity(intent);
             }
         });
     }

@@ -133,7 +133,7 @@ public class PCops extends AppCompatActivity {
         } else if (item.getItemId() == R.id.menuitem_idioma){
             //Aquí el código de cuando se clique en cambiar idioma
         } else if (item.getItemId() == R.id.menuitem_cerrar_sesion){
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,Login.class);
             startActivity(intent);
 
         }
