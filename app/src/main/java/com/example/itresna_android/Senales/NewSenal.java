@@ -23,7 +23,7 @@ public class NewSenal extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width), (int)(height/1.5));
+        getWindow().setLayout((int)(width), (int)(height/2));
 
         //Se las asignamos
         WindowManager.LayoutParams params = getWindow().getAttributes();
