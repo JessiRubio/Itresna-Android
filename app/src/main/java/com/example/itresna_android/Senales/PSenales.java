@@ -19,17 +19,16 @@ public class PSenales extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psenales);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton newSenal = findViewById(R.id.fab);
-        newSenal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent popUp = new Intent(getApplicationContext(), NewSenal.class);
-                startActivity(popUp);
-            }
-        });
+        // Recogemos los valores que el usuario ha escogido
+        Intent intent = getIntent();
+        final String imgNombre = intent.getStringExtra("nombreImagen");
+        String nombreEmpresa = intent.getStringExtra("nombre");
+        String senal = intent.getStringExtra("senal");
+
+        // Esto es para colocar la imagen
+        //int resID = getResources().getIdentifier(imgTitulo , "drawable", this.getPackageName());
+        //Imagen.setImageResource(resID);
     }
 
 }

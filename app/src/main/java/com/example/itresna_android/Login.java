@@ -17,7 +17,7 @@ public class Login extends AppCompatActivity {
         Entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this,pantalla_principal.class);
+                Intent intent = new Intent(Login.this,PCops.class);
                 startActivity(intent);
             }
         });
