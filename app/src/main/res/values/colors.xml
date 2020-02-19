@@ -2,8 +2,9 @@
 <resources>
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#424242</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#000</color>
     <color name="Morado_Itresna">#c79bf2</color>
+    <color name="Morado_HeaderPCops">#760F82</color>
     <color name="AzulClaro_Itresna">#7bcae1</color>
     <color name="AzuloOscuro_Itresna">#8eb4e6</color>
     <color name="gris">#C9C9C9</color>
