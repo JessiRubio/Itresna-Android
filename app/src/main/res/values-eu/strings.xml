@@ -8,5 +8,10 @@
     <string name="menu_administracion">Administratzailea</string>
     <string name="menu_idioma">Hizkuntza aldatu</string>
     <string name="menu_cerrar_sesion">Itxi saioa</string>
+    <string name="descripcion">Azalpena</string>
+    <string name="email">Maila</string>
+    <string name="nombre">Izena</string>
+    <string name="pagina_web_url">Web orrialdea (URL)</string>
+    <string name="administracion">Administrazioa</string>
     <!-- -->
 </resources>

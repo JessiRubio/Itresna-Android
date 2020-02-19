@@ -6,5 +6,10 @@
     <string name="menu_administracion">Administración</string>
     <string name="menu_idioma">Cambiar Idioma</string>
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
+    <string name="pagina_web_url">Pagina web (URL)</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
+    <string name="administracion">Administracion</string>
     <!-- -->
 </resources>

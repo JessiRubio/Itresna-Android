@@ -7,5 +7,10 @@
     <string name="menu_administracion">Administration</string>
     <string name="menu_idioma">Change Language</string>
     <string name="menu_cerrar_sesion">Log out</string>
+    <string name="descripcion">Description</string>
+    <string name="email">E-Mail</string>
+    <string name="nombre">Name</string>
+    <string name="pagina_web_url">Web page (URL)</string>
+    <string name="administracion">Administration</string>
     <!-- -->
 </resources>
