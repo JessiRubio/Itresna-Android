@@ -12,4 +12,9 @@
     <string name="solicitud_Descripcion">Descripción:</string>
     <string name="btn_anadir_senal">Añadir</string>
     <string name="btn_cancelar_nueva_senal">Cancelar</string>
+    <!-- Pop Up Idiomas -->
+    <string name="idioma_seleccionar">Seleccione un idioma</string>
+    <string name="idioma_castellano">Castellano</string>
+    <string name="idioma_euskera">Euskera</string>
+    <string name="idioma_ingles">English</string>
 </resources>

@@ -7,13 +7,25 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,8 +39,16 @@ public class PCops extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
-    ArrayList<Cops> listaCops = new ArrayList<Cops>();
+    ArrayList<Cops> listaCops = new ArrayList<>();
+    RadioButton rb_cast;
+    RadioButton rb_eus;
+    RadioButton rb_eng;
 
+    private Context mContext;
+
+    private LinearLayout mRelativeLayout;
+
+    private PopupWindow mPopupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +61,7 @@ public class PCops extends AppCompatActivity {
         arrayCombobox = new String[] {
                 "David", "El", "Cajas", "También", "Conocido", "Como", "David"
         };
-        adapter = new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<>(this,
                 R.layout.spinner_texto, arrayCombobox);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         comboBox.setAdapter(adapter);
@@ -106,6 +126,12 @@ public class PCops extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        // Get the application context
+        mContext = getApplicationContext();
+
+        // Get the widgets reference from XML layout
+        mRelativeLayout =  findViewById(R.id.li);
     }
 
     @Override
@@ -131,7 +157,53 @@ public class PCops extends AppCompatActivity {
         if (item.getItemId() == R.id.menuitem_admin) {
             //Aquí el código de cuando se clique en admin
         } else if (item.getItemId() == R.id.menuitem_idioma){
-            //Aquí el código de cuando se clique en cambiar idioma
+            // Initialize a new instance of LayoutInflater service
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+            // Inflate the custom layout/view
+            final View customView = inflater.inflate(R.layout.popup_idiomas,null);
+
+            rb_cast = new RadioButton(customView.getContext());
+            rb_cast = customView.findViewById(R.id.radio_castellano);
+
+            rb_eus = new RadioButton(customView.getContext());
+            rb_eus = customView.findViewById(R.id.radio_euskera);
+
+            rb_eng = new RadioButton(customView.getContext());
+            rb_eng = customView.findViewById(R.id.radio_ingles);
+
+            // Initialize a new instance of popup window
+            mPopupWindow = new PopupWindow(
+                    customView,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            // Set an elevation value for popup window
+            mPopupWindow.setElevation(5.0f);
+
+            // Get a reference for the custom view close button
+            ImageButton closeButton = customView.findViewById(R.id.ib_close);
+
+            // Set a click listener for the popup window close button
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Dismiss the popup window
+                    if (rb_cast.isChecked()){
+                        Toast.makeText(getApplicationContext(), "Castellano", Toast.LENGTH_SHORT).show();
+                    } else if (rb_eus.isChecked()){
+
+                    } else if (rb_eng.isChecked()){
+
+                    }
+
+                    mPopupWindow.dismiss();
+                }
+            });
+            // Finally, show the popup window at the center location of root relative layout
+            mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
+
         } else if (item.getItemId() == R.id.menuitem_cerrar_sesion){
             Intent intent = new Intent(this,Login.class);
             startActivity(intent);
