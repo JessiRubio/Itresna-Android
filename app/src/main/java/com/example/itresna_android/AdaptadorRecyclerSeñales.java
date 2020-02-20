@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.itresna_android.Senales.PSenales;
+
 import java.util.List;
 
 
@@ -15,7 +20,7 @@ import java.util.List;
     public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
         // Colocamos el xml del elemento selector
         public AdaptadorRecyclerSeñales(){
-
+            // Aqui tendria que ir la lista
         }
         @NonNull
         @Override
@@ -28,6 +33,13 @@ import java.util.List;
         @Override
         public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
+            comentario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(holder.itemView.getContext(), popUpcomentarios.class);
+                    holder.itemView.getContext().startActivity(intent);
+                }
+            });
             Button eliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button editar = holder.itemView.findViewById(R.id.botonLapiz);
             ImageView corazon = holder.itemView.findViewById(R.id.imageCorazon);
