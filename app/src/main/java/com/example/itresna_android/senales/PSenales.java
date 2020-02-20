@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 import com.example.itresna_android.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -19,11 +21,15 @@ public class PSenales extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewseñales;
     AdaptadorRecyclerSenales adaptadorRecycler;
+    FloatingActionButton newSenal;
     ArrayList<Cops> listaCops = new ArrayList<Cops>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psenales);
+
+        newSenal = findViewById(R.id.newSenal);
+
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
 
@@ -37,6 +43,13 @@ public class PSenales extends AppCompatActivity {
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
 
+        newSenal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newSenal = new Intent(PSenales.this, NewSenal.class);
+                startActivity(newSenal);
+            }
+        });
 
     }
 }
