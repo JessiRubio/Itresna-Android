@@ -1,6 +1,7 @@
 package com.example.itresna_android.senales;
 
 import android.app.Activity;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -78,6 +79,7 @@ public class NewSenal extends Activity {
                         // Populate your preview layout with the results of sourceContent.
                     }
                 };
+
                 textCrawler.makePreview( linkPreviewCallback,url.getText().toString());
             }
         });
