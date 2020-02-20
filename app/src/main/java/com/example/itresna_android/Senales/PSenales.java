@@ -22,10 +22,10 @@ import com.example.itresna_android.R;
 import java.util.ArrayList;
 
 public class PSenales extends AppCompatActivity {
-    ArrayAdapter<String> adapter;
+
     RecyclerView reyclerViewseñales;
     AdaptadorRecyclerSeñales adaptadorRecycler;
-    ArrayList<Cops> listaCops = new ArrayList<Cops>();
+    ArrayList<Cops> listaSeñales = new ArrayList<Cops>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
