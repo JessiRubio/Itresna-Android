@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/degradado"
     android:orientation="vertical"
+    android:id="@+id/li"
     tools:context=".PCops"
     android:weightSum="3">
 
@@ -41,7 +42,7 @@
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:text="El eslogan de prueba"
+                android:text="@string/cops_prueba_eslogan"
                 />
 
         </LinearLayout>
