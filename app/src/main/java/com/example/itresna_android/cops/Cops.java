@@ -5,7 +5,7 @@ public class Cops {
     private String nombreCop;
     private String senal;
 
-    public Cops(String nombreImagen, String nombreCop, String senal){
+    Cops(String nombreImagen, String nombreCop, String senal){
         this.nombreImagen = nombreImagen;
         this.nombreCop = nombreCop;
         this.senal = senal;
@@ -15,7 +15,7 @@ public class Cops {
         this.nombreImagen = nombreImagen;
     }
 
-    public String getNombreImagen() {
+    String getNombreImagen() {
         return nombreImagen;
     }
 
@@ -23,7 +23,7 @@ public class Cops {
         this.nombreCop = nombreCop;
     }
 
-    public String getNombreCop() {
+    String getNombreCop() {
         return nombreCop;
     }
 
@@ -31,7 +31,7 @@ public class Cops {
         this.senal = senal;
     }
 
-    public String getSenal() {
+    String getSenal() {
         return senal;
     }
 }

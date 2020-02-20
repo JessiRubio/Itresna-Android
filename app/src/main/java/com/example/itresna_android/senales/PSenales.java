@@ -3,9 +3,11 @@ package com.example.itresna_android.senales;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.itresna_android.AdaptadorRecyclerSenales;
 import com.example.itresna_android.cops.Cops;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,13 +45,6 @@ public class PSenales extends AppCompatActivity {
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
 
-        newSenal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newSenal = new Intent(PSenales.this, NewSenal.class);
-                startActivity(newSenal);
-            }
-        });
 
     }
 }

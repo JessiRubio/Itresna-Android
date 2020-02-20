@@ -1,5 +1,6 @@
 package com.example.itresna_android.senales;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,30 +10,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.itresna_android.senales.PSenales;
+
+import java.util.List;
+
 import com.example.itresna_android.R;
 import com.example.itresna_android.cops.AdaptadorRecyclerPCops;
 
 
-public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerPCops.ViewHolder> {
+public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
         // Colocamos el xml del elemento selector
         public AdaptadorRecyclerSenales(){
 
         }
         @NonNull
         @Override
-        public AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public AdaptadorRecyclerSenales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new AdaptadorRecyclerPCops.ViewHolder(v);
+            return new AdaptadorRecyclerSenales.ViewHolder(v);
         }
 
-        // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
+            comentario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(holder.itemView.getContext(), popUpcomentarios.class);
+                    holder.itemView.getContext().startActivity(intent);
+                }
+            });
             Button eliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button editar = holder.itemView.findViewById(R.id.botonLapiz);
             ImageView corazon = holder.itemView.findViewById(R.id.imageCorazon);
-            
         }
 
         @Override

@@ -2,6 +2,9 @@
     <string name="app_name">iTresna</string>
     <string name="id_usuario">ID Usuario</string>
     <string name="contrasena">Contraseña</string>
+    <!-- PCops -->
+    <string name="cops_prueba_eslogan">El eslogan de prueba</string>
+
     <!-- Menú -->
     <string name="menu_administracion">Administración</string>
     <string name="menu_idioma">Cambiar Idioma</string>
@@ -14,4 +17,9 @@
     <string name="btn_cancelar_nueva_senal">Cancelar</string>
     <string name="email">Email</string>
     <string name="nombre">Nombre</string>
+    <!-- Pop Up Idiomas -->
+    <string name="idioma_seleccionar">Seleccione un idioma</string>
+    <string name="idioma_castellano">Castellano</string>
+    <string name="idioma_euskera">Euskera</string>
+    <string name="idioma_ingles">English</string>
 </resources>
