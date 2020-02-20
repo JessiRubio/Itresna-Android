@@ -15,6 +15,8 @@
     <string name="solicitud_Descripcion">Azalpen:</string>
     <string name="btn_anadir_senal">Gehitu</string>
     <string name="btn_cancelar_nueva_senal">Kantzelatu</string>
+    <string name="email">Email</string>
+    <string name="nombre">Izena</string>
     <!-- Pop Up Idiomas -->
     <string name="idioma_seleccionar">Hautatu hizkuntza bat</string>
     <string name="idioma_castellano">Castellano</string>
