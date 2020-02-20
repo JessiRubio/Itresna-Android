@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,6 +33,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class PCops extends AppCompatActivity {
@@ -157,10 +161,10 @@ public class PCops extends AppCompatActivity {
         if (item.getItemId() == R.id.menuitem_admin) {
             //Aquí el código de cuando se clique en admin
         } else if (item.getItemId() == R.id.menuitem_idioma){
-            // Initialize a new instance of LayoutInflater service
+            // Iniciamos la instancia del inflater
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 
-            // Inflate the custom layout/view
+            // Inflamos la vista personlizada
             final View customView = inflater.inflate(R.layout.popup_idiomas,null);
 
             rb_cast = new RadioButton(customView.getContext());
@@ -172,36 +176,37 @@ public class PCops extends AppCompatActivity {
             rb_eng = new RadioButton(customView.getContext());
             rb_eng = customView.findViewById(R.id.radio_ingles);
 
-            // Initialize a new instance of popup window
+            // Iniciamos una nueva instancia del pop up
             mPopupWindow = new PopupWindow(
                     customView,
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT
             );
 
-            // Set an elevation value for popup window
+            // Elevar el pop up
             mPopupWindow.setElevation(5.0f);
 
-            // Get a reference for the custom view close button
+            // Coger el id del botón del pop up
             ImageButton closeButton = customView.findViewById(R.id.ib_close);
 
-            // Set a click listener for the popup window close button
+            // Click listener del botón cerrar del pop up
             closeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Configuration config = new Configuration(Resources.getSystem().getConfiguration());
+
                     // Dismiss the popup window
                     if (rb_cast.isChecked()){
-                        Toast.makeText(getApplicationContext(), "Castellano", Toast.LENGTH_SHORT).show();
+                        setIdioma("es");
                     } else if (rb_eus.isChecked()){
-
+                        setIdioma("eu");
                     } else if (rb_eng.isChecked()){
-
+                        setIdioma("en");
                     }
-
                     mPopupWindow.dismiss();
                 }
             });
-            // Finally, show the popup window at the center location of root relative layout
+            // Centrar el pop up en mitad de la pantalla
             mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
 
         } else if (item.getItemId() == R.id.menuitem_cerrar_sesion){
@@ -223,5 +228,15 @@ public class PCops extends AppCompatActivity {
         // Especificamos el adaptador para el recycler
         adaptadorRecycler = new AdaptadorRecyclerPCops(listaCops);
         reyclerViewCops.setAdapter(adaptadorRecycler);
+    }
+
+    public void setIdioma(String lang) {
+        Locale idioma = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = idioma;
+        res.updateConfiguration(conf, dm);
+        this.recreate();
     }
 }

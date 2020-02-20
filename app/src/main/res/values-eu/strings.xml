@@ -3,7 +3,8 @@
     <string name="app_name">iTresna-Android</string>
     <string name="id_usuario">ID Erabiltzailea</string>
     <string name="contrasena">Pasahitza</string>
-
+    <!-- PCops -->
+    <string name="cops_prueba_eslogan">Kaixo, ni Mika naiz</string>
     <!-- Menú -->
     <string name="menu_administracion">Administratzailea</string>
     <string name="menu_idioma">Hizkuntza aldatu</string>

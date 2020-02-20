@@ -42,7 +42,7 @@
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:text="El eslogan de prueba"
+                android:text="@string/cops_prueba_eslogan"
                 />
 
         </LinearLayout>
