@@ -33,13 +33,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Login.this,PCops.class);
-                startActivity(intent);
+                //Intent intent = new Intent(Login.this,PCops.class);
+                //startActivity(intent);
 
 
                 // metedos de prueba para verificar que funcionan insert y select
                 //crear();
-                //cargarUsuario();
+                Login();
 
 
 
@@ -103,7 +103,7 @@ public class Login extends AppCompatActivity {
     }
 
 
-    public void cargarUsuario(){
+    public void Login(){
 
             final String cod_usuario="jaime.corrales@gmail.com";
             final String sarbidea="jaime123";
@@ -122,17 +122,20 @@ public class Login extends AppCompatActivity {
 
                                 System.out.println(obj.getString("cod_usuario")+" "+obj.getString("tip_usuario")+" "+obj.getString("sarbidea"));
 
+                                Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG
+                                ).show();
+
                             }else{
                                 Toast.makeText(
                                         getApplicationContext(),
                                         obj.getString("message"),
                                         Toast.LENGTH_LONG
                                 ).show();
-                                System.out.println("errooorrrrr");
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            System.out.println("errooorrrrr3");
+
                         }
                     }
                 },
@@ -144,7 +147,7 @@ public class Login extends AppCompatActivity {
                                 error.getMessage(),
                                 Toast.LENGTH_LONG
                         ).show();
-                        System.out.println("errooorrrrr2");
+
                     }
                 }
         ){
