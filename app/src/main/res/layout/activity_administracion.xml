@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/AzulClaro_Itresna"
+    tools:context=".Administracion">
+
+    <EditText
+        android:id="@+id/editNombre"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal5"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical4"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal4"/>
+
+    <EditText
+        android:id="@+id/editPagina"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal11"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical4"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal10"/>
+
+    <TextView
+        android:id="@+id/textPagina"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/merienda"
+        android:text="@string/solicitud_url"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal10"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical3"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal9" />
+
+    <EditText
+        android:id="@+id/editDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal9"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical4"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
+
+    <TextView
+        android:id="@+id/textDescripcion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/merienda"
+        android:gravity="center"
+        android:text="@string/solicitud_Descripcion"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal8"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical3"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal7" />
+
+    <TextView
+        android:id="@+id/textEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/merienda"
+        android:text="@string/email"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal6"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical3"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal5" />
+
+    <TextView
+        android:id="@+id/textNombre"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/merienda"
+        android:text="@string/nombre"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal4"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical3"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal3" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical4"
+        app:layout_constraintStart_toStartOf="@id/guiavertical2"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal6"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_administracion"
+        android:textStyle="bold"
+        android:textSize="47sp"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal2"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical5"
+        app:layout_constraintStart_toStartOf="@id/guiavertical1"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04379562" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.13868614" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.87" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03146375" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15595075" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3132695" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44596443" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5841313" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.63885087" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

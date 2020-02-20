@@ -12,4 +12,6 @@
     <string name="solicitud_Descripcion">Descripción:</string>
     <string name="btn_anadir_senal">Añadir</string>
     <string name="btn_cancelar_nueva_senal">Cancelar</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
 </resources>
