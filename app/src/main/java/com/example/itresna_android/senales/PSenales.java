@@ -1,20 +1,14 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.itresna_android.AdaptadorRecyclerPCops;
-import com.example.itresna_android.AdaptadorRecyclerSeñales;
-import com.example.itresna_android.Cops;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.itresna_android.cops.Cops;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
 import android.widget.ArrayAdapter;
 
 import com.example.itresna_android.R;
@@ -24,7 +18,7 @@ import java.util.ArrayList;
 public class PSenales extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewseñales;
-    AdaptadorRecyclerSeñales adaptadorRecycler;
+    AdaptadorRecyclerSenales adaptadorRecycler;
     ArrayList<Cops> listaCops = new ArrayList<Cops>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +28,7 @@ public class PSenales extends AppCompatActivity {
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerSeñales();
+        adaptadorRecycler = new AdaptadorRecyclerSenales();
         reyclerViewseñales.setAdapter(adaptadorRecycler);
 
         // Recogemos los valores que el usuario ha escogido

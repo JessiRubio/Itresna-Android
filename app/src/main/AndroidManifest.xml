@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PCops" />
-        <activity android:name=".Senales.NewSenal"></activity>
-        <activity android:name=".Senales.PSenales" />
+        <activity android:name=".cops.PCops" />
+        <activity android:name=".senales.NewSenal"></activity>
+        <activity android:name=".senales.PSenales" />
         <activity
             android:name=".Login"
             android:theme="@style/Theme.AppCompat.NoActionBar">

@@ -1,14 +1,23 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.itresna_android.R;
 
 public class NewSenal extends Activity {
+
+    private Button btn_cancelar;
+    private Button btn_Anadir;
+
+    private EditText url;
+    private EditText descripcion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +41,23 @@ public class NewSenal extends Activity {
         params.y = -20;
 
         getWindow().setAttributes(params);
+
+        //Funcionalidades pop up
+        btn_cancelar = findViewById(R.id.btnCancelarSenal);
+        btn_Anadir = findViewById(R.id.btnAnadirSenal);
+
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btn_Anadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

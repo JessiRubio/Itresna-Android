@@ -1,4 +1,4 @@
-package com.example.itresna_android;
+package com.example.itresna_android.cops;
 
 public class Cops {
     private String nombreImagen;

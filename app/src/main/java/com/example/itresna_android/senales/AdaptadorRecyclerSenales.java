@@ -1,4 +1,4 @@
-package com.example.itresna_android;
+package com.example.itresna_android.senales;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,25 +8,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
+
+import com.example.itresna_android.R;
+import com.example.itresna_android.cops.AdaptadorRecyclerPCops;
 
 
-
-    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerPCops.ViewHolder> {
         // Colocamos el xml del elemento selector
-        public AdaptadorRecyclerSeñales(){
+        public AdaptadorRecyclerSenales(){
 
         }
         @NonNull
         @Override
-        public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
+            return new AdaptadorRecyclerPCops.ViewHolder(v);
         }
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
             Button eliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button editar = holder.itemView.findViewById(R.id.botonLapiz);

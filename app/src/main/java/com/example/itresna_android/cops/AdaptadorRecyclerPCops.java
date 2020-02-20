@@ -1,4 +1,4 @@
-package com.example.itresna_android;
+package com.example.itresna_android.cops;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,11 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itresna_android.Senales.PSenales;
+import com.example.itresna_android.R;
+import com.example.itresna_android.senales.PSenales;
 
 import java.util.List;
 
-public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
     private List<Cops> listaCops;
 
@@ -26,14 +27,14 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     // Colocamos el xml del elemento selector
     @NonNull
     @Override
-    public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_selector_pcops, parent, false);
-        return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
+        return new AdaptadorRecyclerPCops.ViewHolder(v);
     }
 
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
-    public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
         final String imgRecycler = listaCops.get(position).getNombreImagen();
         final String senal = listaCops.get(position).getSenal();
@@ -61,12 +62,12 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     }
 
     // Esto es necesario
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         // Aqui tambien ponemos los elementos del elemento selector
         private TextView nombreCop;
         private ImageView imgRecycler;
         private  TextView senal;
-        ViewHolder(View v) {
+        public ViewHolder(View v) {
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
             nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
