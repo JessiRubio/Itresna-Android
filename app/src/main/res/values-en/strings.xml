@@ -3,6 +3,8 @@
     <string name="app_name">iTresna-Android</string>
     <string name="id_usuario">User ID</string>
     <string name="contrasena">Password</string>
+    <!-- PCops -->
+    <string name="cops_prueba_eslogan">The eslogan test</string>
     <!-- Menú -->
     <string name="menu_administracion">Administration</string>
     <string name="menu_idioma">Change Language</string>
@@ -13,4 +15,11 @@
     <string name="solicitud_Descripcion">Description:</string>
     <string name="btn_anadir_senal">Add</string>
     <string name="btn_cancelar_nueva_senal">Cancel</string>
+    <string name="email">Email</string>
+    <string name="nombre">Name</string>
+    <!-- Pop Up Idiomas -->
+    <string name="idioma_seleccionar">Select a language</string>
+    <string name="idioma_castellano">Castellano</string>
+    <string name="idioma_euskera">Euskera</string>
+    <string name="idioma_ingles">English</string>
 </resources>

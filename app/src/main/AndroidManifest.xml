@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".popUpcomentarios"></activity>
         <activity android:name=".PCops" />
-        <activity android:name=".Senales.NewSenal"></activity>
+        <activity android:name=".Senales.NewSenal" />
         <activity android:name=".Senales.PSenales" />
         <activity
             android:name=".Login"
