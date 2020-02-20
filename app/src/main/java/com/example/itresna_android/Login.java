@@ -104,8 +104,8 @@ public class Login extends AppCompatActivity {
 
     public void cargarUsuario(){
 
-            String cod_usaurio="";
-            String 
+            final String cod_usaurio="jaime.corrales@gmail.com";
+            final String sarbidea="jaime123";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
