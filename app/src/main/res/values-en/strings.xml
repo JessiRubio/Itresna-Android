@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTresna-Android</string>
+    <string name="id_usuario">User ID</string>
+    <string name="contrasena">Password</string>
+    <!-- Menú -->
+    <string name="menu_administracion">Administration</string>
+    <string name="menu_idioma">Change Language</string>
+    <string name="menu_cerrar_sesion">Log out</string>
+    <!-- Pop Up Señales -->
+    <string name="nueva_senal">New Post</string>
+    <string name="solicitud_url">URL:</string>
+    <string name="solicitud_Descripcion">Description:</string>
+    <string name="btn_anadir_senal">Add</string>
+    <string name="btn_cancelar_nueva_senal">Cancel</string>
 </resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuitem_admin"
+        android:title="@string/menu_administracion"/>
+    <item
+        android:id="@+id/menuitem_idioma"
+        android:title="@string/menu_idioma"/>
+    <item
+        android:id="@+id/menuitem_cerrar_sesion"
+        android:title="@string/menu_cerrar_sesion" />
+
+    <item
+        android:id="@+id/menu_nombre_usuario"
+        android:orderInCategory="0"
+        android:title=""
+        app:showAsAction="always" />
+</menu>

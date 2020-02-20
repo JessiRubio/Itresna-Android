@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTresna-Android</string>
+    <string name="id_usuario">ID Erabiltzailea</string>
+    <string name="contrasena">Pasahitza</string>
+
+    <!-- Menú -->
+    <string name="menu_administracion">Administratzailea</string>
+    <string name="menu_idioma">Hizkuntza aldatu</string>
+    <string name="menu_cerrar_sesion">Itxi saioa</string>
+    <!-- Pop Up Señales -->
+    <string name="nueva_senal">Senial berria:</string>
+    <string name="solicitud_url">URL:</string>
+    <string name="solicitud_Descripcion">Azalpen:</string>
+    <string name="btn_anadir_senal">Gehitu</string>
+    <string name="btn_cancelar_nueva_senal">Kantzelatu</string>
+    <!-- -->
 </resources>

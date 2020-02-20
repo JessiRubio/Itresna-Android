@@ -36,9 +36,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Intent intent = new Intent(Login.this,PCops.class);
-                //startActivity(intent);
+                Intent intent = new Intent(Login.this,PCops.class);
+                startActivity(intent);
+
+
+                // metedos de prueba para verificar que funcionan insert y select
                 //crear();
+                //cargarUsuario();
 
 
 
@@ -104,7 +108,7 @@ public class Login extends AppCompatActivity {
 
     public void cargarUsuario(){
 
-            final String cod_usaurio="jaime.corrales@gmail.com";
+            final String cod_usuario="jaime.corrales@gmail.com";
             final String sarbidea="jaime123";
 
         StringRequest stringRequest = new StringRequest(
@@ -116,8 +120,10 @@ public class Login extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
+                            System.out.println(response);
                             if(!obj.getBoolean("error")){
-                                System.out.println(obj.getInt("cod_usuario")+" "+obj.getString("tip_usuario")+" "+obj.getString("sarbidea"));
+
+                                System.out.println(obj.getString("cod_usuario")+" "+obj.getString("tip_usuario")+" "+obj.getString("sarbidea"));
 
                             }else{
                                 Toast.makeText(
@@ -125,9 +131,11 @@ public class Login extends AppCompatActivity {
                                         obj.getString("message"),
                                         Toast.LENGTH_LONG
                                 ).show();
+                                System.out.println("errooorrrrr");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            System.out.println("errooorrrrr3");
                         }
                     }
                 },
@@ -139,13 +147,14 @@ public class Login extends AppCompatActivity {
                                 error.getMessage(),
                                 Toast.LENGTH_LONG
                         ).show();
+                        System.out.println("errooorrrrr2");
                     }
                 }
         ){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("cod_usuario", cod_usaurio);
+                params.put("cod_usuario", cod_usuario);
                 params.put("sarbidea", sarbidea);
                 return params;
             }
