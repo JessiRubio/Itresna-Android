@@ -3,8 +3,9 @@ package com.example.itresna_android;
 public class ConexionBD {
 
 
-    private static final String ROOT_URL = "http://192.168.56.1:8080/Android/v1/";
+    //private static final String ROOT_URL = "http://192.168.56.1:8080/Android/v1/";
 
+    private static final String ROOT_URL = "http://itresna.fptxurdinaga.in/Android/v1/";
 
 
     // operaciones de prueba
