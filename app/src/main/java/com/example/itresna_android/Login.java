@@ -68,11 +68,16 @@ public class Login extends AppCompatActivity {
                             System.out.println(response);
                             if(!obj.getBoolean("error")){
 
-                                System.out.println(obj.getString("cod_usuario")+" "+obj.getString("tip_usuario")+" "+obj.getString("sarbidea"));
+                                System.out.println(obj.getString("cod_usuario")+" "+obj.getString("cod_org")+" "+obj.getString("sarbidea"));
 
+                                String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
 
                                 Intent intent = new Intent(Login.this, PCops.class);
+                                String valor1  = cod_org;
+                                intent.putExtra("valor1", valor1 );
+                                //String valor2  = cod_usuario;
+                                //intent.putExtra("valor2", valor2 );
                                 startActivity(intent);
 
                             }else{

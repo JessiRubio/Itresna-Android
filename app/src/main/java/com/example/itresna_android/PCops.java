@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -22,17 +21,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 import java.util.ArrayList;
+
 import java.util.Locale;
 
 
@@ -47,11 +60,10 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_cast;
     RadioButton rb_eus;
     RadioButton rb_eng;
+    TextView tEslogan;
 
     private Context mContext;
-
     private LinearLayout mRelativeLayout;
-
     private PopupWindow mPopupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +72,9 @@ public class PCops extends AppCompatActivity {
 
         reyclerViewCops = findViewById(R.id.recyclerViewPCops);
         comboBox = findViewById(R.id.spinnerPCops);
+        tEslogan=findViewById(R.id.txtEsloganPCops);
+
+        cargarDatos();
 
         //Hacemos lo relacionado con el comboBox(Spinner)
         arrayCombobox = new String[] {
@@ -239,4 +254,56 @@ public class PCops extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
         this.recreate();
     }
+
+
+    public void cargarDatos(){
+
+        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Org,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            System.out.println(response);
+                            if(!obj.getBoolean("error")){
+
+                                tEslogan.setText(obj.getString("eslogan_org"));
+
+                            }else{
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //params.put("cod_usuario", cod_usuario);
+                params.put("cod_org", cod_org);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+        //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+
 }

@@ -11,6 +11,8 @@ public class ConexionBD {
 
     public static final String URL_LOGIN = ROOT_URL+"Login.php";
 
+    public static final String URL_Org = ROOT_URL+"org.php";
+
     // Operaciones de prueba
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
 
