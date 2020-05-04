@@ -37,6 +37,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,6 +62,7 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eus;
     RadioButton rb_eng;
     TextView tEslogan;
+    ArrayList<Espacio> espacios = new ArrayList<>();
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
@@ -75,6 +77,7 @@ public class PCops extends AppCompatActivity {
         tEslogan=findViewById(R.id.txtEsloganPCops);
 
         cargarDatos();
+        cargarEspacios();
 
         //Hacemos lo relacionado con el comboBox(Spinner)
         arrayCombobox = new String[] {
@@ -302,6 +305,61 @@ public class PCops extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
         //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void cargarEspacios(){
+
+        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Esp,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonarray  = new JSONArray(response);
+                            //System.out.println(jsonarray.length());
+                            //System.out.println(response);
+                            for(int i=0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                String cod_esp      = jsonobject.getString("cod_esp");
+                                String cod_org      = jsonobject.getString("cod_org");
+                                String desc_esp   = jsonobject.getString("desc_esp");
+                                String ind_esp_curacion  = jsonobject.getString("ind_esp_curacion");
+                                String orden = jsonobject.getString("orden");
+
+                                System.out.println(cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
+                                Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
+                                espacios.add(E);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //params.put("cod_usuario", cod_usuario);
+                params.put("cod_org", cod_org);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
 
     }
 
