@@ -18,6 +18,11 @@ public class ConexionBD {
     //PHP qur carga los espacios
     public static final String URL_Esp = ROOT_URL+"espacio.php";
 
+    //PHP qur carga las cops
+    public static final String URL_Cop = ROOT_URL+"cop.php";
+
+
+
     // Operaciones de prueba
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
 

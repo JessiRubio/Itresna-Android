@@ -63,6 +63,9 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eng;
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
+    ArrayList<Cop> cops = new ArrayList<>();
+
+    String espacioSeleccionado;
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
@@ -333,7 +336,18 @@ public class PCops extends AppCompatActivity {
                                 System.out.println(cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
                                 Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
                                 espacios.add(E);
+
+
+
+
+
+
+
                             }
+
+                            //TEMPORAL
+                            espacioSeleccionado=espacios.get(0).cod_esp;
+                            cargarCops();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -362,6 +376,66 @@ public class PCops extends AppCompatActivity {
 
 
     }
+
+
+    public void cargarCops(){
+
+        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        final String cod_espActual= espacioSeleccionado;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Cop,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonarrayCops  = new JSONArray(response);
+
+                            for(int i=0; i < jsonarrayCops.length(); i++) {
+                                JSONObject jsonobjectCops = jsonarrayCops.getJSONObject(i);
+                                String cod_copCargado    = jsonobjectCops.getString("cod_cop");
+                                String cod_espCargado     = jsonobjectCops.getString("cod_esp");
+                                String cod_orgCargado  = jsonobjectCops.getString("cod_org");
+                                String desc_copCargado  = jsonobjectCops.getString("desc_cop");
+                                String img_copCargado = jsonobjectCops.getString("img_cop");
+                                //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
+
+                                System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
+                                cops.add(C);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cod_org", cod_org);
+                params.put("cod_esp", cod_espActual);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
 
 
 }
