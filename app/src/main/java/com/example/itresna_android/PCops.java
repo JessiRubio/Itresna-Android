@@ -145,7 +145,7 @@ public class PCops extends AppCompatActivity {
                     listaCops.add(prueba4);
                     generarDatosRecyler(listaCops);
                 }
-            } 
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
