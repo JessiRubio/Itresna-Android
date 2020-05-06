@@ -17,21 +17,22 @@ import java.util.List;
 
 
 
-    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
         // Colocamos el xml del elemento selector
         public AdaptadorRecyclerSeñales(){
             // Aqui tendria que ir la lista
         }
         @NonNull
         @Override
-        public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
+            return new com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder(v);
         }
+
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder holder, final int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
             comentario.setOnClickListener(new View.OnClickListener() {
                 @Override
