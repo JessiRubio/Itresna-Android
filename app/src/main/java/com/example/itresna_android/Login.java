@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                                 String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(Login.this, PCops.class);
+                                Intent intent = new Intent(Login.this, com.example.itresna_android.PCops.class);
                                 String valor1  = cod_org;
                                 intent.putExtra("valor1", valor1 );
                                 //String valor2  = cod_usuario;
