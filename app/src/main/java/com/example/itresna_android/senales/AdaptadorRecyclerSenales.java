@@ -1,5 +1,6 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,28 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itresna_android.senales.PSenales;
+import com.example.itresna_android.Senales.PSenales;
 
 import java.util.List;
 
-import com.example.itresna_android.R;
-import com.example.itresna_android.cops.AdaptadorRecyclerPCops;
 
 
-public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
+    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
         // Colocamos el xml del elemento selector
-        public AdaptadorRecyclerSenales(){
-
+        public AdaptadorRecyclerSeñales(){
+            // Aqui tendria que ir la lista
         }
         @NonNull
         @Override
-        public AdaptadorRecyclerSenales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new AdaptadorRecyclerSenales.ViewHolder(v);
+            return new com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder(v);
         }
 
+
+        // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder holder, final int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
             comentario.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -43,6 +44,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             Button eliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button editar = holder.itemView.findViewById(R.id.botonLapiz);
             ImageView corazon = holder.itemView.findViewById(R.id.imageCorazon);
+            
         }
 
         @Override
