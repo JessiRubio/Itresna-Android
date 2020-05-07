@@ -314,6 +314,7 @@ public class PCops extends AppCompatActivity {
     public void cargarEspacios(){
 
         final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        System.out.println(cod_org+ "holaaaaaa");
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 ConexionBD.URL_Esp,
@@ -322,6 +323,7 @@ public class PCops extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
+
                             JSONArray jsonarray  = new JSONArray(response);
                             //System.out.println(jsonarray.length());
                             //System.out.println(response);
@@ -336,12 +338,6 @@ public class PCops extends AppCompatActivity {
                                 System.out.println(cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
                                 Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
                                 espacios.add(E);
-
-
-
-
-
-
 
                             }
 
