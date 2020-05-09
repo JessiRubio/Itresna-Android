@@ -79,7 +79,7 @@ public class PCops extends AppCompatActivity {
         comboBox = findViewById(R.id.spinnerPCops);
         tEslogan=findViewById(R.id.txtEsloganPCops);
 
-        cargarDatos();
+        cargarOrg();
         cargarEspacios();
 
         //Hacemos lo relacionado con el comboBox(Spinner)
@@ -262,7 +262,7 @@ public class PCops extends AppCompatActivity {
     }
 
 
-    public void cargarDatos(){
+    public void cargarOrg(){
 
         final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
         StringRequest stringRequest = new StringRequest(
@@ -336,6 +336,7 @@ public class PCops extends AppCompatActivity {
                                 String orden = jsonobject.getString("orden");
 
                                 System.out.println(cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
+                                //Se guardan en el arraylist
                                 Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
                                 espacios.add(E);
 
@@ -343,6 +344,8 @@ public class PCops extends AppCompatActivity {
 
                             //TEMPORAL
                             espacioSeleccionado=espacios.get(0).cod_esp;
+
+
                             cargarCops();
 
                         } catch (JSONException e) {
@@ -399,6 +402,7 @@ public class PCops extends AppCompatActivity {
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
                                 System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                //Se guardan en el arraylist
                                 Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
                                 cops.add(C);
 
