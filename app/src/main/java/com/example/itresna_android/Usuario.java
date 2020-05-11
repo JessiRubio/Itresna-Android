@@ -21,6 +21,7 @@ public class Usuario {
     }
 
 
+
     public String getCod_usuario() {
         return cod_usuario;
     }

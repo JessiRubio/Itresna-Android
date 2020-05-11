@@ -15,11 +15,26 @@ public class ConexionBD {
     //PHP que carga las organizaciones
     public static final String URL_Org = ROOT_URL+"org.php";
 
-    //PHP qur carga los espacios
+    //PHP que carga los espacios
     public static final String URL_Esp = ROOT_URL+"espacio.php";
 
-    //PHP qur carga las cops
+    //PHP que carga las cops
     public static final String URL_Cop = ROOT_URL+"cop.php";
+
+    //PHP que carga las señales
+    public static final String URL_Senal = ROOT_URL+"senal.php";
+
+    //PHP que carga los comentarios
+    public static final String URL_Comentario = ROOT_URL+"comentario.php";
+
+    //PHP que carga los permisos
+    public static final String URL_Permisos = ROOT_URL+"permisos.php";
+
+    //PHP que carga las etiquetas
+    public static final String URL_Etiqueta = ROOT_URL+"etiqueta.php";
+
+    //PHP que carga los likes
+    public static final String URL_Likes = ROOT_URL+"likes.php";
 
 
 
