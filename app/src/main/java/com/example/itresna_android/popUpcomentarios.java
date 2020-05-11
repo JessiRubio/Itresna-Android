@@ -81,7 +81,7 @@ public class popUpcomentarios extends AppCompatActivity {
                                 String cod_usuarioCargado = jsonobject.getString("cod_usuario ");
                                 String comentarioCargado = jsonobject.getString("comentario ");
 
-                                System.out.println(cod_comentarioCargado+" "+cod_senalCargado+" "+cod_copCargado+" "+cod_espCargado+" "+cod_orgCargado+" "+cod_usuarioCargado+" "+comentarioCargado);
+                                System.out.println("Comenmtarios: "+cod_comentarioCargado+" "+cod_senalCargado+" "+cod_copCargado+" "+cod_espCargado+" "+cod_orgCargado+" "+cod_usuarioCargado+" "+comentarioCargado);
 
                                 //Se guardan en el arraylist
                                 Comentario C = new Comentario(cod_comentarioCargado,cod_senalCargado,cod_copCargado,cod_espCargado,cod_orgCargado,cod_usuarioCargado,comentarioCargado);

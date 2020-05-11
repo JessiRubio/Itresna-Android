@@ -274,8 +274,16 @@ public class PCops extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
-                            System.out.println(response);
+                            //System.out.println(response);
                             if(!obj.getBoolean("error")){
+
+                                String cod_orgCargado=obj.getString("cod_org");
+                                String desc_orgCargado=obj.getString("desc_org");
+                                String img_orgCargado=obj.getString("img_org");
+                                String enlace_orgCargado=obj.getString("enlace_org");
+                                String eslogan_orgCargado=obj.getString("eslogan_org");
+
+                                System.out.println("Org: "+cod_orgCargado+" "+desc_orgCargado+" "+img_orgCargado+" "+enlace_orgCargado+" "+eslogan_orgCargado);
 
                                 tEslogan.setText(obj.getString("eslogan_org"));
 
@@ -314,7 +322,6 @@ public class PCops extends AppCompatActivity {
     public void cargarEspacios(){
 
         final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
-        System.out.println(cod_org+ "holaaaaaa");
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 ConexionBD.URL_Esp,
@@ -335,7 +342,7 @@ public class PCops extends AppCompatActivity {
                                 String ind_esp_curacion  = jsonobject.getString("ind_esp_curacion");
                                 String orden = jsonobject.getString("orden");
 
-                                System.out.println(cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
+                                System.out.println("Espacios: "+cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
                                 //Se guardan en el arraylist
                                 Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
                                 espacios.add(E);
@@ -401,7 +408,7 @@ public class PCops extends AppCompatActivity {
                                 String img_copCargado = jsonobjectCops.getString("img_cop");
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
-                                System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                System.out.println("Cops: "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
                                 //Se guardan en el arraylist
                                 Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
                                 cops.add(C);

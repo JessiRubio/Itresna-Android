@@ -30,6 +30,9 @@ public class ConexionBD {
     //PHP que carga los permisos
     public static final String URL_Permisos = ROOT_URL+"permisos.php";
 
+    //PHP que carga las etiquetas
+    public static final String URL_Etiqueta = ROOT_URL+"etiqueta.php";
+
 
 
     // Operaciones de prueba

@@ -69,17 +69,26 @@ public class Login extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
-                            System.out.println(response);
+                            //System.out.println(response);
                             if(!obj.getBoolean("error")){
 
-                                System.out.println(obj.getString("cod_usuario")+" "+obj.getString("cod_org")+" "+obj.getString("sarbidea"));
+                                String cod_usuarioCargado=obj.getString("cod_usuario");
+                                String tip_usuarioCargado=obj.getString("tip_usuario");
+                                String cod_orgCargado=obj.getString("cod_org");
+                                String sarbideaCargado=obj.getString("sarbidea");
+                                String nombreCargado=obj.getString("nombre");
+                                String ape1Cargado=obj.getString("ape1");
+                                String ape2Cargado=obj.getString("ape2");
 
-                                String cod_org=obj.getString("cod_org");
+
+                                System.out.println("Usuario: "+cod_usuarioCargado+" "+tip_usuarioCargado+" "+cod_orgCargado+" "+sarbideaCargado+" "+nombreCargado+" "+ape1Cargado+
+                                        " "+ape2Cargado);
+                                //String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
 
 
                                 Intent intent = new Intent(Login.this, PCops.class);
-                                String valor1  = cod_org;
+                                String valor1  = cod_orgCargado;
                                 intent.putExtra("valor1", valor1 );
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );
@@ -141,7 +150,7 @@ public class Login extends AppCompatActivity {
                                 String ind_adminCargado = jsonobject.getString("ind_admin");
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
-                                System.out.println(cod_usuarioCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" "+ind_adminCargado);
+                                System.out.println("Permisos: "+cod_usuarioCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" "+ind_adminCargado);
                                 //Se guardan en el arraylist
                                 Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
                                 permisos.add(P);
