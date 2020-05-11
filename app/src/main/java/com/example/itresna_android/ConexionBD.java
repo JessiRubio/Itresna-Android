@@ -27,6 +27,9 @@ public class ConexionBD {
     //PHP que carga los comentarios
     public static final String URL_Comentario = ROOT_URL+"comentario.php";
 
+    //PHP que carga los permisos
+    public static final String URL_Permisos = ROOT_URL+"permisos.php";
+
 
 
     // Operaciones de prueba

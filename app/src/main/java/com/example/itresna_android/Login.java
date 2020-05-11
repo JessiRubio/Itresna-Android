@@ -16,15 +16,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
     Button btnEntrar;
     EditText etCod_usuario, etSarbidea;
+    ArrayList<Permisos> permisos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class Login extends AppCompatActivity {
                 // metedos de prueba para verificar que funcionan insert y select
                 //crear();
                 Login();
+                cargarPermisos();
 
             }
         });
@@ -112,6 +116,66 @@ public class Login extends AppCompatActivity {
         //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
+
+    public void cargarPermisos(){
+
+        final String cod_usuario= etCod_usuario.getText().toString();
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Permisos,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonarray  = new JSONArray(response);
+
+                            for(int i=0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                String cod_usuarioCargado    = jsonobject.getString("cod_usuario");
+                                String cod_copCargado     = jsonobject.getString("cod_cop");
+                                String cod_espCargado  = jsonobject.getString("cod_esp");
+                                String cod_orgCargado  = jsonobject.getString("cod_org");
+                                String ind_adminCargado = jsonobject.getString("ind_admin");
+                                //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
+
+                                System.out.println(cod_usuarioCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" "+ind_adminCargado);
+                                //Se guardan en el arraylist
+                                Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
+                                permisos.add(P);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cod_usuario", cod_usuario);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
+
 
 
     //Metodo de prueba para insertar datos
