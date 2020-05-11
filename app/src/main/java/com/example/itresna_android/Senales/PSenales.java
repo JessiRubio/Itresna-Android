@@ -8,6 +8,7 @@ import com.example.itresna_android.AdaptadorRecyclerSeñales;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.Cops;
 import com.example.itresna_android.Etiqueta;
+import com.example.itresna_android.Likes;
 import com.example.itresna_android.Senal;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,6 +52,7 @@ public class PSenales extends AppCompatActivity {
     //ArrayList<Cops> listaSeñales = new ArrayList<Cops>();
     ArrayList<Senal> senales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
+    ArrayList<Likes> likes = new ArrayList<>();
 
     //Datos de prueba para cargar las señales, una vez el recycler cops funcione, se cogerán de ahí los datos.
     int cod_org=1;
@@ -149,6 +151,7 @@ public class PSenales extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
         cargarEtiquetas();
+        cargarLikes();
 
     }
 
@@ -215,6 +218,74 @@ public class PSenales extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
+
+    public void cargarLikes(){
+
+        final String cod_orgActual= String.valueOf(cod_org);
+        final String cod_espActual= String.valueOf(cod_esp);
+        final String cod_copActual= String.valueOf(cod_cop);
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Likes,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonarray  = new JSONArray(response);
+
+                            for(int i=0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+
+                                String cod_senalCargado    = jsonobject.getString("cod_senal");
+                                String cod_copCargado     = jsonobject.getString("cod_cop");
+                                String cod_espCargado  = jsonobject.getString("cod_esp");
+                                String cod_orgCargado  = jsonobject.getString("cod_org");
+                                String cod_usuarioCargado = jsonobject.getString("cod_usuario");
+
+
+                                System.out.println("Likes: "+cod_senalCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
+                                        cod_usuarioCargado);
+
+                                //Se guardan en el arraylist
+                                Likes L = new Likes(cod_senalCargado, cod_copCargado, cod_espCargado, cod_orgCargado, cod_usuarioCargado);
+                                likes.add(L);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cod_org", cod_orgActual);
+                params.put("cod_esp", cod_espActual);
+                params.put("cod_cop", cod_copActual);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
+
 
 
 
