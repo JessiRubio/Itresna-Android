@@ -17,14 +17,14 @@ import java.util.List;
 
 public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
-    PCops coperativas  = new PCops();
-    private ArrayList<Cop> listaCops ;
+
+    private ArrayList<Cops> listaCops ;
 
 
 
     // Constructor del adaptador
     AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
-        this.listaCops = coperativas.getCops();
+        this.listaCops = listaCops;
    }
 
     // Colocamos el xml del elemento selector
@@ -38,8 +38,8 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
     public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
-        final String nombre = listaCops.get(position).desc_cop;
-        final String imgRecycler = listaCops.get(position).img_cop;
+        final String nombre = listaCops.get(position).getNombreCop();
+        final String imgRecycler = listaCops.get(position).getNombreImagen();
        // final String senal = listaCops.get(position).;
         int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
         holder.imgRecycler.setImageResource(resID);
@@ -70,6 +70,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
         private TextView nombreCop;
         private ImageView imgRecycler;
         private  TextView senal;
+
         ViewHolder(View v) {
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);

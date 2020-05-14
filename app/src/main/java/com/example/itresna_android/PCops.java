@@ -102,6 +102,17 @@ public class PCops extends AppCompatActivity {
                     arrayCombobox.add(espacios.get(i).desc_esp);
                 }
                 cargarCops();
+                Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
+                Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
+                Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
+                Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
+                Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
+                listaCops.clear();
+                listaCops.add(prueba1);
+                listaCops.add(prueba2);
+                listaCops.add(prueba3);
+                listaCops.add(prueba4);
+                generarDatosRecyler(listaCops);
             }
         }, 2000);
 
@@ -114,7 +125,7 @@ public class PCops extends AppCompatActivity {
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(comboBox.getSelectedItem() == "Cajas"){
+                if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
                     Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
                     Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
                     Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
@@ -258,16 +269,19 @@ public class PCops extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generarDatosRecyler(ArrayList <Cops> listaCops){
+    public void generarDatosRecyler(ArrayList<Cops> hola){
         // Este ajuste mejora la performance, solo si el
         // contenido del recycler no altera su tamaño
+
+
+        System.out.println("TAMAÑO HOLA = " + hola.size());
         reyclerViewCops.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView
         reyclerViewCops.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerPCops(listaCops);
+        adaptadorRecycler = new AdaptadorRecyclerPCops(hola);
         reyclerViewCops.setAdapter(adaptadorRecycler);
     }
 
