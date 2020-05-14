@@ -12,16 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
-    private List<Cops> listaCops;
+    PCops coperativas  = new PCops();
+    private ArrayList<Cop> listaCops ;
+
+
 
     // Constructor del adaptador
-    AdaptadorRecyclerPCops(List<Cops> listaCops) {
-        this.listaCops = listaCops;
-    }
+    AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
+        this.listaCops = coperativas.getCops();
+   }
 
     // Colocamos el xml del elemento selector
     @NonNull
@@ -34,13 +38,13 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
     public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
-        final String nombre = listaCops.get(position).getNombreCop();
-        final String imgRecycler = listaCops.get(position).getNombreImagen();
-        final String senal = listaCops.get(position).getSenal();
+        final String nombre = listaCops.get(position).desc_cop;
+        final String imgRecycler = listaCops.get(position).img_cop;
+       // final String senal = listaCops.get(position).;
         int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
         holder.imgRecycler.setImageResource(resID);
         holder.nombreCop.setText(nombre);
-        holder.senal.setText(senal);
+        //holder.senal.setText(senal);
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +53,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
                 Intent intent = new Intent(view.getContext(), PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
-                intent.putExtra("senal", senal);
+                //intent.putExtra("senal", senal);
                 view.getContext().startActivity(intent);
             }
         });
@@ -70,7 +74,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
             nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
-            senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+          //  senal = v.findViewById(R.id.txtSenalRecyclerPCops);
         }
     }
 }

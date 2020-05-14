@@ -2,6 +2,7 @@ package com.example.itresna_android;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,7 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -53,7 +56,7 @@ import java.util.Locale;
 public class PCops extends AppCompatActivity {
 
     Spinner comboBox;
-    String[] arrayCombobox;
+    ArrayList<String> arrayCombobox  = new ArrayList<>();
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
@@ -63,13 +66,19 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eng;
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-    ArrayList<Cop> cops = new ArrayList<>();
+
+    public ArrayList<Cop> getCops() {
+        return cops;
+    }
+
+    public ArrayList<Cop> cops = new ArrayList<>();
 
     String espacioSeleccionado;
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
     private PopupWindow mPopupWindow;
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,13 +92,24 @@ public class PCops extends AppCompatActivity {
         cargarEspacios();
 
         //Hacemos lo relacionado con el comboBox(Spinner)
-        arrayCombobox = new String[] {
+       /* arrayCombobox = new String[] {
                 "David", "El", "Cajas", "También", "Conocido", "Como", "David"
-        };
-        adapter = new ArrayAdapter<>(this,
-                R.layout.spinner_texto, arrayCombobox);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        comboBox.setAdapter(adapter);
+        };*/
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                for(int i=0;espacios.size()>i;i++){
+                    arrayCombobox.add(espacios.get(i).desc_esp);
+                }
+                cargarCops();
+            }
+        }, 2000);
+
+
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_texto,arrayCombobox);
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        comboBox.setAdapter(adaptador);
+
 
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
