@@ -102,7 +102,7 @@ public class PCops extends AppCompatActivity {
                     arrayCombobox.add(espacios.get(i).desc_esp);
                 }
                 cargarCops();
-                Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
+               /* Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
                 Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
                 Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
                 Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
@@ -112,7 +112,7 @@ public class PCops extends AppCompatActivity {
                 listaCops.add(prueba2);
                 listaCops.add(prueba3);
                 listaCops.add(prueba4);
-                generarDatosRecyler(listaCops);
+                generarDatosRecyler(listaCops);*/
             }
         }, 2000);
 
@@ -125,7 +125,26 @@ public class PCops extends AppCompatActivity {
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
+                String codEspacio = "";
+                boolean encontradoEspacio = false;
+                for (int i = 0; espacios.size()>i && !encontradoEspacio; i++){
+                    if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())){
+                        codEspacio = espacios.get(i).cod_esp;
+                        encontradoEspacio = true;
+                        System.out.println("Entro en codigo espacio");
+                    }
+                }
+
+                listaCops.clear();
+                for (int i=0;cops.size()>i;i++){
+                    if (cops.get(i).cod_esp.equals(codEspacio)){
+                        System.out.println("genero Cop = "+i);
+                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
+                       listaCops.add(prueba1);
+                        generarDatosRecyler(listaCops);
+                    }
+                }
+               /* if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
                     Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
                     Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
                     Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
@@ -175,7 +194,7 @@ public class PCops extends AppCompatActivity {
                     listaCops.add(prueba3);
                     listaCops.add(prueba4);
                     generarDatosRecyler(listaCops);
-                }
+                }*/
             }
 
             @Override
