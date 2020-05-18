@@ -5,10 +5,10 @@ public class Cops {
     private String nombreCop;
     private String senal;
 
-    Cops(String nombreImagen, String nombreCop, String senal){
+    Cops(String nombreImagen, String nombreCop){
         this.nombreImagen = nombreImagen;
         this.nombreCop = nombreCop;
-        this.senal = senal;
+        //this.senal = senal;
     }
 
     public void setNombreImagen(String nombreImagen) {
