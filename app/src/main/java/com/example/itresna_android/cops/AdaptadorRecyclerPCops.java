@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.R;
-import com.example.itresna_android.senales.PSenales;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<AdaptadorRecycl
     private List<Cops> listaCops;
 
     // Constructor del adaptador
-    AdaptadorRecyclerPCops(List<Cops> listaCops) {
+    public AdaptadorRecyclerPCops(List<Cops> listaCops) {
         this.listaCops = listaCops;
     }
 
@@ -47,7 +46,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<AdaptadorRecycl
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), PSenales.class);
+                Intent intent = new Intent(view.getContext(), com.example.itresna_android.senales.PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
                 intent.putExtra("senal", senal);

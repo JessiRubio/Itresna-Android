@@ -1,4 +1,4 @@
-package com.example.itresna_android;
+package com.example.itresna_android.cops;
 
 
 import androidx.annotation.NonNull;
@@ -36,6 +36,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.itresna_android.ConexionBD;
+import com.example.itresna_android.Cop;
+import com.example.itresna_android.Espacio;
+import com.example.itresna_android.Login;
+import com.example.itresna_android.R;
+import com.example.itresna_android.cops.AdaptadorRecyclerPCops;
+import com.example.itresna_android.cops.Cops;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -231,7 +238,7 @@ public class PCops extends AppCompatActivity {
             mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
 
         } else if (item.getItemId() == R.id.menuitem_cerrar_sesion){
-            Intent intent = new Intent(this,Login.class);
+            Intent intent = new Intent(this, Login.class);
             startActivity(intent);
 
         }
@@ -350,7 +357,7 @@ public class PCops extends AppCompatActivity {
                             }
 
                             //TEMPORAL
-                            espacioSeleccionado=espacios.get(0).cod_esp;
+                            espacioSeleccionado=espacios.get(0).getCod_esp();
 
 
                             cargarCops();
