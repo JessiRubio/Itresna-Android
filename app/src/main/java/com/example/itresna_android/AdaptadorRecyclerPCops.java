@@ -78,4 +78,5 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
           //  senal = v.findViewById(R.id.txtSenalRecyclerPCops);
         }
     }
+
 }
