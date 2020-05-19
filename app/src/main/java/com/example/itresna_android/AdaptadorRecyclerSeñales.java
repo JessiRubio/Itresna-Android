@@ -16,16 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+import com.example.itresna_android.Senales.ModificarSenal;
 import com.example.itresna_android.Senales.PSenales;
-
 import java.util.List;
 
 
@@ -62,6 +58,7 @@ import java.util.List;
 
 
 
+            //Hacer condicion para que los botones aparezcan o no
            /*
             if(cod_ususario!=cod_usuario de señal || tip usuario !=1 || permisos ){
 
@@ -71,13 +68,11 @@ import java.util.List;
             }*/
 
 
-
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     //aqui se borra la señal
-
 
                     //Datos de prueba, una vez se carguen las señales, los datos se cogeran de ahi
                     final int cod_senal= 2;
@@ -138,7 +133,30 @@ import java.util.List;
                 @Override
                 public void onClick(View v) {
 
-                    //aqui se edita la señal
+                    //Aqui solamente se envian los datos de la señal a la pantalla ModificarSenal
+
+                    //Datos de prueba
+                    int cod_senal=1;
+                    int cod_cop=1;
+                    int cod_esp=1;
+                    int cod_org=1;
+                    String url="htpps:";
+                    String desc="holaa";
+
+                    Intent intent = new Intent(holder.itemView.getContext(), ModificarSenal.class);
+                    int valor1  = cod_senal;
+                    intent.putExtra("valor1", valor1 );
+                    int valor2 =cod_cop;
+                    intent.putExtra("valor2", valor2 );
+                    int valor3=cod_esp;
+                    intent.putExtra("valor3", valor3 );
+                    int valor4=cod_org;
+                    intent.putExtra("valor4", valor4 );
+                    String valor5  = url;
+                    intent.putExtra("valor5", valor5 );
+                    String valor6  = desc;
+                    intent.putExtra("valor6", valor6 );
+                    holder.itemView.getContext().startActivity(intent);
 
                 }
             });
