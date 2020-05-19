@@ -145,7 +145,7 @@ public class PCops extends AppCompatActivity {
                         }
                         hilo1.start();
 
-                        SystemClock.sleep(250);
+
                         generarDatosRecyler(listaCops);
                     }
                 }
