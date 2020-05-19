@@ -73,6 +73,8 @@ public class Login extends AppCompatActivity {
 
                                 Intent intent = new Intent(Login.this, pantallaCarga.class);
                                 String valor1  = cod_org;
+                                Aplication myApplication = (Aplication) getApplication();
+                                myApplication.codOrg = cod_org;
                                 intent.putExtra("valor1", valor1 );
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );

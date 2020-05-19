@@ -9,6 +9,7 @@ public class Aplication extends Application {
     ArrayList<Espacio> espacios = new ArrayList<>();
     String espacioSeleccionado;
     public ArrayList<Cop> cops = new ArrayList<>();
+    String codOrg;
 
     public void onCreate(){
         super.onCreate();

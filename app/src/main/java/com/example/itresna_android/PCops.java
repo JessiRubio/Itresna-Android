@@ -55,7 +55,6 @@ import java.util.Locale;
 
 
 public class PCops extends AppCompatActivity {
-    String espaci;
     int contador =0;
     String eslogan;
     Spinner comboBox;
@@ -86,11 +85,14 @@ public class PCops extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_pcops);
+
         Aplication myApplication = (Aplication) getApplication();
         eslogan = myApplication.eslogan;
         espacios = myApplication.espacios;
         cops = myApplication.cops;
-
+        for (int i = 0; espacios.size()>i;i++){
+            System.out.println("CODIGO DE ESPACIO " + i + " == " + espacios.get(i).cod_esp);
+        }
         reyclerViewCops = findViewById(R.id.recyclerViewPCops);
         comboBox = findViewById(R.id.spinnerPCops);
         tEslogan=findViewById(R.id.txtEsloganPCops);
@@ -136,18 +138,38 @@ public class PCops extends AppCompatActivity {
                 if(contador != 0) {
                     boolean encontradoEspacio = false;
                     espacioSeleccionado = comboBox.getSelectedItem().toString();
+                    System.out.println("COPS QUE TENEMOS EN EL ARRAY DE ESPACIOS = "+espacios.size());
                     for (int i = 0; espacios.size() > i && !encontradoEspacio; i++) {
-                        Toast.makeText(getApplicationContext(), "Entro", Toast.LENGTH_LONG).show();
-                        if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())) {
+                        System.out.println("Entro");
+                        if (espacios.get(i).desc_esp.equals(espacioSeleccionado)) {
                             espacioSeleccionado = espacios.get(i).cod_esp;
                             encontradoEspacio = true;
                             Toast.makeText(getApplicationContext(), "Entro en codigo espacio", Toast.LENGTH_LONG).show();
                         }
-                        hilo1.start();
-
-                        SystemClock.sleep(250);
-                        generarDatosRecyler(listaCops);
                     }
+                        //hilo1.start();
+                        cargarCops();
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // acciones que se ejecutan tras los milisegundos
+                                listaCops.clear();
+                                for (int k=0;cops.size()>k;k++){
+                                    System.out.println("COPS QUE TENEMOS EN EL ARRAY DE COPS = "+k);
+                                    if (cops.get(k).cod_esp.equals(espacioSeleccionado)){
+                                        System.out.println("genero Cop = "+k);
+                                        Cops prueba1 = new Cops("app_logo", cops.get(k).desc_cop);
+                                        listaCops.add(prueba1);
+                                    }
+                                }
+                                //SystemClock.sleep(250);
+                                generarDatosRecyler(listaCops);
+                            }
+                        }, 2000);
+
+
+
                 }
                 contador = contador+1;
               /*if(contador != 0){
@@ -352,10 +374,10 @@ public class PCops extends AppCompatActivity {
     }
 
     public void cargarCops(){
-
-        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
-        final String cod_espActual= espacioSeleccionado;
-
+        Aplication myApplication = (Aplication) getApplication();
+        final String cod_org= myApplication.codOrg;
+        final String cod_espActual = espacioSeleccionado;
+        System.out.println("ESPACIO SELECCIONADO" + espacioSeleccionado);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 ConexionBD.URL_Cop,
@@ -365,7 +387,6 @@ public class PCops extends AppCompatActivity {
 
                         try {
                             JSONArray jsonarrayCops  = new JSONArray(response);
-
                             for(int i=0; i < jsonarrayCops.length(); i++) {
                                 JSONObject jsonobjectCops = jsonarrayCops.getJSONObject(i);
                                 String cod_copCargado    = jsonobjectCops.getString("cod_cop");
@@ -378,8 +399,11 @@ public class PCops extends AppCompatActivity {
                                 System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
                                 Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
                                 cops.add(C);
-
+                                Aplication myApplication = (Aplication) getApplication();
+                                myApplication.cops = cops;
+                                System.out.println("INSERTO COP " + i);
                             }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -409,23 +433,7 @@ public class PCops extends AppCompatActivity {
     }
 
 
-    final Thread hilo1 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            cargarCops();
 
-            listaCops.clear();
-            for (int i=0;cops.size()>i;i++){
-                if (cops.get(i).cod_esp.equals(espacioSeleccionado)){
-                    System.out.println("genero Cop = "+i);
-                    Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
-                    listaCops.add(prueba1);
-                }
-            }
-
-
-        }
-    });
 
 
 

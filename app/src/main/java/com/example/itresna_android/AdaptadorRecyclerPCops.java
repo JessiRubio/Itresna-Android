@@ -1,5 +1,6 @@
 package com.example.itresna_android;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +16,12 @@ import com.example.itresna_android.Senales.PSenales;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+public class
+AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
 
     private ArrayList<Cops> listaCops ;
-
+    String codigo;
 
 
     // Constructor del adaptador
@@ -32,6 +34,7 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     @Override
     public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_selector_pcops, parent, false);
+
         return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
     }
 
@@ -53,7 +56,19 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
                 Intent intent = new Intent(view.getContext(), PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
+                Aplication myApplication ;
+                ArrayList<Cop> copss = new ArrayList<>();
+
+                //
                 //intent.putExtra("senal", senal);
+                myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
+                copss = myApplication.cops;
+                for(int i=0; copss.size()>i;i++) {
+                    if (copss.get(i).getDesc_cop().equals(nombre)){
+                        codigo = copss.get(i).cod_cop;
+                    }
+                }
+                intent.putExtra("codigo",codigo);
                 view.getContext().startActivity(intent);
             }
         });
@@ -76,6 +91,10 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
             nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
           //  senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+
+
+
+
         }
     }
 
