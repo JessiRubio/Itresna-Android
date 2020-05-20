@@ -400,6 +400,7 @@ public class PCops extends AppCompatActivity {
                                 Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
                                 espacios.add(E);
 
+
                             }
 
                             //TEMPORAL

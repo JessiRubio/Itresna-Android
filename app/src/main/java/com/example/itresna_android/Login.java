@@ -27,7 +27,8 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
     Button btnEntrar;
     EditText etCod_usuario, etSarbidea;
-    ArrayList<Permisos> permisos = new ArrayList<>();
+    public static ArrayList<Permisos> permisos = new ArrayList<>();
+    public static ArrayList<Usuario> usuario = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,11 @@ public class Login extends AppCompatActivity {
                                         " "+ape2Cargado);
                                 //String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
+
+                                Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);
+                                usuario.add(U);
+
+
 
 
                                 Intent intent = new Intent(Login.this, PCops.class);
