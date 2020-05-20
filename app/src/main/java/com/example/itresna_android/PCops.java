@@ -2,6 +2,7 @@ package com.example.itresna_android;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,7 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -53,7 +56,7 @@ import java.util.Locale;
 public class PCops extends AppCompatActivity {
 
     Spinner comboBox;
-    String[] arrayCombobox;
+    ArrayList<String> arrayCombobox  = new ArrayList<>();
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
@@ -63,13 +66,19 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eng;
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-    ArrayList<Cop> cops = new ArrayList<>();
+
+    public ArrayList<Cop> getCops() {
+        return cops;
+    }
+
+    public ArrayList<Cop> cops = new ArrayList<>();
 
     String espacioSeleccionado;
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
     private PopupWindow mPopupWindow;
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,18 +92,59 @@ public class PCops extends AppCompatActivity {
         cargarEspacios();
 
         //Hacemos lo relacionado con el comboBox(Spinner)
-        arrayCombobox = new String[] {
+       /* arrayCombobox = new String[] {
                 "David", "El", "Cajas", "También", "Conocido", "Como", "David"
-        };
-        adapter = new ArrayAdapter<>(this,
-                R.layout.spinner_texto, arrayCombobox);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        comboBox.setAdapter(adapter);
+        };*/
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                for(int i=0;espacios.size()>i;i++){
+                    arrayCombobox.add(espacios.get(i).desc_esp);
+                }
+                cargarCops();
+               /* Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
+                Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
+                Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
+                Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
+                Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
+                listaCops.clear();
+                listaCops.add(prueba1);
+                listaCops.add(prueba2);
+                listaCops.add(prueba3);
+                listaCops.add(prueba4);
+                generarDatosRecyler(listaCops);*/
+            }
+        }, 2000);
+
+
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_texto,arrayCombobox);
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        comboBox.setAdapter(adaptador);
+
 
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(comboBox.getSelectedItem() == "Cajas"){
+                String codEspacio = "";
+                boolean encontradoEspacio = false;
+                for (int i = 0; espacios.size()>i && !encontradoEspacio; i++){
+                    if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())){
+                        codEspacio = espacios.get(i).cod_esp;
+                        encontradoEspacio = true;
+                        System.out.println("Entro en codigo espacio");
+                    }
+                }
+
+                listaCops.clear();
+                for (int i=0;cops.size()>i;i++){
+                    if (cops.get(i).cod_esp.equals(codEspacio)){
+                        System.out.println("genero Cop = "+i);
+                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
+                       listaCops.add(prueba1);
+                        generarDatosRecyler(listaCops);
+                    }
+                }
+               /* if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
                     Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
                     Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
                     Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
@@ -144,7 +194,7 @@ public class PCops extends AppCompatActivity {
                     listaCops.add(prueba3);
                     listaCops.add(prueba4);
                     generarDatosRecyler(listaCops);
-                }
+                }*/
             }
 
             @Override
@@ -238,16 +288,19 @@ public class PCops extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generarDatosRecyler(ArrayList <Cops> listaCops){
+    public void generarDatosRecyler(ArrayList<Cops> hola){
         // Este ajuste mejora la performance, solo si el
         // contenido del recycler no altera su tamaño
+
+
+        System.out.println("TAMAÑO HOLA = " + hola.size());
         reyclerViewCops.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView
         reyclerViewCops.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerPCops(listaCops);
+        adaptadorRecycler = new AdaptadorRecyclerPCops(hola);
         reyclerViewCops.setAdapter(adaptadorRecycler);
     }
 

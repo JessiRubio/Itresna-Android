@@ -311,7 +311,7 @@ import java.util.List;
                 super(v);
                 imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
                 nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
-                senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+                //senal = v.findViewById(R.id.txtSenalRecyclerPCops);
             }
         }
 
