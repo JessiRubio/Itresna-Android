@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,51 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itresna_android.R;
-import com.example.itresna_android.Senal;
+import com.example.itresna_android.Senales.PSenales;
 
 import java.util.List;
 
 
 
-    public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<com.example.itresna_android.senales.AdaptadorRecyclerSenales.ViewHolder> {
-        private LayoutInflater inflador;
-        protected List<Senal> lista;
-        private Context contexto;
-
-        private View.OnClickListener onClickListener;
-
-        public AdaptadorRecyclerSenales(Context c, List<Senal> l){
-            inflador = (LayoutInflater) c.getSystemService(c.LAYOUT_INFLATER_SERVICE);
-            this.lista = l;
-            this.contexto = c;
+    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
+        // Colocamos el xml del elemento selector
+        public AdaptadorRecyclerSeñales(){
+            // Aqui tendria que ir la lista
         }
-
-        // Esto es necesario
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            // Aqui tambien ponemos los elementos del elemento selector
-            private TextView nombreCop;
-            private ImageView imgRecycler;
-            private  TextView senal;
-            ViewHolder(View v) {
-                super(v);
-                imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
-                nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
-                senal = v.findViewById(R.id.txtSenalRecyclerPCops);
-            }
-        }
-
         @NonNull
         @Override
-        public com.example.itresna_android.senales.AdaptadorRecyclerSenales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            v.setOnClickListener(onClickListener);
-            return new com.example.itresna_android.senales.AdaptadorRecyclerSenales.ViewHolder(v);
+            return new com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder(v);
         }
+
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final com.example.itresna_android.senales.AdaptadorRecyclerSenales.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder holder, final int position) {
             Button comentario = holder.itemView.findViewById(R.id.botonComentarios);
             comentario.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,11 +49,21 @@ import java.util.List;
 
         @Override
         public int getItemCount() {
-            return lista.size();
+            return 8;
         }
 
-        public void setOnItemClickListener (View.OnClickListener onClickListener) {
-            this.onClickListener = onClickListener;
+        // Esto es necesario
+        static class ViewHolder extends RecyclerView.ViewHolder {
+            // Aqui tambien ponemos los elementos del elemento selector
+            private TextView nombreCop;
+            private ImageView imgRecycler;
+            private  TextView senal;
+            ViewHolder(View v) {
+                super(v);
+                imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
+                nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
+                //senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+            }
         }
     }
 

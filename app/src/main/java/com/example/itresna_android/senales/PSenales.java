@@ -63,8 +63,6 @@ public class PSenales extends AppCompatActivity {
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
 
-        cargarSenales();
-
         // Especificamos el adaptador para el recycler
         adaptadorRecycler = new AdaptadorRecyclerSenales();
         reyclerViewseñales.setAdapter(adaptadorRecycler);
