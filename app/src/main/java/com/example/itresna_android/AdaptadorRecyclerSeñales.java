@@ -2,6 +2,7 @@ package com.example.itresna_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,16 @@ import java.util.List;
 
     public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
         // Colocamos el xml del elemento selector
+
+        //Datos de prueba
+         boolean liked;
+         int likes=5;
+
         public AdaptadorRecyclerSeñales(){
+
             // Aqui tendria que ir la lista
+
+
         }
         @NonNull
         @Override
@@ -55,32 +64,44 @@ import java.util.List;
             Button btnEliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button btnEditar = holder.itemView.findViewById(R.id.botonLapiz);
             ImageView btnLike = holder.itemView.findViewById(R.id.imageCorazon);
+            final TextView tvLikes = holder.itemView.findViewById(R.id.textViewLike);
+
+            tvLikes.setText(String.valueOf(likes));
+            btnEliminar.setVisibility(View.INVISIBLE);
+            btnEditar.setVisibility(View.INVISIBLE);
+
+           //Datos de prueba,
+            int cod_senal= 2;
+            int cod_cop=1;
+            int cod_esp=1;
+            int cod_org=1;
+            String cod_usuarioSenal="jon";
+
+            for (int i=0;i<Login.permisos.size();i++){
+
+                if (Login.usuario.get(0).tip_usuario.equals("1") || Login.usuario.get(0).cod_usuario.equals(cod_usuarioSenal) || Login.permisos.get(i).cod_cop.equals(Integer.toString(cod_cop)) && Login.permisos.get(i).ind_admin.equals("1") ){
+                    btnEliminar.setVisibility(View.VISIBLE);
+                    btnEditar.setVisibility(View.VISIBLE);
+                }
+
+            }
 
 
 
-            //Hacer condicion para que los botones aparezcan o no
-           /*
-            if(cod_ususario!=cod_usuario de señal || tip usuario !=1 || permisos ){
 
-                btnEliminar.setVisibility(View.INVISIBLE);
-                btnEditar.setVisibility(View.INVISIBLE);
 
-            }*/
 
 
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    //aqui se borra la señal
+                    //Aqui se borra la señal
 
                     //Datos de prueba, una vez se carguen las señales, los datos se cogeran de ahi
                     final int cod_senal= 2;
                     final int cod_cop=1;
                     final int cod_esp=1;
                     final int cod_org=1;
-
-
 
                     StringRequest stringRequest =new StringRequest(Request.Method.POST,
                             ConexionBD.URL_BorrarSenal,
@@ -94,20 +115,13 @@ import java.util.List;
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-
                                 }
                             },
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-
-                                    //Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
-                                    //Toast.makeText(getApplicationContext(), "volley error",Toast.LENGTH_LONG).show();
-
                                 }
-
                             }
-
                     ){
                         @Override
                         protected Map<String, String> getParams() {
@@ -123,8 +137,6 @@ import java.util.List;
                     RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
                     requestQueue.add(stringRequest);
 
-
-
                 }
             });
 
@@ -132,7 +144,6 @@ import java.util.List;
             btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     //Aqui solamente se envian los datos de la señal a la pantalla ModificarSenal
 
                     //Datos de prueba
@@ -166,7 +177,118 @@ import java.util.List;
                 @Override
                 public void onClick(View v) {
 
-                    //aqui se gestionan los likes de la señal
+                    //Aqui se gestionan los likes de la señal
+                    //Datos de prueba
+                    final int cod_senal= 1;
+                    final int cod_cop=1;
+                    final int cod_esp=1;
+                    final int cod_org=1;
+                    final String cod_usuario="jon";
+
+                    //Se conprueba si el usuario actual ha dado tiene like
+                    for (int i=0;i<PSenales.likes.size();i++){
+                        //System.out.println("El arraylist "+PSenales.likes.get(i).cod_usuario +" "+PSenales.likes.get(i).cod_senal );
+                        if (PSenales.likes.get(i).cod_usuario.equals(cod_usuario) && PSenales.likes.get(i).cod_senal.equals(Integer.toString(cod_senal))){
+                            System.out.println("true");
+                            liked=true;
+                        }
+                        else {
+                            liked=false;
+                            System.out.println("false");
+                        }
+                    }
+
+                    if (liked==true){
+                        likes--;
+                        tvLikes.setText(String.valueOf(likes));
+                        liked=false;
+
+                        //Se borra el like en la base de datos
+                        StringRequest stringRequest =new StringRequest(Request.Method.POST,
+                                ConexionBD.URL_BorrarLike,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            JSONObject jsonObject =new JSONObject(response);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                    }
+                                }
+                        ){
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String, String> params =new HashMap<>();
+                                params.put("cod_senal", String.valueOf(cod_senal));
+                                params.put("cod_cop", String.valueOf(cod_cop));
+                                params.put("cod_esp", String.valueOf(cod_esp));
+                                params.put("cod_org", String.valueOf(cod_org));
+                                params.put("cod_usuario", cod_usuario);
+                                return params;
+                            }
+                        };
+                        RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
+                        requestQueue.add(stringRequest);
+
+                        //Elimina el like del arraylist
+                        for (int i=0;i<PSenales.likes.size();i++){
+                            if (PSenales.likes.get(i).cod_usuario.equals(cod_usuario) && PSenales.likes.get(i).cod_senal.equals(Integer.toString(cod_senal))){
+                                PSenales.likes.remove(i);
+                                System.out.println();
+                            }
+                        }
+                    }
+
+                    else if (liked==false){
+                        likes++;
+                        tvLikes.setText(String.valueOf(likes));
+                        liked=true;
+                        //Se crea el like en la base de datos
+
+                        StringRequest stringRequest =new StringRequest(Request.Method.POST,
+                                ConexionBD.URL_CrearLike,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+
+                                        try {
+                                            JSONObject jsonObject =new JSONObject(response);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                    }
+                                }
+                        ){
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String, String> params =new HashMap<>();
+                                params.put("cod_senal", String.valueOf(cod_senal));
+                                params.put("cod_cop", String.valueOf(cod_cop));
+                                params.put("cod_esp", String.valueOf(cod_esp));
+                                params.put("cod_org", String.valueOf(cod_org));
+                                params.put("cod_usuario", cod_usuario);
+                                return params;
+                            }
+                        };
+                        RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
+                        requestQueue.add(stringRequest);
+
+                        //Añade el like al arraylist
+                        Likes L = new Likes(String.valueOf(cod_senal), String.valueOf(cod_cop), String.valueOf(cod_esp), String.valueOf(cod_org), cod_usuario);
+                        PSenales.likes.add(L);
+                    }
 
 
                 }
