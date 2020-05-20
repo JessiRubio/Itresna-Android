@@ -1,6 +1,7 @@
 package com.example.itresna_android.senales;
 
 import android.content.Intent;
+import android.media.MediaCodec;
 import android.os.Bundle;
 
 import com.example.itresna_android.ConexionBD;
@@ -45,16 +46,17 @@ import java.util.ArrayList;
 
 public class PSenales extends AppCompatActivity {
 
+
     RecyclerView reyclerViewseñales;
     AdaptadorRecyclerSenales adaptadorRecycler;
     ArrayList<Senal> listaSenales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
-    ArrayList<Likes> likes = new ArrayList<>();
+    public static ArrayList<Likes> likes = new ArrayList<>();
 
     //Datos de prueba para cargar las señales, una vez el recycler cops funcione, se cogerán de ahí los datos.
     int cod_org=1;
     int cod_esp=1;
-    int cod_cop=2;
+    int cod_cop=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
