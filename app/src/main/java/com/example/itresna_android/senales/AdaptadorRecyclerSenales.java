@@ -85,19 +85,13 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
 
             }
 
-
-
-
-
-
-
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //Aqui se borra la señal
 
                     //Datos de prueba, una vez se carguen las señales, los datos se cogeran de ahi
-                    final int cod_senal= 2;
+                    final int cod_senal=2;
                     final int cod_cop=1;
                     final int cod_esp=1;
                     final int cod_org=1;
