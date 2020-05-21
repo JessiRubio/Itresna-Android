@@ -1,7 +1,6 @@
 package com.example.itresna_android.senales;
 
-import android.content.Intent;
-import android.view.LayoutInflater;
+import android.content.Intent;import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,7 +23,7 @@ import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.Likes;
 import com.example.itresna_android.Login;
 import com.example.itresna_android.R;
-import com.example.itresna_android.Senales.ModificarSenal;
+import com.example.itresna_android.senales.ModificarSenal;
 
 
 public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
