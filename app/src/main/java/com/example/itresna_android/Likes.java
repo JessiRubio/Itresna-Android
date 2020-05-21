@@ -2,11 +2,11 @@ package com.example.itresna_android;
 
 public class Likes {
 
-    String cod_senal;
+    public String cod_senal;
     String cod_cop;
     String cod_esp;
     String cod_org;
-    String cod_usuario;
+    public String cod_usuario;
 
     public Likes(String cod_senal, String cod_cop, String cod_esp, String cod_org, String cod_usuario){
         this.cod_senal=cod_senal;

@@ -1,4 +1,4 @@
-package com.example.itresna_android;
+package com.example.itresna_android.senales;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,6 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.itresna_android.Comentario;
+import com.example.itresna_android.ConexionBD;
+import com.example.itresna_android.R;
+import com.example.itresna_android.senales.AdaptadorComentario;
 
 import org.json.JSONArray;
 import org.json.JSONException;
