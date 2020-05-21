@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaCodec;
 import android.os.Bundle;
 
+import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.Etiqueta;
 import com.example.itresna_android.Likes;
@@ -53,10 +54,10 @@ public class PSenales extends AppCompatActivity {
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
     public static ArrayList<Likes> likes = new ArrayList<>();
 
-    //Datos de prueba para cargar las señales, una vez el recycler cops funcione, se cogerán de ahí los datos.
-    int cod_org=1;
-    int cod_esp=1;
-    int cod_cop=1;
+    Aplication myApplication = (Aplication) getApplication();
+    String cod_org= myApplication.codOrg;
+    String cod_esp= myApplication.espacioSeleccionado;
+    String cod_cop=myApplication.copSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class PSenales extends AppCompatActivity {
         setContentView(R.layout.activity_psenales);
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
+
+        cargarSenales();
 
         // Especificamos el adaptador para el recycler
         adaptadorRecycler = new AdaptadorRecyclerSenales();
