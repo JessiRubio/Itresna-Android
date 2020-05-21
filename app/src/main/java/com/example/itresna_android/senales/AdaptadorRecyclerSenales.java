@@ -25,7 +25,6 @@ import com.example.itresna_android.Likes;
 import com.example.itresna_android.Login;
 import com.example.itresna_android.R;
 import com.example.itresna_android.Senales.ModificarSenal;
-import com.example.itresna_android.Senales.PSenales;
 
 
 public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
