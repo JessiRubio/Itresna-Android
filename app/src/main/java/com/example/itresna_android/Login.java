@@ -99,7 +99,7 @@ public class Login extends AppCompatActivity {
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );
                                 startActivity(intent);
-
+ 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
