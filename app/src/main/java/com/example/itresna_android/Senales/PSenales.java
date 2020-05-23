@@ -65,6 +65,7 @@ public class PSenales extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psenales);
+
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
 
@@ -77,7 +78,8 @@ public class PSenales extends AppCompatActivity {
         final String imgNombre = intent.getStringExtra("nombreImagen");
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
-
+        String codigo = intent.getStringExtra("codigo");
+        System.out.println("ESTE ES EL CODIGO DE LA COP"+codigo);
 
         cargarSenales();
     }
