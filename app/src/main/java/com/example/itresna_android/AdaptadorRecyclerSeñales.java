@@ -29,7 +29,7 @@ import java.util.List;
 
     public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
         // Colocamos el xml del elemento selector
-
+ 
         //Datos de prueba
          boolean liked;
          int likes=5;
