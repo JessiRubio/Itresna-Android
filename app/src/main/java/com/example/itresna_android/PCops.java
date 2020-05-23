@@ -58,7 +58,7 @@ public class PCops extends AppCompatActivity {
     int contador =0;
     String eslogan;
     Spinner comboBox;
-    String[] arrayCombobox;
+    ArrayList <String> arrayCombobox= new ArrayList<String>();
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
@@ -85,12 +85,13 @@ public class PCops extends AppCompatActivity {
         espacios = myApplication.espacios;
         cops = myApplication.cops;
         for (int i = 0; espacios.size()>i;i++){
-            System.out.println("CODIGO DE ESPACIO " + i + " == " + espacios.get(i).cod_esp);
+            System.out.println("CODIGO DE ESPACIO " + i + " == " + espacios.get(i).cod_esp+ "desc_esp: "+espacios.get(i).desc_esp);
         }
         reyclerViewCops = findViewById(R.id.recyclerViewPCops);
         comboBox = findViewById(R.id.spinnerPCops);
         tEslogan=findViewById(R.id.txtEsloganPCops);
             for(int i=0;espacios.size()>i;i++){
+                System.out.println("desc_esp: "+espacios.get(i).desc_esp);
                 arrayCombobox.add(espacios.get(i).desc_esp);
             }
             ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_texto,arrayCombobox);
@@ -247,7 +248,7 @@ public class PCops extends AppCompatActivity {
                     listaCops.add(prueba3);
                     listaCops.add(prueba4);
                     generarDatosRecyler(listaCops);
-                }
+                }*/
             }
 
             @Override

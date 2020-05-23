@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class
@@ -25,7 +26,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
 
     // Constructor del adaptador
-    AdaptadorRecyclerPCops(List<Cops> listaCops) {
+    AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
         this.listaCops = listaCops;
     }
 
@@ -43,11 +44,11 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
         final String imgRecycler = listaCops.get(position).getNombreImagen();
-        final String senal = listaCops.get(position).getSenal();
+        //final String senal = listaCops.get(position).getSenal();
         int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
         holder.imgRecycler.setImageResource(resID);
         holder.nombreCop.setText(nombre);
-        holder.senal.setText(senal);
+       // holder.senal.setText(senal);
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
