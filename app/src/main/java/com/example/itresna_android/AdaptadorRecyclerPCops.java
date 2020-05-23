@@ -2,6 +2,10 @@ package com.example.itresna_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +28,8 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     private ArrayList<Cops> listaCops ;
     String codigo;
+    Bitmap bmp;
+    ArrayList<Cop>listaCop;
 
 
 
@@ -43,11 +51,62 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     @Override
     public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
-        final String imgRecycler = listaCops.get(position).getNombreImagen();
+        //final String imgRecycler = listaCops.get(position).getNombreImagen();
+        String imgR="";
+        ArrayList<Cop> copss = new ArrayList<>();
+
+        //
+        //intent.putExtra("senal", senal);
+        Aplication myApplication ;
+        myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
+        copss = myApplication.cops;
+        for(int i=0; copss.size()>i;i++) {
+            if (copss.get(i).getDesc_cop().equals(nombre)){
+               //imgRecycler = copss.get(i).img_cop;
+               imgR= copss.get(i).img_cop;
+            }
+        }
+
+        final String imgRecycler =imgR;
+
+
+
+
         //final String senal = listaCops.get(position).getSenal();
         int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    InputStream in = null;
+                    in = new java.net.URL(imgRecycler).openStream();
+                            bmp = BitmapFactory.decodeStream(in);
+
+
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                //foto.setImageBitmap(bmp);
+                holder.imgRecycler.setImageBitmap(bmp);
+                System.out.println("IMG RECYCLER "+imgRecycler);
+                holder.nombreCop.setText(nombre);
+
+            }
+        }, 500);
         holder.imgRecycler.setImageResource(resID);
-        holder.nombreCop.setText(nombre);
+
+
+
+
        // holder.senal.setText(senal);
 
         // Aquí programamos el click del elemento del recyclerview
