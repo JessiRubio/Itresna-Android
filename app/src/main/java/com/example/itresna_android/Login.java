@@ -162,6 +162,8 @@ public class Login extends AppCompatActivity {
                                 //Se guardan en el arraylist
                                 Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
                                 permisos.add(P);
+                                System.out.println("PERMISOOOOOOOS "+permisos.size());
+
 
                             }
 

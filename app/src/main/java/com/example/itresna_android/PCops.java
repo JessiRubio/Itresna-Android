@@ -124,7 +124,7 @@ public class PCops extends AppCompatActivity {
                 }
                 generarDatosRecyler(listaCops);
 
-
+        tEslogan.setText(eslogan);
 
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -390,7 +390,9 @@ public class PCops extends AppCompatActivity {
 
                                 System.out.println("Org: "+cod_orgCargado+" "+desc_orgCargado+" "+img_orgCargado+" "+enlace_orgCargado+" "+eslogan_orgCargado);
 
-                                tEslogan.setText(obj.getString("eslogan_org"));
+                                tEslogan.setText(eslogan);
+                                System.out.println("ESLOGAN COPS-----"+ eslogan);
+
 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();

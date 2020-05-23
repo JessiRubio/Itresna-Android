@@ -77,19 +77,24 @@ import java.util.List;
             int cod_org=1;
             String cod_usuarioSenal="jon";
 
-            for (int i=0;i<Login.permisos.size();i++){
 
-                if (Login.usuario.get(0).tip_usuario.equals("1") || Login.usuario.get(0).cod_usuario.equals(cod_usuarioSenal) || Login.permisos.get(i).cod_cop.equals(Integer.toString(cod_cop)) && Login.permisos.get(i).ind_admin.equals("1") ){
-                    btnEliminar.setVisibility(View.VISIBLE);
-                    btnEditar.setVisibility(View.VISIBLE);
-                }
-
+            if (Login.permisos.size()==0){
+               if (Login.usuario.get(0).tip_usuario.equals("1")){
+                   btnEliminar.setVisibility(View.VISIBLE);
+                   btnEditar.setVisibility(View.VISIBLE);
+               }
             }
+            else{
+                for (int i=0;i<Login.permisos.size();i++){
 
+                    System.out.println("TIPO DE USAURIO "+Login.usuario.get(0).tip_usuario);
+                    if (Login.usuario.get(0).tip_usuario.equals("1") || Login.usuario.get(0).cod_usuario.equals(cod_usuarioSenal) || Login.permisos.get(i).cod_cop.equals(Integer.toString(cod_cop)) && Login.permisos.get(i).ind_admin.equals("1") ){
+                        btnEliminar.setVisibility(View.VISIBLE);
+                        btnEditar.setVisibility(View.VISIBLE);
+                    }
 
-
-
-
+                }
+            }
 
 
             btnEliminar.setOnClickListener(new View.OnClickListener() {

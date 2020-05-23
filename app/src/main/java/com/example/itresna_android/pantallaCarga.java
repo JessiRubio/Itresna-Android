@@ -42,6 +42,7 @@ public class pantallaCarga extends AppCompatActivity {
                   myApplication.espacioSeleccionado = espacioSeleccionado;
                   myApplication.cops = cops;
                   myApplication.eslogan = eslogan;
+                  System.out.println("ESLOGAN --- "+eslogan);
 
                   Intent intent = new Intent(getApplicationContext(),PCops.class);
                   startActivity(intent);
@@ -65,6 +66,8 @@ public class pantallaCarga extends AppCompatActivity {
                             if(!obj.getBoolean("error")){
                                // tEslogan.setText(obj.getString("eslogan_org"));
                                 eslogan = obj.getString("eslogan_org");
+
+
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
