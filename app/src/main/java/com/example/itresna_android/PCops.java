@@ -2,7 +2,6 @@ package com.example.itresna_android;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,10 +12,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
+
 import android.os.Handler;
 import android.os.SystemClock;
+
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -58,7 +58,7 @@ public class PCops extends AppCompatActivity {
     int contador =0;
     String eslogan;
     Spinner comboBox;
-    ArrayList<String> arrayCombobox  = new ArrayList<>();
+    String[] arrayCombobox;
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
@@ -68,19 +68,13 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eng;
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-
-    public ArrayList<Cop> getCops() {
-        return cops;
-    }
-
-    public ArrayList<Cop> cops = new ArrayList<>();
+    ArrayList<Cop> cops = new ArrayList<>();
 
     String espacioSeleccionado;
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
     private PopupWindow mPopupWindow;
-    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +97,7 @@ public class PCops extends AppCompatActivity {
             adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             comboBox.setAdapter(adaptador);
             espacioSeleccionado = comboBox.getSelectedItem().toString();
+
 
                 cargarCops();
                 Toast.makeText(getApplicationContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
@@ -130,11 +125,10 @@ public class PCops extends AppCompatActivity {
 
 
 
-
-
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 if(contador != 0) {
                     boolean encontradoEspacio = false;
                     espacioSeleccionado = comboBox.getSelectedItem().toString();
@@ -253,7 +247,7 @@ public class PCops extends AppCompatActivity {
                     listaCops.add(prueba3);
                     listaCops.add(prueba4);
                     generarDatosRecyler(listaCops);
-                }*/
+                }
             }
 
             @Override
@@ -347,19 +341,16 @@ public class PCops extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generarDatosRecyler(ArrayList<Cops> hola){
+    public void generarDatosRecyler(ArrayList <Cops> listaCops){
         // Este ajuste mejora la performance, solo si el
         // contenido del recycler no altera su tamaño
-
-
-        System.out.println("TAMAÑO HOLA = " + hola.size());
         reyclerViewCops.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView
         reyclerViewCops.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerPCops(hola);
+        adaptadorRecycler = new AdaptadorRecyclerPCops(listaCops);
         reyclerViewCops.setAdapter(adaptadorRecycler);
     }
 
@@ -372,6 +363,131 @@ public class PCops extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
         this.recreate();
     }
+
+
+
+    public void cargarOrg(){
+
+        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Org,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            //System.out.println(response);
+                            if(!obj.getBoolean("error")){
+
+                                String cod_orgCargado=obj.getString("cod_org");
+                                String desc_orgCargado=obj.getString("desc_org");
+                                String img_orgCargado=obj.getString("img_org");
+                                String enlace_orgCargado=obj.getString("enlace_org");
+                                String eslogan_orgCargado=obj.getString("eslogan_org");
+
+                                System.out.println("Org: "+cod_orgCargado+" "+desc_orgCargado+" "+img_orgCargado+" "+enlace_orgCargado+" "+eslogan_orgCargado);
+
+                                tEslogan.setText(obj.getString("eslogan_org"));
+
+                            }else{
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //params.put("cod_usuario", cod_usuario);
+                params.put("cod_org", cod_org);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+        //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void cargarEspacios(){
+
+        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Esp,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+
+                            JSONArray jsonarray  = new JSONArray(response);
+                            //System.out.println(jsonarray.length());
+                            //System.out.println(response);
+                            for(int i=0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                String cod_esp      = jsonobject.getString("cod_esp");
+                                String cod_org      = jsonobject.getString("cod_org");
+                                String desc_esp   = jsonobject.getString("desc_esp");
+                                String ind_esp_curacion  = jsonobject.getString("ind_esp_curacion");
+                                String orden = jsonobject.getString("orden");
+
+                                System.out.println("Espacios: "+cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
+                                //Se guardan en el arraylist
+                                Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
+                                espacios.add(E);
+
+
+                            }
+
+                            //TEMPORAL
+                            espacioSeleccionado=espacios.get(0).cod_esp;
+
+
+                            cargarCops();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //params.put("cod_usuario", cod_usuario);
+                params.put("cod_org", cod_org);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+    }
+
 
     public void cargarCops(){
         Aplication myApplication = (Aplication) getApplication();
@@ -396,7 +512,8 @@ public class PCops extends AppCompatActivity {
                                 String img_copCargado = jsonobjectCops.getString("img_cop");
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
-                                System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                System.out.println("Cops: "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                //Se guardan en el arraylist
                                 Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
                                 cops.add(C);
                                 Aplication myApplication = (Aplication) getApplication();

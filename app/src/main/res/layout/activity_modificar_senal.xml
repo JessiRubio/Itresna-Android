@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Senales.ModificarSenal">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.31" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiahorizontal17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06569343" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.86" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiavertical9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitud_url"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal13"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical11"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal12" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitud_Descripcion"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal15"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical10"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal14" />
+
+    <EditText
+        android:id="@+id/etUrl"
+        android:layout_width="196dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal13"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical9"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical10"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal12" />
+
+    <EditText
+        android:id="@+id/etDesc"
+        android:layout_width="196dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal15"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical9"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical10"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal14" />
+
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_modificar_senal"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal17"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical12"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical11"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal16" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_cancelar_nueva_senal"
+        app:layout_constraintBottom_toTopOf="@+id/guiahorizontal17"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical13"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical12"
+        app:layout_constraintTop_toTopOf="@+id/guiahorizontal16" />
+</androidx.constraintlayout.widget.ConstraintLayout>

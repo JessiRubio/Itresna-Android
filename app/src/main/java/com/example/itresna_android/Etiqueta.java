@@ -1,24 +1,30 @@
 package com.example.itresna_android;
 
-public class Cop {
+public class Etiqueta {
 
+    String cod_etiqueta;
     String cod_cop;
     String cod_esp;
     String cod_org;
-    String desc_cop;
-    String img_cop;
-    //String ind_cop_graficos;
+    String desc_etiqueta;
 
-    public Cop (String cod_cop, String cod_esp, String cod_org, String desc_cop, String img_cop){
-
+    public Etiqueta(String cod_etiqueta, String cod_cop, String cod_esp, String cod_org, String desc_etiqueta){
+        this.cod_etiqueta=cod_etiqueta;
         this.cod_cop=cod_cop;
         this.cod_esp=cod_esp;
         this.cod_org=cod_org;
-        this.desc_cop=desc_cop;
-        this.img_cop=img_cop;
+        this.desc_etiqueta=desc_etiqueta;
 
     }
 
+
+    public String getCod_etiqueta() {
+        return cod_etiqueta;
+    }
+
+    public void setCod_etiqueta(String cod_etiqueta) {
+        this.cod_etiqueta = cod_etiqueta;
+    }
 
     public String getCod_cop() {
         return cod_cop;
@@ -44,19 +50,11 @@ public class Cop {
         this.cod_org = cod_org;
     }
 
-    public String getDesc_cop() {
-        return desc_cop;
+    public String getDesc_etiqueta() {
+        return desc_etiqueta;
     }
 
-    public void setDesc_cop(String desc_cop) {
-        this.desc_cop = desc_cop;
-    }
-
-    public String getImg_cop() {
-        return img_cop;
-    }
-
-    public void setImg_cop(String img_cop) {
-        this.img_cop = img_cop;
+    public void setDesc_etiqueta(String desc_etiqueta) {
+        this.desc_etiqueta = desc_etiqueta;
     }
 }

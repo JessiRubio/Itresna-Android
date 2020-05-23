@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class
@@ -24,10 +23,11 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     String codigo;
 
 
+
     // Constructor del adaptador
-    AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
+    AdaptadorRecyclerPCops(List<Cops> listaCops) {
         this.listaCops = listaCops;
-   }
+    }
 
     // Colocamos el xml del elemento selector
     @NonNull
@@ -43,11 +43,11 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
         final String imgRecycler = listaCops.get(position).getNombreImagen();
-       // final String senal = listaCops.get(position).;
+        final String senal = listaCops.get(position).getSenal();
         int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
         holder.imgRecycler.setImageResource(resID);
         holder.nombreCop.setText(nombre);
-        //holder.senal.setText(senal);
+        holder.senal.setText(senal);
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +56,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                 Intent intent = new Intent(view.getContext(), PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
+
                 Aplication myApplication ;
                 ArrayList<Cop> copss = new ArrayList<>();
 
@@ -69,6 +70,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                     }
                 }
                 intent.putExtra("codigo",codigo);
+
                 view.getContext().startActivity(intent);
             }
         });
@@ -85,16 +87,11 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
         private TextView nombreCop;
         private ImageView imgRecycler;
         private  TextView senal;
-
         ViewHolder(View v) {
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
             nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
           //  senal = v.findViewById(R.id.txtSenalRecyclerPCops);
-
-
-
-
         }
     }
 

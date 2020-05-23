@@ -22,4 +22,5 @@
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
+    <string name="btn_modificar_senal">Modificar</string>
 </resources>

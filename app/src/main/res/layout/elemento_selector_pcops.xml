@@ -35,4 +35,14 @@
         android:layout_weight="1"/>
 
 
+    <TextView
+        android:id="@+id/txtSenalRecyclerPCops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:lines="2"
+        android:textSize="20sp"
+        android:layout_marginBottom="30sp"
+        android:layout_weight="1"/>
 </LinearLayout>

@@ -1,24 +1,30 @@
 package com.example.itresna_android;
 
-public class Cop {
+public class Permisos {
 
+    String cod_usuario;
     String cod_cop;
     String cod_esp;
     String cod_org;
-    String desc_cop;
-    String img_cop;
-    //String ind_cop_graficos;
+    String ind_admin;
 
-    public Cop (String cod_cop, String cod_esp, String cod_org, String desc_cop, String img_cop){
-
+    public Permisos(String cod_usuario, String cod_cop, String cod_esp, String cod_org, String ind_admin){
+        this.cod_usuario=cod_usuario;
         this.cod_cop=cod_cop;
         this.cod_esp=cod_esp;
         this.cod_org=cod_org;
-        this.desc_cop=desc_cop;
-        this.img_cop=img_cop;
+        this.ind_admin=ind_admin;
 
     }
 
+
+    public String getCod_usuario() {
+        return cod_usuario;
+    }
+
+    public void setCod_usuario(String cod_usuario) {
+        this.cod_usuario = cod_usuario;
+    }
 
     public String getCod_cop() {
         return cod_cop;
@@ -44,19 +50,11 @@ public class Cop {
         this.cod_org = cod_org;
     }
 
-    public String getDesc_cop() {
-        return desc_cop;
+    public String getInd_admin() {
+        return ind_admin;
     }
 
-    public void setDesc_cop(String desc_cop) {
-        this.desc_cop = desc_cop;
-    }
-
-    public String getImg_cop() {
-        return img_cop;
-    }
-
-    public void setImg_cop(String img_cop) {
-        this.img_cop = img_cop;
+    public void setInd_admin(String ind_admin) {
+        this.ind_admin = ind_admin;
     }
 }
