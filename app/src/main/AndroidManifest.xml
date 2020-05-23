@@ -5,10 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
-        android:allowBackup="true"
         android:name=".Aplication"
+        android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/app_logo"
         android:label="@string/app_name"
@@ -17,8 +16,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallaCarga"></activity>
-        <activity android:name=".Senales.ModificarSenal"></activity>
+        <activity android:name=".RecuperarContrasena.RecuperarContrasena"></activity>
+        <activity android:name=".pantallaCarga" />
+        <activity android:name=".Senales.ModificarSenal" />
         <activity android:name=".popUpcomentarios" />
         <activity android:name=".PCops" />
         <activity android:name=".Senales.NewSenal" />
@@ -36,8 +36,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
-
 
 </manifest>
