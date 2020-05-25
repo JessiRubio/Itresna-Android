@@ -118,7 +118,7 @@ public class PCops extends AppCompatActivity {
                 for (int i=0;cops.size()>i;i++){
                     if (cops.get(i).cod_esp.equals(codEspacio[0])){
                         System.out.println("genero Cop = "+i);
-                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
+                        Cops prueba1 = new Cops(cops.get(i).img_cop, cops.get(i).desc_cop);
                         listaCops.add(prueba1);
                     }
                 }
@@ -154,7 +154,7 @@ public class PCops extends AppCompatActivity {
                                     System.out.println("COPS QUE TENEMOS EN EL ARRAY DE COPS = "+k);
                                     if (cops.get(k).cod_esp.equals(espacioSeleccionado)){
                                         System.out.println("genero Cop = "+k);
-                                        Cops prueba1 = new Cops("app_logo", cops.get(k).desc_cop);
+                                        Cops prueba1 = new Cops(cops.get(k).img_cop, cops.get(k).desc_cop);
                                         listaCops.add(prueba1);
                                     }
                                 }

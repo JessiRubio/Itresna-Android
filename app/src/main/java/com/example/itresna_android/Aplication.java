@@ -10,8 +10,10 @@ public class Aplication extends Application {
     String espacioSeleccionado;
     public ArrayList<Cop> cops = new ArrayList<>();
     String codOrg;
+    ArrayList<Cop> copsFoto = new ArrayList<>();
 
     public void onCreate(){
         super.onCreate();
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.itresna_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,9 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     private ArrayList<Cops> listaCops ;
     String codigo;
+    ArrayList<Cop> Fotos = new ArrayList<>();
+    Aplication myApplication ;
+    Bitmap foto;
 
 
 
@@ -41,14 +46,27 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
-    public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
+        ArrayList<Cop> copss = new ArrayList<>();
+
+
         final String imgRecycler = listaCops.get(position).getNombreImagen();
+        System.out.println("Nombre foto-->"+imgRecycler);
         //final String senal = listaCops.get(position).getSenal();
-        int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
-        holder.imgRecycler.setImageResource(resID);
+        //int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
+        //holder.imgRecycler.setImageResource(resID);
+        /*for(int i=0;Fotos.size()>i;i++){
+            if(nombre.equals(Fotos.get(i).desc_cop)){
+                foto = Fotos.get(i).foto;
+            }
+        }*/
         holder.nombreCop.setText(nombre);
+        Picasso.get()
+                .load(imgRecycler)
+                .into(holder.imgRecycler);
        // holder.senal.setText(senal);
+
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,9 +76,8 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
 
-                Aplication myApplication ;
-                ArrayList<Cop> copss = new ArrayList<>();
 
+                ArrayList<Cop> copss = new ArrayList<>();
                 //
                 //intent.putExtra("senal", senal);
                 myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
