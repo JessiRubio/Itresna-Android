@@ -130,18 +130,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94" />
 
-    <ImageView
-      android:id="@+id/fotoIcono"
-      android:layout_width="184dp"
-      android:layout_height="153dp"
-      app:srcCompat="@drawable/icono_login"
-      tools:layout_editor_absoluteX="113dp"
-      tools:layout_editor_absoluteY="239dp"
-      app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
-      app:layout_constraintEnd_toEndOf="@id/guiavertical6"
-      app:layout_constraintStart_toStartOf="@id/guiavertical5"
-      app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
-
     <Button
         android:id="@+id/botonEntrar"
         android:layout_width="0dp"
@@ -155,6 +143,7 @@
         app:layout_constraintEnd_toEndOf="@id/guiavertical7"
         app:layout_constraintStart_toStartOf="@id/guiavertical8"
         app:layout_constraintTop_toTopOf="@id/guiahorizontal9" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiavertical5"
@@ -211,6 +200,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/fotoIcono"
+        android:layout_width="184dp"
+        android:layout_height="153dp"
+        app:srcCompat="@drawable/icono_login"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="239dp"
+        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
+        app:layout_constraintEnd_toEndOf="@id/guiavertical6"
+        app:layout_constraintStart_toStartOf="@id/guiavertical5"
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
