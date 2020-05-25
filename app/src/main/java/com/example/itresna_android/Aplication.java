@@ -7,14 +7,12 @@ import java.util.ArrayList;
 public class Aplication extends Application {
     String eslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-    public String espacioSeleccionado;
-    public String nombreEspacioSeleccionados;
+    String espacioSeleccionado;
     public ArrayList<Cop> cops = new ArrayList<>();
+    String codOrg;
     ArrayList<Cop> copsFoto = new ArrayList<>();
-    public String nombreCopSeleccionada;
-    public String codOrg;
-
-
+    String descripcionCop;
+    String decripcionEspacio;
     public void onCreate(){
         super.onCreate();
 
