@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.Senales.PSenales;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,8 +29,12 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     private ArrayList<Cops> listaCops ;
     String codigo;
+    ArrayList<Cop> Fotos = new ArrayList<>();
+    Aplication myApplication ;
+    Bitmap foto;
     Bitmap bmp;
     ArrayList<Cop>listaCop;
+
 
 
 
@@ -49,65 +54,29 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
-    public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
-        //final String imgRecycler = listaCops.get(position).getNombreImagen();
-        String imgR="";
+
         ArrayList<Cop> copss = new ArrayList<>();
 
-        //
-        //intent.putExtra("senal", senal);
-        Aplication myApplication ;
-        myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
-        copss = myApplication.cops;
-        for(int i=0; copss.size()>i;i++) {
-            if (copss.get(i).getDesc_cop().equals(nombre)){
-               //imgRecycler = copss.get(i).img_cop;
-               imgR= copss.get(i).img_cop;
-            }
-        }
 
-        final String imgRecycler =imgR;
-
-
-
-
+        final String imgRecycler = listaCops.get(position).getNombreImagen();
+        System.out.println("Nombre foto-->"+imgRecycler);
         //final String senal = listaCops.get(position).getSenal();
-        int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
-
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-
-                try {
-                    InputStream in = null;
-                    in = new java.net.URL(imgRecycler).openStream();
-                            bmp = BitmapFactory.decodeStream(in);
-
-
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        //int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
+        //holder.imgRecycler.setImageResource(resID);
+        /*for(int i=0;Fotos.size()>i;i++){
+            if(nombre.equals(Fotos.get(i).desc_cop)){
+                foto = Fotos.get(i).foto;
             }
-        });
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                //foto.setImageBitmap(bmp);
-                holder.imgRecycler.setImageBitmap(bmp);
-                System.out.println("IMG RECYCLER "+imgRecycler);
-                holder.nombreCop.setText(nombre);
-
-            }
-        }, 500);
-        holder.imgRecycler.setImageResource(resID);
-
-
-
+        }*/
+        holder.nombreCop.setText(nombre);
+        Picasso.get()
+                .load(imgRecycler)
+                .into(holder.imgRecycler);
 
        // holder.senal.setText(senal);
+
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -117,9 +86,8 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
 
-                Aplication myApplication ;
-                ArrayList<Cop> copss = new ArrayList<>();
 
+                ArrayList<Cop> copss = new ArrayList<>();
                 //
                 //intent.putExtra("senal", senal);
                 myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;

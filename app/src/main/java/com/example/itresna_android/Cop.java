@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+import android.graphics.Bitmap;
+
 public class Cop {
 
     String cod_cop;
@@ -7,6 +9,10 @@ public class Cop {
     String cod_org;
     String desc_cop;
     String img_cop;
+
+
+
+    Bitmap foto;
     //String ind_cop_graficos;
 
     public Cop (String cod_cop, String cod_esp, String cod_org, String desc_cop, String img_cop){
@@ -17,6 +23,10 @@ public class Cop {
         this.desc_cop=desc_cop;
         this.img_cop=img_cop;
 
+    }
+    public Cop(String descrip, Bitmap foto){
+        this.desc_cop=descrip;
+        this.foto = foto;
     }
 
 
@@ -58,5 +68,12 @@ public class Cop {
 
     public void setImg_cop(String img_cop) {
         this.img_cop = img_cop;
+    }
+    public Bitmap getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Bitmap foto) {
+        this.foto = foto;
     }
 }
