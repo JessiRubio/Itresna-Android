@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class Aplication extends Application {
     String eslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-    String espacioSeleccionado;
+    public String espacioSeleccionado;
+    public String nombreEspacioSeleccionados;
     public ArrayList<Cop> cops = new ArrayList<>();
-    String codOrg;
+    public String nombreCopSeleccionada;
+    public String codOrg;
 
     public void onCreate(){
         super.onCreate();

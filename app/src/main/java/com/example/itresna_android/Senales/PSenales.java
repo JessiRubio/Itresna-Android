@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.itresna_android.AdaptadorRecyclerPCops;
 import com.example.itresna_android.AdaptadorRecyclerSeñales;
+import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.Cops;
 import com.example.itresna_android.Etiqueta;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,15 +53,16 @@ public class PSenales extends AppCompatActivity {
 
     RecyclerView reyclerViewseñales;
     AdaptadorRecyclerSeñales adaptadorRecycler;
-    //ArrayList<Cops> listaSeñales = new ArrayList<Cops>();
     ArrayList<Senal> senales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
     public static ArrayList<Likes> likes = new ArrayList<>();
+    String cod_org;
+    String cod_esp;
+    String cod_cop;
 
-    //Datos de prueba para cargar las señales, una vez el recycler cops funcione, se cogerán de ahí los datos.
-    int cod_org=1;
-    int cod_esp=1;
-    int cod_cop=1;
+    private TextView tvEspacioSeleccionado;
+    private TextView tvCopSeleccionada;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,19 +72,32 @@ public class PSenales extends AppCompatActivity {
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
 
-        // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerSeñales();
-        reyclerViewseñales.setAdapter(adaptadorRecycler);
-
         // Recogemos los valores que el usuario ha escogido
         Intent intent = getIntent();
         final String imgNombre = intent.getStringExtra("nombreImagen");
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
-        String codigo = intent.getStringExtra("codigo");
-        System.out.println("ESTE ES EL CODIGO DE LA COP"+codigo);
+        Aplication myApplication = (Aplication) getApplication();
+        cod_org = myApplication.codOrg;
+        cod_esp = myApplication.espacioSeleccionado;
+        cod_cop = intent.getStringExtra("codigo");
+        System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
 
+        //Cargamos los valores de la bb que cumplen la selección
         cargarSenales();
+
+        /* Inicializamos los dos tv iniciales que contienen la inforamción de
+        donde nos encontramos */
+        tvEspacioSeleccionado = findViewById(R.id.tv_espacios);
+        tvCopSeleccionada = findViewById(R.id.tv_cop);
+
+        /*Le damos la información a cargar*/
+        tvEspacioSeleccionado.setText(myApplication.nombreEspacioSeleccionados);
+        tvCopSeleccionada.setText(myApplication.nombreCopSeleccionada);
+
+        // Especificamos el adaptador para el recycler
+        adaptadorRecycler = new AdaptadorRecyclerSeñales();
+        reyclerViewseñales.setAdapter(adaptadorRecycler);
     }
 
 
