@@ -17,6 +17,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.example.itresna_android.senales.ModificarSenal;
@@ -24,17 +26,21 @@ import com.example.itresna_android.senales.PSenales;
 
 
 public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
-        // Colocamos el xml del elemento selector
- 
-        //Datos de prueba
-         boolean liked;
-         int likes=5;
+    // Colocamos el xml del elemento selector
 
-        public AdaptadorRecyclerSenales(){
+    //Datos de prueba
+     boolean liked;
+     ArrayList<Senal> listaSenales;
+     ArrayList<Etiqueta> listaEtiquetas;
+     ArrayList<Likes> listalikes;
+     int likes;
 
+        public AdaptadorRecyclerSenales(ArrayList<Senal> ls, ArrayList<Etiqueta> le, ArrayList<Likes> ll){
             // Aqui tendria que ir la lista
-
-
+            this.listaSenales = ls;
+            this.listaEtiquetas = le;
+            this.listalikes = ll;
+            likes = 0;
         }
         @NonNull
         @Override
@@ -46,7 +52,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final AdaptadorRecyclerSenales.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             Button btnComentario = holder.itemView.findViewById(R.id.botonComentarios);
             btnComentario.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,18 +66,35 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             Button btnEliminar = holder.itemView.findViewById(R.id.botonBasura);
             Button btnEditar = holder.itemView.findViewById(R.id.botonLapiz);
             ImageView btnLike = holder.itemView.findViewById(R.id.imageCorazon);
-            final TextView tvLikes = holder.itemView.findViewById(R.id.textViewLike);
+            //Creamos los textos e imagenes que van a cargarse
+            final TextView tvLikes = holder.itemView.findViewById(R.id.tvLike);
+            final TextView tvTitulo = holder.itemView.findViewById(R.id.tvTitulo);
+            final ImageView ivPortada = holder.itemView.findViewById(R.id.ivPortada);
 
+            likes = 0;
+            for (int i = 0; i<listalikes.size(); i++){
+                if(listalikes.get(i).cod_org == listaSenales.get(position).cod_org &&
+                    listalikes.get(i).cod_cop == listaSenales.get(position).cod_cop &&
+                    listalikes.get(i).cod_esp == listaSenales.get(position).cod_esp &&
+                    listalikes.get(i).cod_senal == listaSenales.get(position).cod_senal){
+
+                    likes ++;
+
+                }
+            }
+            //Cargamos los datos
+            tvTitulo.setText(listaSenales.get(position).desc_senal);
             tvLikes.setText(String.valueOf(likes));
+                /**ivPortada.setImageDrawable(listaSenales.get(position).img_senal);**/
             btnEliminar.setVisibility(View.INVISIBLE);
             btnEditar.setVisibility(View.INVISIBLE);
 
            //Datos de prueba,
-            int cod_senal= 2;
-            int cod_cop=1;
-            int cod_esp=1;
-            int cod_org=1;
-            String cod_usuarioSenal="jon";
+            int cod_senal = Integer.parseInt(listaSenales.get(position).cod_senal);
+            int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
+            int cod_esp = Integer.parseInt(listaSenales.get(position).cod_esp);
+            int cod_org = Integer.parseInt(listaSenales.get(position).cod_org);
+            String cod_usuarioSenal = listaSenales.get(position).cod_usuario;
 
 
             if (Login.permisos.size()==0){
@@ -187,7 +210,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     final String cod_usuario="jon";
 
                     //Se conprueba si el usuario actual ha dado tiene like
-                    for (int i=0;i<PSenales.likes.size();i++){
+                    for (int i = 0; i< PSenales.likes.size(); i++){
                         //System.out.println("El arraylist "+PSenales.likes.get(i).cod_usuario +" "+PSenales.likes.get(i).cod_senal );
                         if (PSenales.likes.get(i).cod_usuario.equals(cod_usuario) && PSenales.likes.get(i).cod_senal.equals(Integer.toString(cod_senal))){
                             System.out.println("true");
@@ -239,7 +262,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                         requestQueue.add(stringRequest);
 
                         //Elimina el like del arraylist
-                        for (int i=0;i<PSenales.likes.size();i++){
+                        for (int i = 0; i< PSenales.likes.size(); i++){
                             if (PSenales.likes.get(i).cod_usuario.equals(cod_usuario) && PSenales.likes.get(i).cod_senal.equals(Integer.toString(cod_senal))){
                                 PSenales.likes.remove(i);
                                 System.out.println();
@@ -297,9 +320,9 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             
         }
 
-        @Override
+    @Override
         public int getItemCount() {
-            return 8;
+            return listaSenales.size();
         }
 
         // Esto es necesario
