@@ -53,6 +53,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="99dp"
         android:layout_marginTop="169dp"
+        android:textColor="@color/colorTexto"
         android:text="0"
         android:textAlignment="center" />
 
@@ -64,6 +65,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="29dp"
         android:layout_marginTop="138dp"
+        android:textColor="@color/colorTexto"
         android:text="vino y big Data"
         android:textStyle="bold" />
 
