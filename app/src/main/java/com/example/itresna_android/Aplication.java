@@ -11,7 +11,8 @@ public class Aplication extends Application {
     public ArrayList<Cop> cops = new ArrayList<>();
     String codOrg;
     ArrayList<Cop> copsFoto = new ArrayList<>();
-
+    String descripcionCop;
+    String decripcionEspacio;
     public void onCreate(){
         super.onCreate();
 

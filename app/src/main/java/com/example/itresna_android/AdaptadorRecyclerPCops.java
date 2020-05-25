@@ -24,6 +24,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
     private ArrayList<Cops> listaCops ;
     String codigo;
+    String Nombrecop;
     ArrayList<Cop> Fotos = new ArrayList<>();
     Aplication myApplication ;
     Bitmap foto;
@@ -53,14 +54,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
         final String imgRecycler = listaCops.get(position).getNombreImagen();
         System.out.println("Nombre foto-->"+imgRecycler);
-        //final String senal = listaCops.get(position).getSenal();
-        //int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
-        //holder.imgRecycler.setImageResource(resID);
-        /*for(int i=0;Fotos.size()>i;i++){
-            if(nombre.equals(Fotos.get(i).desc_cop)){
-                foto = Fotos.get(i).foto;
-            }
-        }*/
+
         holder.nombreCop.setText(nombre);
         Picasso.get()
                 .load(imgRecycler)
@@ -78,13 +72,18 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
 
 
                 ArrayList<Cop> copss = new ArrayList<>();
+
                 //
                 //intent.putExtra("senal", senal);
                 myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
                 copss = myApplication.cops;
+
+
                 for(int i=0; copss.size()>i;i++) {
                     if (copss.get(i).getDesc_cop().equals(nombre)){
                         codigo = copss.get(i).cod_cop;
+                        Nombrecop = copss.get(i).desc_cop;
+                        myApplication.descripcionCop = Nombrecop;
                     }
                 }
                 intent.putExtra("codigo",codigo);

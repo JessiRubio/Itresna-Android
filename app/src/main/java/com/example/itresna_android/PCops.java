@@ -69,7 +69,7 @@ public class PCops extends AppCompatActivity {
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
     ArrayList<Cop> cops = new ArrayList<>();
-
+    Aplication myApplication;
     String espacioSeleccionado;
 
     private Context mContext;
@@ -80,7 +80,7 @@ public class PCops extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_pcops);
 
-        Aplication myApplication = (Aplication) getApplication();
+        myApplication = (Aplication) getApplication();
         eslogan = myApplication.eslogan;
         espacios = myApplication.espacios;
         cops = myApplication.cops;
@@ -109,6 +109,7 @@ public class PCops extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Entro en for " +espacios.size(),Toast.LENGTH_LONG).show();
                     if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem().toString())){
                         codEspacio[0] = espacios.get(i).cod_esp;
+                        myApplication.decripcionEspacio = espacios.get(i).desc_esp;
                         encontradoEspacio = true;
                         Toast.makeText(getApplicationContext(),"Entro en codigo espacio",Toast.LENGTH_LONG).show();
                     }
@@ -138,11 +139,11 @@ public class PCops extends AppCompatActivity {
                         System.out.println("Entro");
                         if (espacios.get(i).desc_esp.equals(espacioSeleccionado)) {
                             espacioSeleccionado = espacios.get(i).cod_esp;
+                            myApplication.decripcionEspacio = espacios.get(i).desc_esp;
                             encontradoEspacio = true;
                             Toast.makeText(getApplicationContext(), "Entro en codigo espacio", Toast.LENGTH_LONG).show();
                         }
                     }
-                        //hilo1.start();
                         cargarCops();
 
                         Handler handler = new Handler();
@@ -162,93 +163,8 @@ public class PCops extends AppCompatActivity {
                                 generarDatosRecyler(listaCops);
                             }
                         }, 2000);
-
-
-
                 }
                 contador = contador+1;
-              /*if(contador != 0){
-                    Intent intent = new Intent(PCops.this,pantallaCarga.class);
-                    intent.putExtra("carga",true);
-                    intent.putExtra("nombre_espacio",comboBox.getSelectedItem().toString());
-                    startActivity(intent);
-                  hilo1.start();
-                }
-
-                contador = contador+1;
-                /*Toast.makeText(getApplicationContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
-                String codEspacio = "";
-                boolean encontradoEspacio = false;
-                for (int i = 0; espacios.size()>i && !encontradoEspacio; i++){
-                    Toast.makeText(getApplicationContext(),"Entro",Toast.LENGTH_LONG).show();
-                    if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())){
-                        codEspacio = espacios.get(i).cod_esp;
-                        encontradoEspacio = true;
-                        Toast.makeText(getApplicationContext(),"Entro en codigo espacio",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-
-                listaCops.clear();
-                for (int i=0;cops.size()>i;i++){
-                    if (cops.get(i).cod_esp.equals(codEspacio)){
-                        System.out.println("genero Cop = "+i);
-                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
-                       listaCops.add(prueba1);
-                    }
-                }
-                generarDatosRecyler(listaCops);
-               /* if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
-                    Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }
-                else if (comboBox.getSelectedItem() == "David"){
-                    Toast.makeText(getApplicationContext(), "David el David", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }
-                else if (comboBox.getSelectedItem() == "El"){
-                    Toast.makeText(getApplicationContext(), "David el El", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("app_logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("app_logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("app_logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                } else{
-                    Toast.makeText(getApplicationContext(), "David el Deseleccionado", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }*/
             }
 
             @Override
