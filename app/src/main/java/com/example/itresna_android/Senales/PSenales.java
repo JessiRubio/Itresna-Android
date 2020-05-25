@@ -1,27 +1,19 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.content.Intent;
-import android.media.MediaCodec;
 import android.os.Bundle;
 
-import com.example.itresna_android.AdaptadorRecyclerPCops;
-import com.example.itresna_android.AdaptadorRecyclerSeñales;
+import com.example.itresna_android.AdaptadorRecyclerSenales;
 import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
-import com.example.itresna_android.Cops;
 import com.example.itresna_android.Etiqueta;
 import com.example.itresna_android.Likes;
 import com.example.itresna_android.Senal;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,17 +34,13 @@ import java.util.Map;
 
 import java.util.ArrayList;
 
-import java.util.Locale;
-
 import com.example.itresna_android.R;
-
-import java.util.ArrayList;
 
 public class PSenales extends AppCompatActivity {
 
 
     RecyclerView reyclerViewseñales;
-    AdaptadorRecyclerSeñales adaptadorRecycler;
+    AdaptadorRecyclerSenales adaptadorRecycler;
     ArrayList<Senal> senales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
     public static ArrayList<Likes> likes = new ArrayList<>();
@@ -96,7 +84,7 @@ public class PSenales extends AppCompatActivity {
         tvCopSeleccionada.setText(myApplication.nombreCopSeleccionada);
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerSeñales();
+        adaptadorRecycler = new AdaptadorRecyclerSenales();
         reyclerViewseñales.setAdapter(adaptadorRecycler);
     }
 
