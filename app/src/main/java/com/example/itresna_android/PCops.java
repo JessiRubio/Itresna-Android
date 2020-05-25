@@ -266,7 +266,8 @@ public class PCops extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        menu.findItem(R.id.menu_nombre_usuario).setTitle("xDDDD");
+        final String nombreUsuario = String.valueOf(getIntent().getStringExtra("NombreUsuario"));
+        menu.findItem(R.id.menu_nombre_usuario).setTitle(nombreUsuario);
 
         // Creamos un nuevo ActionBar que va a ser un personalizado
         // para poder alinear el logo a la izquierda

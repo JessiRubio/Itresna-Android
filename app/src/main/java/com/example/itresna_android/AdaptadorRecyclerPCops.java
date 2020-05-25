@@ -17,11 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.senales.PSenales;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class
 AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
