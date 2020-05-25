@@ -94,7 +94,6 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                     }
                 }
                 intent.putExtra("codigo",codigo);
-
                 view.getContext().startActivity(intent);
             }
         });

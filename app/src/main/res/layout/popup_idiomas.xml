@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:paddingStart="10sp"
-        android:background="#ffffff"
+        android:background="@color/fondoIdiomas"
         android:orientation="horizontal"
         android:weightSum="5">
 
@@ -25,6 +25,7 @@
             android:background="@null"
             android:padding="10sp"
             android:gravity="center"
+            android:textColor="@color/colorTexto"
             android:textSize="20sp"
             android:layout_marginStart="25sp"
             android:text="@string/idioma_seleccionar" />
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="#ffffff"
+        android:background="@color/fondoIdiomas"
         android:paddingStart="10sp"
         android:orientation="horizontal">
 
@@ -70,6 +71,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:text="@string/idioma_castellano"
+                android:textColor="@color/colorTexto"
+                android:buttonTint="@color/colorTexto"
                 />
 
             <ImageView
@@ -84,7 +87,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="@string/idioma_euskera" />
+                android:text="@string/idioma_euskera"
+                android:textColor="@color/colorTexto"
+                android:buttonTint="@color/colorTexto"
+                />
 
             <ImageView
                 android:id="@+id/imgBanderaAmerica"
@@ -98,7 +104,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="@string/idioma_ingles" />
+                android:text="@string/idioma_ingles"
+                android:textColor="@color/colorTexto"
+                android:buttonTint="@color/colorTexto"
+                />
         </RadioGroup>
 
     </LinearLayout>
