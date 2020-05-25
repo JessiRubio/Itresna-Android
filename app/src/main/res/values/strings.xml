@@ -22,4 +22,9 @@
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
+    <string name="btn_modificar_senal">Modificar</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="recuperar_contrasena_email">Intruduce tu email</string>
+    <string name="recuperar_contraseña_mira_email">Compruebe su email</string>
+    <string name="enviar">Enviar</string>
 </resources>

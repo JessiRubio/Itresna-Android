@@ -22,5 +22,10 @@
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
+    <string name="btn_modificar_senal">Aldatu</string>
+    <string name="recuperar_contrasena">pasahitza berreskuratu</string>
+    <string name="recuperar_contraseña_mira_email">Zure emaila begiratu</string>
+    <string name="recuperar_contrasena_email">Zure emaila sartu</string>
+    <string name="enviar">Bidali</string>
     <!-- -->
 </resources>

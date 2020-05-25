@@ -40,24 +40,25 @@
          />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:passwordToggleEnabled="true"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/guiahorizontal4"
         app:layout_constraintEnd_toEndOf="@id/guiavertical2"
         app:layout_constraintStart_toStartOf="@id/guiavertical1"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal3">
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal3"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/contraseñaUsuario"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_redondo"
+            android:hint="@string/contrasena"
             android:inputType="textPassword"
             android:paddingStart="12dp"
-            android:hint="@string/contrasena"
-            android:textSize="25sp"
-            android:background="@drawable/borde_redondo"/>
+            android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -86,21 +87,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiahorizontal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.73" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiahorizontal4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.82" />
+        app:layout_constraintGuide_percent="0.79" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiahorizontal5"
@@ -130,6 +131,18 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94" />
 
+    <ImageView
+      android:id="@+id/fotoIcono"
+      android:layout_width="184dp"
+      android:layout_height="153dp"
+      app:srcCompat="@drawable/icono_login"
+      tools:layout_editor_absoluteX="113dp"
+      tools:layout_editor_absoluteY="239dp"
+      app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
+      app:layout_constraintEnd_toEndOf="@id/guiavertical6"
+      app:layout_constraintStart_toStartOf="@id/guiavertical5"
+      app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
+
     <Button
         android:id="@+id/botonEntrar"
         android:layout_width="0dp"
@@ -143,7 +156,6 @@
         app:layout_constraintEnd_toEndOf="@id/guiavertical7"
         app:layout_constraintStart_toStartOf="@id/guiavertical8"
         app:layout_constraintTop_toTopOf="@id/guiahorizontal9" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiavertical5"
@@ -201,17 +213,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95" />
 
-    <ImageView
-        android:id="@+id/fotoIcono"
-        android:layout_width="184dp"
-        android:layout_height="153dp"
-        app:srcCompat="@drawable/icono_login"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="239dp"
-        app:layout_constraintBottom_toBottomOf="@id/guiahorizontal7"
-        app:layout_constraintEnd_toEndOf="@id/guiavertical6"
-        app:layout_constraintStart_toStartOf="@id/guiavertical5"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal8"/>
+    <TextView
+        android:id="@+id/textViewRecuperar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:text="@string/recuperar_contrasena"
+        app:layout_constraintBottom_toTopOf="@+id/botonEntrar"
+        app:layout_constraintEnd_toStartOf="@+id/guiavertical6"
+        app:layout_constraintStart_toStartOf="@+id/guiavertical5"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

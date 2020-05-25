@@ -1,6 +1,11 @@
 package com.example.itresna_android;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +15,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itresna_android.Senales.PSenales;
+import com.example.itresna_android.senales.PSenales;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+public class
+AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
-    private List<Cops> listaCops;
+
+    private ArrayList<Cops> listaCops ;
+    String codigo;
+    ArrayList<Cop> Fotos = new ArrayList<>();
+    Aplication myApplication ;
+    Bitmap foto;
+    Bitmap bmp;
+    ArrayList<Cop>listaCop;
+
+
+
 
     // Constructor del adaptador
-    AdaptadorRecyclerPCops(List<Cops> listaCops) {
+    AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
         this.listaCops = listaCops;
     }
 
@@ -28,19 +48,35 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
     @Override
     public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_selector_pcops, parent, false);
+
         return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
     }
 
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
-    public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
+
+        ArrayList<Cop> copss = new ArrayList<>();
+
+
         final String imgRecycler = listaCops.get(position).getNombreImagen();
-        final String senal = listaCops.get(position).getSenal();
-        int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
-        holder.imgRecycler.setImageResource(resID);
+        System.out.println("Nombre foto-->"+imgRecycler);
+        //final String senal = listaCops.get(position).getSenal();
+        //int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
+        //holder.imgRecycler.setImageResource(resID);
+        /*for(int i=0;Fotos.size()>i;i++){
+            if(nombre.equals(Fotos.get(i).desc_cop)){
+                foto = Fotos.get(i).foto;
+            }
+        }*/
         holder.nombreCop.setText(nombre);
-        holder.senal.setText(senal);
+        Picasso.get()
+                .load(imgRecycler)
+                .into(holder.imgRecycler);
+
+       // holder.senal.setText(senal);
+
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +85,20 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
                 Intent intent = new Intent(view.getContext(), PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
-                intent.putExtra("senal", senal);
+
+
+                ArrayList<Cop> copss = new ArrayList<>();
+                //
+                //intent.putExtra("senal", senal);
+                myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
+                copss = myApplication.cops;
+                for(int i=0; copss.size()>i;i++) {
+                    if (copss.get(i).getDesc_cop().equals(nombre)){
+                        codigo = copss.get(i).cod_cop;
+                    }
+                }
+                intent.putExtra("codigo",codigo);
+
                 view.getContext().startActivity(intent);
             }
         });
@@ -70,7 +119,8 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
             nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
-            senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+          //  senal = v.findViewById(R.id.txtSenalRecyclerPCops);
         }
     }
+
 }

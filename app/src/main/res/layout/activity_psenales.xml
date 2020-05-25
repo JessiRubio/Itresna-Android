@@ -5,33 +5,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degradado"
+    android:background="@color/AzuloOscuro_Itresna"
     tools:context=".Senales.PSenales">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_espacios"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMinTextSize="12sp"
         android:autoSizeMaxTextSize="150sp"
+        android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"
         android:textAlignment="center"
         android:textStyle="bold"
-        android:text="Espacio"
         app:layout_constraintBottom_toBottomOf="@id/guiahorizontal2"
         app:layout_constraintEnd_toEndOf="@id/guiavertical2"
         app:layout_constraintStart_toStartOf="@id/guiavertical1"
-        app:layout_constraintTop_toTopOf="@id/guiahorizontal1"
-     />
+        app:layout_constraintTop_toTopOf="@id/guiahorizontal1" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_cop"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="cop"
-        android:autoSizeMinTextSize="12sp"
         android:autoSizeMaxTextSize="150sp"
+        android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/guiahorizontal3"

@@ -36,6 +36,21 @@ public class ConexionBD {
     //PHP que carga los likes
     public static final String URL_Likes = ROOT_URL+"likes.php";
 
+    //PHP que borra señales
+    public static final String URL_BorrarSenal = ROOT_URL+"borrarSenal.php";
+
+    //PHP que modifica señales
+    public static final String URL_ModificarSenal = ROOT_URL+"modificarSenal.php";
+
+    //PHP que crea likes
+    public static final String URL_CrearLike = ROOT_URL+"crearLike.php";
+
+    //PHP que borra likes
+    public static final String URL_BorrarLike = ROOT_URL+"borrarLike.php";
+
+    //PHP que recupera contraseña
+    public static final String URL_RecuperarContrasena = ROOT_URL+"recuperarContrasena.php";
+
 
 
     // Operaciones de prueba

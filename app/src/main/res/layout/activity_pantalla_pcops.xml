@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degradado"
+    android:background="@color/AzuloOscuro_Itresna"
     android:orientation="vertical"
     android:id="@+id/li"
     tools:context=".PCops"
