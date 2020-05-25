@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RecuperarContrasena.RecuperarContrasena"></activity>
+        <activity android:name=".recuperarContrasena.RecuperarContrasena"></activity>
         <activity android:name=".pantallaCarga" />
         <activity android:name=".Senales.ModificarSenal" />
         <activity android:name=".popUpcomentarios" />

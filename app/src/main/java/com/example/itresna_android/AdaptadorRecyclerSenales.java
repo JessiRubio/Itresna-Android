@@ -1,8 +1,6 @@
 package com.example.itresna_android;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +19,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.itresna_android.Senales.ModificarSenal;
-import com.example.itresna_android.Senales.PSenales;
-import java.util.List;
+import com.example.itresna_android.senales.ModificarSenal;
+import com.example.itresna_android.senales.PSenales;
 
 
-
-    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
+public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
         // Colocamos el xml del elemento selector
  
         //Datos de prueba
          boolean liked;
          int likes=5;
 
-        public AdaptadorRecyclerSeñales(){
+        public AdaptadorRecyclerSenales(){
 
             // Aqui tendria que ir la lista
 
@@ -42,15 +38,15 @@ import java.util.List;
         }
         @NonNull
         @Override
-        public com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public AdaptadorRecyclerSenales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder(v);
+            return new AdaptadorRecyclerSenales.ViewHolder(v);
         }
 
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final AdaptadorRecyclerSenales.ViewHolder holder, final int position) {
             Button btnComentario = holder.itemView.findViewById(R.id.botonComentarios);
             btnComentario.setOnClickListener(new View.OnClickListener() {
                 @Override

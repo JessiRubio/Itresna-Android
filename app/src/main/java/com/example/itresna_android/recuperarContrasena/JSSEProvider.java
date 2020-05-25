@@ -1,4 +1,4 @@
-package com.example.itresna_android.RecuperarContrasena;
+package com.example.itresna_android.recuperarContrasena;
 
 /**
  * Created by Vishal on 6/20/2017.

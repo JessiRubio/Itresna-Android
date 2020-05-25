@@ -1,4 +1,4 @@
-package com.example.itresna_android.RecuperarContrasena;
+package com.example.itresna_android.recuperarContrasena;
 
 import android.util.Log;
 
