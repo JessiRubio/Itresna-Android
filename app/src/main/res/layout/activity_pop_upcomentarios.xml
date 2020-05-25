@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degradado"
-    tools:context=".senales.popUpcomentarios">
+    android:background="@color/AzuloOscuro_Itresna"
+    tools:context=".popUpcomentarios">
 
     <EditText
         android:id="@+id/editText"

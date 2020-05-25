@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.itresna_android.cops.PCops;
+import com.example.itresna_android.RecuperarContrasena.RecuperarContrasena;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,24 +31,34 @@ public class Login extends AppCompatActivity {
     EditText etCod_usuario, etSarbidea;
     public static ArrayList<Permisos> permisos = new ArrayList<>();
     public static ArrayList<Usuario> usuario = new ArrayList<>();
+    TextView tvRecuperarContrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvRecuperarContrasena= findViewById(R.id.textViewRecuperar);
         etCod_usuario= findViewById(R.id.nombreUsuario);
         etSarbidea=findViewById(R.id.contraseñaUsuario);
         btnEntrar = findViewById(R.id.botonEntrar);
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // metedos de prueba para verificar que funcionan insert y select
                 //crear();
                 Login();
                 cargarPermisos();
+            }
+        });
 
+
+        tvRecuperarContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Login.this, RecuperarContrasena.class);
+                startActivity(intent);
             }
         });
 
@@ -87,20 +98,22 @@ public class Login extends AppCompatActivity {
                                         " "+ape2Cargado);
                                 //String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Login.this, pantallaCarga.class);
+                                String valor1  = cod_orgCargado;
+                                Aplication myApplication = (Aplication) getApplication();
+                                myApplication.codOrg = cod_orgCargado;
 
                                 Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);
                                 usuario.add(U);
 
+                                //Intent intent = new Intent(Login.this, PCops.class);
+                                //String valor1  = cod_orgCargado;
 
-
-
-                                Intent intent = new Intent(Login.this, PCops.class);
-                                String valor1  = cod_orgCargado;
                                 intent.putExtra("valor1", valor1 );
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );
                                 startActivity(intent);
- 
+
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
@@ -161,6 +174,8 @@ public class Login extends AppCompatActivity {
                                 //Se guardan en el arraylist
                                 Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
                                 permisos.add(P);
+                                System.out.println("PERMISOOOOOOOS "+permisos.size());
+
 
                             }
 

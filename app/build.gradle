@@ -31,4 +31,10 @@ dependencies {
     implementation 'com.leocardz:link-preview:2.0.0@aar'
     implementation 'com.android.volley:volley:1.1.1'
 
+
+    // Librerias para poder enviar el email de recuperación de contraseña
+    implementation files('libs/activation.jar')
+    implementation files('libs/additional.jar')
+    implementation files('libs/mail.jar')
+
 }

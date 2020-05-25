@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,5 +41,3 @@ public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentari
         }
     }
 }
-
-

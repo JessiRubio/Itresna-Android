@@ -1,6 +1,9 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android;
 
-import android.content.Intent;import android.view.LayoutInflater;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,22 +21,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.example.itresna_android.ConexionBD;
-import com.example.itresna_android.Likes;
-import com.example.itresna_android.Login;
-import com.example.itresna_android.R;
-import com.example.itresna_android.senales.ModificarSenal;
+import com.example.itresna_android.Senales.ModificarSenal;
+import com.example.itresna_android.Senales.PSenales;
+import java.util.List;
 
 
-public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
+
+    public class AdaptadorRecyclerSeñales extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder> {
         // Colocamos el xml del elemento selector
-
+ 
         //Datos de prueba
          boolean liked;
          int likes=5;
 
-        public AdaptadorRecyclerSenales(){
+        public AdaptadorRecyclerSeñales(){
 
             // Aqui tendria que ir la lista
 
@@ -41,15 +42,15 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
         }
         @NonNull
         @Override
-        public AdaptadorRecyclerSenales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementoselecto_senales, parent, false);
-            return new AdaptadorRecyclerSenales.ViewHolder(v);
+            return new com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder(v);
         }
 
 
         // Aqui ponemos los elementos que se muestran en pantalla
         @Override
-        public void onBindViewHolder(final AdaptadorRecyclerSenales.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerSeñales.ViewHolder holder, final int position) {
             Button btnComentario = holder.itemView.findViewById(R.id.botonComentarios);
             btnComentario.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,14 +77,25 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             int cod_org=1;
             String cod_usuarioSenal="jon";
 
-            for (int i = 0; i< Login.permisos.size(); i++){
 
-                if (Login.usuario.get(0).getTip_usuario().equals("1") || Login.usuario.get(0).getCod_usuario().equals(cod_usuarioSenal) || Login.permisos.get(i).getCod_cop().equals(Integer.toString(cod_cop)) && Login.permisos.get(i).getInd_admin().equals("1") ){
-                    btnEliminar.setVisibility(View.VISIBLE);
-                    btnEditar.setVisibility(View.VISIBLE);
-                }
-
+            if (Login.permisos.size()==0){
+               if (Login.usuario.get(0).tip_usuario.equals("1")){
+                   btnEliminar.setVisibility(View.VISIBLE);
+                   btnEditar.setVisibility(View.VISIBLE);
+               }
             }
+            else{
+                for (int i=0;i<Login.permisos.size();i++){
+
+                    System.out.println("TIPO DE USAURIO "+Login.usuario.get(0).tip_usuario);
+                    if (Login.usuario.get(0).tip_usuario.equals("1") || Login.usuario.get(0).cod_usuario.equals(cod_usuarioSenal) || Login.permisos.get(i).cod_cop.equals(Integer.toString(cod_cop)) && Login.permisos.get(i).ind_admin.equals("1") ){
+                        btnEliminar.setVisibility(View.VISIBLE);
+                        btnEditar.setVisibility(View.VISIBLE);
+                    }
+
+                }
+            }
+
 
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,7 +103,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     //Aqui se borra la señal
 
                     //Datos de prueba, una vez se carguen las señales, los datos se cogeran de ahi
-                    final int cod_senal=2;
+                    final int cod_senal= 2;
                     final int cod_cop=1;
                     final int cod_esp=1;
                     final int cod_org=1;
@@ -304,7 +316,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                 super(v);
                 imgRecycler = v.findViewById(R.id.imgRecyclerPCops);
                 nombreCop = v.findViewById(R.id.txtNomEmpresaRecyclerPCops);
-                //senal = v.findViewById(R.id.txtSenalRecyclerPCops);
+                senal = v.findViewById(R.id.txtSenalRecyclerPCops);
             }
         }
 

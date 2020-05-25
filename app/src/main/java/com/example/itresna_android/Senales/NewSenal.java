@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.app.Activity;
 import android.icu.text.CaseMap;

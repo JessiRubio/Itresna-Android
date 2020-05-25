@@ -1,15 +1,17 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.content.Intent;
 import android.media.MediaCodec;
 import android.os.Bundle;
 
+import com.example.itresna_android.AdaptadorRecyclerPCops;
+import com.example.itresna_android.AdaptadorRecyclerSeñales;
 import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
+import com.example.itresna_android.Cops;
 import com.example.itresna_android.Etiqueta;
 import com.example.itresna_android.Likes;
 import com.example.itresna_android.Senal;
-import com.example.itresna_android.senales.AdaptadorRecyclerSenales;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,44 +52,62 @@ public class PSenales extends AppCompatActivity {
 
 
     RecyclerView reyclerViewseñales;
-    AdaptadorRecyclerSenales adaptadorRecycler;
-    ArrayList<Senal> listaSenales = new ArrayList<>();
+    AdaptadorRecyclerSeñales adaptadorRecycler;
+    ArrayList<Senal> senales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
     public static ArrayList<Likes> likes = new ArrayList<>();
+    String cod_org;
+    String cod_esp;
+    String cod_cop;
 
-    Aplication myApplication = (Aplication) getApplication();
-    String cod_org= myApplication.codOrg;
-    String cod_esp= myApplication.espacioSeleccionado;
-    String cod_cop=myApplication.copSeleccionada;
+    private TextView tvEspacioSeleccionado;
+    private TextView tvCopSeleccionada;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psenales);
+
         reyclerViewseñales = findViewById(R.id.recicler);
         reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
-
-        cargarSenales();
-
-        // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerSenales();
-        reyclerViewseñales.setAdapter(adaptadorRecycler);
 
         // Recogemos los valores que el usuario ha escogido
         Intent intent = getIntent();
         final String imgNombre = intent.getStringExtra("nombreImagen");
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
+        Aplication myApplication = (Aplication) getApplication();
+        cod_org = myApplication.codOrg;
+        cod_esp = myApplication.espacioSeleccionado;
+        cod_cop = intent.getStringExtra("codigo");
+        System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
 
+        //Cargamos los valores de la bb que cumplen la selección
+        cargarSenales();
+
+        /* Inicializamos los dos tv iniciales que contienen la inforamción de
+        donde nos encontramos */
+        tvEspacioSeleccionado = findViewById(R.id.tv_espacios);
+        tvCopSeleccionada = findViewById(R.id.tv_cop);
+
+        /*Le damos la información a cargar*/
+        tvEspacioSeleccionado.setText(myApplication.nombreEspacioSeleccionados);
+        tvCopSeleccionada.setText(myApplication.nombreCopSeleccionada);
+
+        // Especificamos el adaptador para el recycler
+        adaptadorRecycler = new AdaptadorRecyclerSeñales();
+        reyclerViewseñales.setAdapter(adaptadorRecycler);
     }
 
 
     public void cargarSenales(){
-        listaSenales.clear();
 
         final String cod_orgActual= String.valueOf(cod_org);
         final String cod_espActual= String.valueOf(cod_esp);
         final String cod_copActual= String.valueOf(cod_cop);
+
+
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -119,7 +140,8 @@ public class PSenales extends AppCompatActivity {
                                 //Se guardan en el arraylist
                                 Senal S = new Senal(cod_senalCargado ,cod_copCargado ,cod_espCargado,cod_orgCargado,cod_etiquetaCargado,cod_usuarioCargado,
                                         desc_senalCargado,enlaceCargado,fecha_horaCargado,img_senalCargado,tituloCargado);
-                                listaSenales.add(S);
+                                senales.add(S);
+
                             }
 
                         } catch (JSONException e) {
@@ -217,6 +239,7 @@ public class PSenales extends AppCompatActivity {
 
     }
 
+
     public void cargarLikes(){
 
         final String cod_orgActual= String.valueOf(cod_org);
@@ -232,7 +255,11 @@ public class PSenales extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
+
+
                             JSONArray jsonarray  = new JSONArray(response);
+
+
 
                             for(int i=0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
@@ -280,16 +307,6 @@ public class PSenales extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

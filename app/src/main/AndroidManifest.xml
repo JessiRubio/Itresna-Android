@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Aplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/app_logo"
@@ -15,7 +16,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Senales.ModificarSenal"></activity>
+        <activity android:name=".RecuperarContrasena.RecuperarContrasena"></activity>
+        <activity android:name=".pantallaCarga" />
+        <activity android:name=".Senales.ModificarSenal" />
         <activity android:name=".popUpcomentarios" />
         <activity android:name=".PCops" />
         <activity android:name=".Senales.NewSenal" />

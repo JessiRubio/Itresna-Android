@@ -9,7 +9,7 @@
     android:paddingTop="45dp"
     android:paddingEnd="5dp"
     android:paddingBottom="5dp"
-    tools:context=".senales.NewSenal">
+    tools:context=".Senales.NewSenal">
 
     <TextView
         android:id="@+id/tituloPopUP"
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_anadir_senal" />
+            android:text="Button" />
     </LinearLayout>
 
 </LinearLayout>
