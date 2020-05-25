@@ -47,6 +47,7 @@ public class pantallaCarga extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_carga);
         cargarDatos();
         cargarEspacios();
+        final String nombreUsuario = String.valueOf(getIntent().getStringExtra("NombreUsuario"));
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -59,6 +60,7 @@ public class pantallaCarga extends AppCompatActivity {
               //  cargarFotos();
                 myApplication.copsFoto = Fotos;
                 Intent intent = new Intent(getApplicationContext(), PCops.class);
+                intent.putExtra("NombreUsuario", nombreUsuario);
                 startActivity(intent);
             }
         }, 5000);

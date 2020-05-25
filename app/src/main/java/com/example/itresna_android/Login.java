@@ -100,6 +100,7 @@ public class Login extends AppCompatActivity {
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(Login.this, pantallaCarga.class);
                                 String valor1  = cod_orgCargado;
+                                String nombreUsuario = cod_usuarioCargado;
                                 Aplication myApplication = (Aplication) getApplication();
                                 myApplication.codOrg = cod_orgCargado;
 
@@ -110,6 +111,7 @@ public class Login extends AppCompatActivity {
                                 //String valor1  = cod_orgCargado;
 
                                 intent.putExtra("valor1", valor1 );
+                                intent.putExtra("NombreUsuario", nombreUsuario);
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );
                                 startActivity(intent);
