@@ -110,6 +110,7 @@ public class PCops extends AppCompatActivity {
                     if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem().toString())){
                         codEspacio[0] = espacios.get(i).cod_esp;
                         myApplication.decripcionEspacio = espacios.get(i).desc_esp;
+                        myApplication.codEspacio = espacios.get(i).cod_esp;
                         encontradoEspacio = true;
                         Toast.makeText(getApplicationContext(),"Entro en codigo espacio",Toast.LENGTH_LONG).show();
                     }

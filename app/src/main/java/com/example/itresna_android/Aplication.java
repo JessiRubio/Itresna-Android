@@ -9,10 +9,11 @@ public class Aplication extends Application {
     ArrayList<Espacio> espacios = new ArrayList<>();
     String espacioSeleccionado;
     public ArrayList<Cop> cops = new ArrayList<>();
-    String codOrg;
+    public String codOrg;
     ArrayList<Cop> copsFoto = new ArrayList<>();
-    String descripcionCop;
-    String decripcionEspacio;
+    public String descripcionCop;
+    public String codEspacio;
+    public String decripcionEspacio;
     public void onCreate(){
         super.onCreate();
 
