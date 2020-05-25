@@ -50,57 +50,72 @@ public class RecuperarContrasena extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                RecuperarContrasena();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-                tvMiraEmail.setVisibility(View.VISIBLE);
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
+                if(etEmail.getText().toString().isEmpty()) {
 
-                        // Envia el correo
-                        final ProgressDialog dialog = new ProgressDialog(RecuperarContrasena.this);
-                        dialog.setTitle("Enviando email");
-                        dialog.setMessage("Espera por favor");
-                        dialog.show();
-                        Thread sender = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    // Se introduce el email y la contraseña. Este email enviara los correos.
-                                    GMailSender sender = new GMailSender("iTresna.TX@gmail.com", "iTresna1234");
-                                    // Asuto, mensaje, quien lo envia, a quien lo envia
-                                    sender.sendMail("iTresna",
-                                            "Hola "+ nombreCargado+" "+ape1Cargado+" "+ape2Cargado+  "\n\n\nGracias por ponerte en contacto con nosotros. Tu contraseña es " +sarbideaCargado,
-                                            "iTresna.TX@gmail.com", etEmail.getText().toString() );
-                                    dialog.dismiss();
-                                } catch (Exception e) {
-                                    Log.d("mylog", "Error: " + e.getMessage());
+                    //Si el edittext esta vacio
+                    tvMiraEmail.setText(R.string.formato_email_invalido);
+                    tvMiraEmail.setVisibility(View.VISIBLE);
+                }else {
+                    if (etEmail.getText().toString().trim().matches(emailPattern)) {
+
+                        //Email valido
+
+                        RecuperarContrasena();
+
+                        //Si el correo existe en la base de datos
+                        if (etEmail.getText().toString().equals(cod_usuarioCargado)){
+
+
+
+                            tvMiraEmail.setText(R.string.recuperar_contraseña_mira_email);
+                            tvMiraEmail.setVisibility(View.VISIBLE);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+
+                                    // Envia el correo
+                                    final ProgressDialog dialog = new ProgressDialog(RecuperarContrasena.this);
+                                    dialog.setTitle(R.string.recuperar_contrasena_enviando);
+                                    dialog.setMessage("Espera por favor");
+                                    dialog.show();
+                                    Thread sender = new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                // Se introduce el email y la contraseña. Este email enviara los correos.
+                                                GMailSender sender = new GMailSender("iTresna.TX@gmail.com", "iTresna1234");
+                                                // Asuto, mensaje, quien lo envia, a quien lo envia
+                                                sender.sendMail("iTresna",
+                                                        "Hola "+ nombreCargado+" "+ape1Cargado+ "\n\n\nTu contraseña es " +sarbideaCargado,
+                                                        "iTresna.TX@gmail.com", etEmail.getText().toString() );
+                                                dialog.dismiss();
+                                            } catch (Exception e) {
+                                                Log.d("mylog", "Error: " + e.getMessage());
+                                            }
+                                        }
+                                    });
+                                    sender.start();
+
                                 }
-                            }
-                        });
-                        sender.start();
+                            }, 1000);
 
+
+                        }
+                        else{
+                            tvMiraEmail.setText(R.string.formato_email_invalido);
+                            tvMiraEmail.setVisibility(View.VISIBLE);
+                        }
+
+                    } else {
+                        //Si el formato del email no es valido
+                        tvMiraEmail.setText(R.string.formato_email_invalido);
+                        tvMiraEmail.setVisibility(View.VISIBLE);
                     }
-                }, 1000);
-
-
-
-
-
-
-
-                /*
-
-                cod_usuarioCargado=jsonarrayCops.getString("cod_usuario");
-                                sarbideaCargado=jsonarrayCops.getString("sarbidea");
-                                nombreCargado=jsonarrayCops.getString("nombre");
-                                ape1Cargado=jsonarrayCops.getString("ape1");
-                                ape2Cargado=jsonarrayCops.getString("ape2");
-                 */
-
-
-
+                }
 
 
 
@@ -127,9 +142,9 @@ public class RecuperarContrasena extends AppCompatActivity {
                             JSONArray jsonarray  = new JSONArray(response);
 
 
+
                             for(int i=0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
-
                                 cod_usuarioCargado=jsonobject.getString("cod_usuario");
                                 sarbideaCargado=jsonobject.getString("sarbidea");
                                 nombreCargado=jsonobject.getString("nombre");
@@ -143,6 +158,7 @@ public class RecuperarContrasena extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+
                         }
                     }
                 },

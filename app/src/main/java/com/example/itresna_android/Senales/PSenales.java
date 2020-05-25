@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,27 +67,38 @@ public class PSenales extends AppCompatActivity {
         final String imgNombre = intent.getStringExtra("nombreImagen");
         String nombreEmpresa = intent.getStringExtra("nombre");
         String senal = intent.getStringExtra("senal");
-        Aplication myApplication = (Aplication) getApplication();
+        final Aplication myApplication = (Aplication) getApplication();
         cod_org = myApplication.codOrg;
-        cod_esp = myApplication.espacioSeleccionado;
+        cod_esp = myApplication.codEspacio;
         cod_cop = intent.getStringExtra("codigo");
         System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
 
         //Cargamos los valores de la bb que cumplen la selección
         cargarSenales();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
 
-        /* Inicializamos los dos tv iniciales que contienen la inforamción de
+                Log.e("Tag_log", senales.size() + "");
+                /* Inicializamos los dos tv iniciales que contienen la inforamción de
         donde nos encontramos */
-        tvEspacioSeleccionado = findViewById(R.id.tv_espacios);
-        tvCopSeleccionada = findViewById(R.id.tv_cop);
+                tvEspacioSeleccionado = findViewById(R.id.tv_espacios);
+                tvCopSeleccionada = findViewById(R.id.tv_cop);
 
-        /*Le damos la información a cargar*/
-        tvEspacioSeleccionado.setText(myApplication.nombreEspacioSeleccionados);
-        tvCopSeleccionada.setText(myApplication.nombreCopSeleccionada);
+                /*Le damos la información a cargar*/
+                tvEspacioSeleccionado.setText(myApplication.decripcionEspacio);
+                tvCopSeleccionada.setText(myApplication.descripcionCop);
 
-        // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerSenales();
-        reyclerViewseñales.setAdapter(adaptadorRecycler);
+                // Especificamos el adaptador para el recycler
+                adaptadorRecycler = new AdaptadorRecyclerSenales(senales, etiquetas, likes);
+                reyclerViewseñales.setAdapter(adaptadorRecycler);
+
+            }
+        }, 1500);
+
+
+
+
     }
 
 
