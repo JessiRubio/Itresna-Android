@@ -27,4 +27,7 @@
     <string name="recuperar_contrasena_email">Intruduce tu email</string>
     <string name="recuperar_contraseña_mira_email">Compruebe su email</string>
     <string name="enviar">Enviar</string>
+    <string name="formato_email_invalido">Email invalido</string>
+    <string name="recuperar_contrasena_enviando">Enviando email</string>
+    <string name="recuperar_contrasena_espera">Espera por favor</string>
 </resources>
