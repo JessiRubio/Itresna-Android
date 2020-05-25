@@ -12,6 +12,7 @@ public class Aplication extends Application {
     public String codOrg;
     ArrayList<Cop> copsFoto = new ArrayList<>();
     public String descripcionCop;
+    public String codEspacio;
     public String decripcionEspacio;
     public void onCreate(){
         super.onCreate();

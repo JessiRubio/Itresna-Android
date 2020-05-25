@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,7 +67,7 @@ public class PSenales extends AppCompatActivity {
         String senal = intent.getStringExtra("senal");
         Aplication myApplication = (Aplication) getApplication();
         cod_org = myApplication.codOrg;
-        cod_esp = myApplication.espacioSeleccionado;
+        cod_esp = myApplication.codEspacio;
         cod_cop = intent.getStringExtra("codigo");
         System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
 
