@@ -80,8 +80,8 @@ public class PSenales extends AppCompatActivity {
         tvCopSeleccionada = findViewById(R.id.tv_cop);
 
         /*Le damos la información a cargar*/
-        tvEspacioSeleccionado.setText(myApplication.nombreEspacioSeleccionados);
-        tvCopSeleccionada.setText(myApplication.nombreCopSeleccionada);
+        tvEspacioSeleccionado.setText(myApplication.decripcionEspacio);
+        tvCopSeleccionada.setText(myApplication.descripcionCop);
 
         // Especificamos el adaptador para el recycler
         adaptadorRecycler = new AdaptadorRecyclerSenales();
