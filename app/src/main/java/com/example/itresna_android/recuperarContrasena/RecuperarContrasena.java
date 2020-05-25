@@ -65,7 +65,9 @@ public class RecuperarContrasena extends AppCompatActivity {
 
                         RecuperarContrasena();
 
+                        //Si el correo existe en la base de datos
                         if (etEmail.getText().toString().equals(cod_usuarioCargado)){
+
 
 
                             tvMiraEmail.setText(R.string.recuperar_contraseña_mira_email);
