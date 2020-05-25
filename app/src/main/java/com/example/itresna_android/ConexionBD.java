@@ -48,6 +48,9 @@ public class ConexionBD {
     //PHP que borra likes
     public static final String URL_BorrarLike = ROOT_URL+"borrarLike.php";
 
+    //PHP que recupera contraseña
+    public static final String URL_RecuperarContrasena = ROOT_URL+"recuperarContrasena.php";
+
 
 
     // Operaciones de prueba

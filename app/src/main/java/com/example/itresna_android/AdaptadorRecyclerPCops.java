@@ -3,6 +3,9 @@ package com.example.itresna_android;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.itresna_android.Senales.PSenales;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +33,9 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     ArrayList<Cop> Fotos = new ArrayList<>();
     Aplication myApplication ;
     Bitmap foto;
+    Bitmap bmp;
+    ArrayList<Cop>listaCop;
+
 
 
 
@@ -49,6 +57,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
+
         ArrayList<Cop> copss = new ArrayList<>();
 
 
@@ -59,6 +68,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
         Picasso.get()
                 .load(imgRecycler)
                 .into(holder.imgRecycler);
+
        // holder.senal.setText(senal);
 
 
