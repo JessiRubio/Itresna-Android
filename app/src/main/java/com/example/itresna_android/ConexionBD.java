@@ -24,6 +24,9 @@ public class ConexionBD {
     //PHP que carga las señales
     public static final String URL_Senal = ROOT_URL+"senal.php";
 
+    //PHP que añade las señales
+    public static final String URL_CrearSenal = ROOT_URL+"anadirsenal.php";
+
     //PHP que carga los comentarios
     public static final String URL_Comentario = ROOT_URL+"comentario.php";
 
