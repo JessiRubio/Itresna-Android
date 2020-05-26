@@ -46,29 +46,31 @@
         android:background="@drawable/comentario" />
 
     <TextView
-        android:id="@+id/textViewLike"
+        android:id="@+id/tvLike"
         android:layout_width="38dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="99dp"
         android:layout_marginTop="169dp"
+        android:textColor="@color/colorTexto"
         android:text="0"
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="29dp"
         android:layout_marginTop="138dp"
+        android:textColor="@color/colorTexto"
         android:text="vino y big Data"
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivPortada"
         android:layout_width="130dp"
         android:layout_height="136dp"
         android:layout_alignParentStart="true"
