@@ -21,8 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.itresna_android.senales.ModificarSenal;
-import com.example.itresna_android.senales.PSenales;
+import com.example.itresna_android.Senales.ModificarSenal;
+import com.example.itresna_android.Senales.PSenales;
+import com.squareup.picasso.Picasso;
 
 
 public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {
@@ -34,6 +35,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
      ArrayList<Etiqueta> listaEtiquetas;
      ArrayList<Likes> listalikes;
      int likes;
+    ImageView ivPortada;
 
         public AdaptadorRecyclerSenales(ArrayList<Senal> ls, ArrayList<Etiqueta> le, ArrayList<Likes> ll){
             // Aqui tendria que ir la lista
@@ -69,7 +71,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             //Creamos los textos e imagenes que van a cargarse
             final TextView tvLikes = holder.itemView.findViewById(R.id.tvLike);
             final TextView tvTitulo = holder.itemView.findViewById(R.id.tvTitulo);
-            final ImageView ivPortada = holder.itemView.findViewById(R.id.ivPortada);
+            ivPortada = holder.itemView.findViewById(R.id.ivPortada);
 
             likes = 0;
             for (int i = 0; i<listalikes.size(); i++){
@@ -77,15 +79,16 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     listalikes.get(i).cod_cop == listaSenales.get(position).cod_cop &&
                     listalikes.get(i).cod_esp == listaSenales.get(position).cod_esp &&
                     listalikes.get(i).cod_senal == listaSenales.get(position).cod_senal){
-
                     likes ++;
-
                 }
             }
             //Cargamos los datos
             tvTitulo.setText(listaSenales.get(position).desc_senal);
             tvLikes.setText(String.valueOf(likes));
                 /**ivPortada.setImageDrawable(listaSenales.get(position).img_senal);**/
+            Picasso.get()
+                    .load(listaSenales.get(position).img_senal)
+                    .into(ivPortada);
             btnEliminar.setVisibility(View.INVISIBLE);
             btnEditar.setVisibility(View.INVISIBLE);
 
