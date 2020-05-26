@@ -15,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.example.itresna_android.PSenales;
 import com.example.itresna_android.Senales.PSenales;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -96,6 +95,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                 intent.putExtra("codigo",codigo);
                 view.getContext().startActivity(intent);
             }
+
         });
     }
 
