@@ -18,11 +18,11 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".recuperarContrasena.RecuperarContrasena"></activity>
         <activity android:name=".pantallaCarga" />
-        <activity android:name=".senales.ModificarSenal" />
+        <activity android:name=".Senales.ModificarSenal" />
         <activity android:name=".popUpcomentarios" />
         <activity android:name=".PCops" />
-        <activity android:name=".senales.NewSenal" />
-        <activity android:name=".senales.PSenales" />
+        <activity android:name=".Senales.NewSenal" />
+        <activity android:name=".Senales.PSenales" />
         <activity
             android:name=".Login"
             android:theme="@style/Theme.AppCompat.NoActionBar">

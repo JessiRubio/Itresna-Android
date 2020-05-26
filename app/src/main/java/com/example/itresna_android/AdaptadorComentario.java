@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.itresna_android.R;
 
 public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.ViewHolder>{
+
     public AdaptadorComentario() {
         // Aqui tendria que ir la lista
     }
