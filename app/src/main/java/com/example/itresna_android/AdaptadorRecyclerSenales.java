@@ -19,8 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.itresna_android.senales.ModificarSenal;
-import com.example.itresna_android.senales.PSenales;
+import com.example.itresna_android.Senales.ModificarSenal;
+import com.example.itresna_android.Senales.PSenales;
 
 
 public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecyclerSenales.ViewHolder> {

@@ -24,7 +24,7 @@ import java.util.Map;
 
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.R;
-import com.example.itresna_android.senales.PSenales;
+import com.example.itresna_android.Senales.PSenales;
 
 public class ModificarSenal extends AppCompatActivity {
 
