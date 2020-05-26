@@ -10,22 +10,33 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+import com.example.itresna_android.Aplication;
+import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.R;
-import com.leocardz.link.preview.library.LinkPreviewCallback;
-import com.leocardz.link.preview.library.SourceContent;
-import com.leocardz.link.preview.library.TextCrawler;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewSenal extends Activity {
 
     private Button btn_cancelar;
     private Button btn_Anadir;
+
     private EditText url;
     private EditText descripcion;
     private WebView myWebView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
