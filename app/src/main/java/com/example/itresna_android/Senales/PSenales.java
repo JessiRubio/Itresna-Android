@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,6 +73,7 @@ public class PSenales extends AppCompatActivity {
         cod_org = myApplication.codOrg;
         cod_esp = myApplication.codEspacio;
         cod_cop = intent.getStringExtra("codigo");
+        myApplication.cod_cop = cod_cop;
         System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
 
         //Cargamos los valores de la bb que cumplen la selección
