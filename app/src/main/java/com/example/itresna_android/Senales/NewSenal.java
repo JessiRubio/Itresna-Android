@@ -10,19 +10,22 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import com.example.itresna_android.R;
 import com.leocardz.link.preview.library.LinkPreviewCallback;
 import com.leocardz.link.preview.library.SourceContent;
 import com.leocardz.link.preview.library.TextCrawler;
 
+
 public class NewSenal extends Activity {
 
     private Button btn_cancelar;
     private Button btn_Anadir;
-
     private EditText url;
     private EditText descripcion;
     private WebView myWebView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
