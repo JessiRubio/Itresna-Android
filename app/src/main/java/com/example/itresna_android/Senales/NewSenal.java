@@ -1,7 +1,6 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.app.Activity;
-import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;

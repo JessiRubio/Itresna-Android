@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".senales.ModificarSenal">
+    tools:context=".Senales.ModificarSenal">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiahorizontal"
