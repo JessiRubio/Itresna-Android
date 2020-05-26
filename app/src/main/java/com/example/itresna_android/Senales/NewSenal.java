@@ -2,6 +2,7 @@ package com.example.itresna_android.senales;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
@@ -136,6 +137,7 @@ public class NewSenal extends Activity {
                             e.printStackTrace();
                         }
                         params.put("img_senal", String.valueOf(myWebView.getFavicon().compress(Bitmap.CompressFormat.JPEG, 100, photo)));
+
                         params.put("titulo", myWebView.getTitle());
                         return params;
                     }
@@ -145,4 +147,5 @@ public class NewSenal extends Activity {
             }
         });
     }
+
 }
