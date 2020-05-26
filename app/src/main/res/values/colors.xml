@@ -10,6 +10,7 @@
     <color name="blanco">#FFFFFF</color>
     <color name="colorTexto">#000</color>
     <color name="fondoIdiomas">#FFFFFF</color>
+    <color name="colorBarraTareas">#444444</color>
 </resources>
 <!--
     <color name="Azul_Itresna">#7bcae1</color>
