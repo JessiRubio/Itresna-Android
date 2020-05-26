@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ import java.util.Map;
 import java.util.ArrayList;
 
 import com.example.itresna_android.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PSenales extends AppCompatActivity {
 
@@ -96,7 +98,14 @@ public class PSenales extends AppCompatActivity {
             }
         }, 1500);
 
-
+        FloatingActionButton fbnewsenal = findViewById(R.id.fb_newsenal);
+        fbnewsenal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newsenal = new Intent(PSenales.this, NewSenal.class);
+                startActivity(newsenal);
+            }
+        });
 
 
     }
