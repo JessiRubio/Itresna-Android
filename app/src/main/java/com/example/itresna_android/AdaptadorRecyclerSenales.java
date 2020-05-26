@@ -21,8 +21,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.itresna_android.Senales.ModificarSenal;
-import com.example.itresna_android.Senales.PSenales;
+import com.example.itresna_android.senales.ModificarSenal;
+import com.example.itresna_android.senales.PSenales;
 import com.squareup.picasso.Picasso;
 
 
