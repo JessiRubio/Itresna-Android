@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+import java.net.URL;
+
 public class Senal {
 
     String cod_senal;
