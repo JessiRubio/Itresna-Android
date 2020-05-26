@@ -41,6 +41,7 @@ public class popUpcomentarios extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_upcomentarios);
+
         reyclerViewseñales = findViewById(R.id.recyclerViewComentarios);
         reyclerViewseñales.setLayoutManager (new LinearLayoutManager(this));
         // Especificamos el adaptador para el recycler

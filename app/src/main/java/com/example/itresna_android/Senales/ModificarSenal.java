@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.itresna_android.ConexionBD;
-import com.example.itresna_android.senales.PSenales;
+import com.example.itresna_android.Senales.PSenales;
 import com.example.itresna_android.R;
 
 public class ModificarSenal extends AppCompatActivity {
