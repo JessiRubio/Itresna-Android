@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,15 +15,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import com.example.itresna_android.ConexionBD;
-import com.example.itresna_android.Senales.PSenales;
 import com.example.itresna_android.R;
 
 public class ModificarSenal extends AppCompatActivity {

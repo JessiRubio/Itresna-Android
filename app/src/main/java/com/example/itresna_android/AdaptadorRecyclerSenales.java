@@ -21,8 +21,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.example.itresna_android.Senales.ModificarSenal;
-import com.example.itresna_android.Senales.PSenales;
+import com.example.itresna_android.senales.ModificarSenal;
+import com.example.itresna_android.senales.PSenales;
 import com.squareup.picasso.Picasso;
 
 
@@ -279,6 +279,10 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                         liked=true;
                         //Se crea el like en la base de datos
 
+
+                        ////
+
+
                         StringRequest stringRequest =new StringRequest(Request.Method.POST,
                                 ConexionBD.URL_CrearLike,
                                 new Response.Listener<String>() {
@@ -311,6 +315,9 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                         };
                         RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
                         requestQueue.add(stringRequest);
+
+
+                        ////
 
                         //Añade el like al arraylist
                         Likes L = new Likes(String.valueOf(cod_senal), String.valueOf(cod_cop), String.valueOf(cod_esp), String.valueOf(cod_org), cod_usuario);
