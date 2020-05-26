@@ -1,10 +1,8 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -25,10 +23,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,12 +129,25 @@ public class NewSenal extends Activity {
                         params.put("desc_senal", desc_senal);
                         FileOutputStream photo = null;
                         try {
-                            photo = new FileOutputStream(Environment.getExternalStorageDirectory() + "/itresna/" +myWebView.getTitle() + ".jpg" );
+                            photo = new FileOutputStream("itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg");
+                            myWebView.getFavicon().compress(Bitmap.CompressFormat.JPEG, 100, photo);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                        params.put("img_senal", String.valueOf(myWebView.getFavicon().compress(Bitmap.CompressFormat.JPEG, 100, photo)));
 
+                        SimpleFTP ftp = new SimpleFTP();
+                        // Connect to an FTP server on port 21.
+                        ftp.connect("http://itresna.fptxurdinaga.in", 21, "iTresna", "Abcd_1234");
+                        // Set binary mode.
+                        ftp.bin();
+                        // Change to a new working directory on the FTP server.
+                        ftp.cwd("path");
+                        // Upload some files.
+                        ftp.stor(new File("http://itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg"));
+                        // Quit from the FTP server.
+                        ftp.disconnect();
+
+                        params.put("img_senal", "itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg");
                         params.put("titulo", myWebView.getTitle());
                         return params;
                     }
