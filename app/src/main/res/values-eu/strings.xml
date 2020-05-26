@@ -27,5 +27,8 @@
     <string name="recuperar_contraseña_mira_email">Zure emaila begiratu</string>
     <string name="recuperar_contrasena_email">Zure emaila sartu</string>
     <string name="enviar">Bidali</string>
+    <string name="formato_email_invalido">Email okerra</string>
+    <string name="recuperar_contrasena_espera">Itxaron mesedez</string>
+    <string name="recuperar_contrasena_enviando">Emaila bidaltzen</string>
     <!-- -->
 </resources>

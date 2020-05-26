@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/AzuloOscuro_Itresna"
+    android:background="@color/Azul_Itresna"
     android:orientation="vertical"
     android:id="@+id/li"
     tools:context=".PCops"
@@ -43,6 +43,7 @@
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:text="@string/cops_prueba_eslogan"
+                android:textColor="@color/colorTexto"
                 />
 
         </LinearLayout>

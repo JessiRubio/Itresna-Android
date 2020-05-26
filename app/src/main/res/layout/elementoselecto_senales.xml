@@ -54,6 +54,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="99dp"
         android:layout_marginTop="209dp"
+        android:textColor="@color/colorTexto"
+        android:text="0"
         android:textAlignment="center" />
 
     <TextView
@@ -64,6 +66,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="29dp"
         android:layout_marginTop="138dp"
+        android:textColor="@color/colorTexto"
         android:textStyle="bold" />
 
     <ImageView
