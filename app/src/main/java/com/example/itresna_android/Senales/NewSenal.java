@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,6 +23,7 @@ public class NewSenal extends Activity {
 
     private EditText url;
     private EditText descripcion;
+    private WebView myWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +55,16 @@ public class NewSenal extends Activity {
         url = findViewById(R.id.urlEntregada);
         descripcion = findViewById(R.id.descripcionEntregada);
 
+        myWebView = (WebView) findViewById(R.id.webview);
+        myWebView.loadUrl(url.getText().toString());
+
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
 
         btn_Anadir.setOnClickListener(new View.OnClickListener() {
             @Override
