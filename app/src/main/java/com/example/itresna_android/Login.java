@@ -98,12 +98,15 @@ public class Login extends AppCompatActivity {
                                         " "+ape2Cargado);
                                 //String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
+
+
                                 Intent intent = new Intent(Login.this, pantallaCarga.class);
                                 String valor1  = cod_orgCargado;
                                 String nombreUsuario = cod_usuarioCargado;
                                 Aplication myApplication = (Aplication) getApplication();
                                 myApplication.codOrg = cod_orgCargado;
-
+                                myApplication.Usuariologueado = cod_usuarioCargado;
+                                //Guardamos el usuario para futuras necesidades
                                 Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);
                                 usuario.add(U);
 

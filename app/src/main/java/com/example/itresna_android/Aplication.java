@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.ArrayList;
 
 public class Aplication extends Application {
+    public String Usuariologueado;
     String eslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
     public String espacioSeleccionado;
@@ -14,6 +15,7 @@ public class Aplication extends Application {
     public String descripcionCop;
     public String codEspacio;
     public String decripcionEspacio;
+    public String cod_cop;
     public void onCreate(){
         super.onCreate();
 
