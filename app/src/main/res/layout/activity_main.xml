@@ -148,7 +148,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/boton_negro_redondeado"
-        android:text="Entrar"
+        android:text="@string/btnEntrar"
         android:textColor="@color/blanco"
         android:textSize="18sp"
         android:textStyle="bold"

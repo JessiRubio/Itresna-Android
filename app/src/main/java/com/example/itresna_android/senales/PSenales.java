@@ -102,7 +102,7 @@ public class PSenales extends AppCompatActivity {
         fbnewsenal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newsenal = new Intent(PSenales.this, NewSenal.class);
+                Intent newsenal = new Intent(PSenales.this, com.example.itresna_android.Senales.NewSenal.class);
                 startActivity(newsenal);
             }
         });
