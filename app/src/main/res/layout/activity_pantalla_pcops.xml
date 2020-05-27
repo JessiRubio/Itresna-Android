@@ -35,16 +35,17 @@
                 android:src="@drawable/logo_tresna"
                 tools:ignore="NestedWeights"
                 android:contentDescription="@android:string/ok" />
+
             <TextView
                 android:id="@+id/txtEsloganPCops"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
-                android:textSize="20sp"
-                android:text="@string/cops_prueba_eslogan"
-                android:textColor="@color/colorTexto"
-                />
+                android:layout_weight="2"
+                android:autoSizeMaxTextSize="150sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/colorTexto" />
 
         </LinearLayout>
 

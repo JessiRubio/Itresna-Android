@@ -183,7 +183,7 @@ public class PCops extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        final String nombreUsuario = String.valueOf(getIntent().getStringExtra("NombreUsuario"));
+        final String nombreUsuario = Login.usuario.get(0).nombre;
         menu.findItem(R.id.menu_nombre_usuario).setTitle(nombreUsuario);
 
         // Creamos un nuevo ActionBar que va a ser un personalizado
@@ -284,11 +284,10 @@ public class PCops extends AppCompatActivity {
     }
 
 
-
-
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     public void cargarCops(){
         Aplication myApplication = (Aplication) getApplication();
