@@ -127,6 +127,8 @@ public class NewSenal extends Activity {
         btn_Anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 final int cod_org, cod_cop, cod_esp;
                 final Aplication myAplication = (Aplication) getApplication();
                 cod_org = Integer.parseInt(myAplication.codOrg);
