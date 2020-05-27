@@ -3,6 +3,7 @@ package com.example.itresna_android.senales;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,7 +22,9 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.itresna_android.AdaptadorComentario;
 import com.example.itresna_android.AdaptadorRecyclerSenales;
 import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
@@ -77,7 +80,7 @@ public class NewSenal extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         //Le damos medidas
-        int width = dm.widthPixels;
+      /*  int width = dm.widthPixels;
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width), (int)(height/2));
@@ -86,9 +89,9 @@ public class NewSenal extends Activity {
         final WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
-        params.y = -20;
+        params.y = 0;
 
-        getWindow().setAttributes(params);
+        getWindow().setAttributes(params);*/
 
         //Funcionalidades pop up
         btn_cancelar = findViewById(R.id.btnCancelarSenal);
@@ -214,6 +217,16 @@ public class NewSenal extends Activity {
 
                 RequestQueue requestQueue= Volley.newRequestQueue(NewSenal.this);
                 requestQueue.add(stringRequest);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        Intent intent = new Intent(NewSenal.this,PSenales.class);
+                        startActivity(intent);
+                    }
+                }, 1000);
+
+
             }
         });
     }

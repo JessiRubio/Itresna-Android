@@ -285,129 +285,9 @@ public class PCops extends AppCompatActivity {
 
 
 
-    public void cargarOrg(){
-
-        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
-                ConexionBD.URL_Org,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject obj = new JSONObject(response);
-                            //System.out.println(response);
-                            if(!obj.getBoolean("error")){
-
-                                String cod_orgCargado=obj.getString("cod_org");
-                                String desc_orgCargado=obj.getString("desc_org");
-                                String img_orgCargado=obj.getString("img_org");
-                                String enlace_orgCargado=obj.getString("enlace_org");
-                                String eslogan_orgCargado=obj.getString("eslogan_org");
-
-                                System.out.println("Org: "+cod_orgCargado+" "+desc_orgCargado+" "+img_orgCargado+" "+enlace_orgCargado+" "+eslogan_orgCargado);
-
-                                tEslogan.setText(eslogan);
-                                System.out.println("ESLOGAN COPS-----"+ eslogan);
 
 
-                            }else{
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-        ){
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                //params.put("cod_usuario", cod_usuario);
-                params.put("cod_org", cod_org);
-                return params;
-            }
 
-        };
-
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-        //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
-
-    }
-
-    public void cargarEspacios(){
-
-        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
-                ConexionBD.URL_Esp,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-
-                            JSONArray jsonarray  = new JSONArray(response);
-                            //System.out.println(jsonarray.length());
-                            //System.out.println(response);
-                            for(int i=0; i < jsonarray.length(); i++) {
-                                JSONObject jsonobject = jsonarray.getJSONObject(i);
-                                String cod_esp      = jsonobject.getString("cod_esp");
-                                String cod_org      = jsonobject.getString("cod_org");
-                                String desc_esp   = jsonobject.getString("desc_esp");
-                                String ind_esp_curacion  = jsonobject.getString("ind_esp_curacion");
-                                String orden = jsonobject.getString("orden");
-
-                                System.out.println("Espacios: "+cod_esp+" "+cod_org+" "+desc_esp+" "+ind_esp_curacion+" "+orden);
-                                //Se guardan en el arraylist
-                                Espacio E = new Espacio(cod_esp,cod_org,desc_esp,ind_esp_curacion,orden);
-                                espacios.add(E);
-
-
-                            }
-
-                            //TEMPORAL
-                            espacioSeleccionado=espacios.get(0).cod_esp;
-
-
-                            cargarCops();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-        ){
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                //params.put("cod_usuario", cod_usuario);
-                params.put("cod_org", cod_org);
-                return params;
-            }
-
-        };
-
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-
-    }
 
 
     public void cargarCops(){
@@ -415,6 +295,10 @@ public class PCops extends AppCompatActivity {
         final String cod_org= myApplication.codOrg;
         final String cod_espActual = espacioSeleccionado;
         System.out.println("ESPACIO SELECCIONADO" + espacioSeleccionado);
+        if (contador>1){
+            cops.clear();
+        }
+
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 ConexionBD.URL_Cop,

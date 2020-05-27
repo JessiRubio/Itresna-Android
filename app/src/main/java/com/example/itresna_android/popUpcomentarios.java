@@ -62,6 +62,7 @@ public class popUpcomentarios extends AppCompatActivity {
         }, 100);
         boton = findViewById(R.id.enviarComentario);
 
+
     }
 
 

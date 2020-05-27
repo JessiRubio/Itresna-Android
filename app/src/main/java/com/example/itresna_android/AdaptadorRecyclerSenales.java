@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.example.itresna_android.senales.ModificarSenal;
+import com.example.itresna_android.senales.NewSenal;
 import com.example.itresna_android.senales.PSenales;
 import com.squareup.picasso.Picasso;
 
@@ -178,6 +179,15 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
 
                     RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
                     requestQueue.add(stringRequest);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            Intent intent = new Intent(holder.itemView.getContext(),PSenales.class);
+                            holder.itemView.getContext().startActivity(intent);
+                        }
+                    }, 1000);
+
 
                 }
             });
