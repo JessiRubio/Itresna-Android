@@ -10,10 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itresna_android.R;
 
+import java.util.ArrayList;
+
 public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.ViewHolder>{
 
-    public AdaptadorComentario() {
-        // Aqui tendria que ir la lista
+    ArrayList<Comentario> comentarios;
+
+    public AdaptadorComentario(ArrayList<Comentario> listaComentarios) {
+        this.comentarios = listaComentarios;
     }
 
     @NonNull
@@ -28,12 +32,14 @@ public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentari
     public void onBindViewHolder(final AdaptadorComentario.ViewHolder holder, final int position) {
         TextView Nombre = holder.itemView.findViewById(R.id.textAutor);
         TextView Comentario = holder.itemView.findViewById(R.id.textoComentario);
+        Nombre.setText(comentarios.get(position).cod_usuario);
+        Comentario.setText(comentarios.get(position).comentario);
     }
 
     //Aqui tenemos que poner el arraylist size
     @Override
     public int getItemCount() {
-        return 8;
+        return comentarios.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

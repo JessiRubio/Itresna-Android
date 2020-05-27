@@ -1,16 +1,28 @@
 package com.example.itresna_android.senales;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.example.itresna_android.AdaptadorRecyclerSenales;
 import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.R;
@@ -21,15 +33,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.jibble.simpleftp.SimpleFTP;
+import org.jibble.simpleftp.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class NewSenal extends Activity {
 
@@ -39,11 +57,20 @@ public class NewSenal extends Activity {
     private EditText url;
     private EditText descripcion;
     private WebView myWebView;
+    Bitmap bmp;
+    String tituloPag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_senal);
+        Permisos();
+        int permissionCheck = ContextCompat.checkSelfPermission(
+                this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED ) {
+            Permisos();
+        }
 
         //Creamos el PopUp
         DisplayMetrics dm = new DisplayMetrics();
@@ -56,7 +83,7 @@ public class NewSenal extends Activity {
         getWindow().setLayout((int)(width), (int)(height/2));
 
         //Se las asignamos
-        WindowManager.LayoutParams params = getWindow().getAttributes();
+        final WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
         params.y = -20;
@@ -76,6 +103,13 @@ public class NewSenal extends Activity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus && (url.getText().toString()!="")){
                     myWebView.loadUrl(url.getText().toString());
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            bmp = myWebView.getFavicon();
+                            tituloPag=myWebView.getTitle();
+                        }
+                    }, 2000);
                 }
             }
         });
@@ -96,7 +130,7 @@ public class NewSenal extends Activity {
 
 
                 final int cod_org, cod_cop, cod_esp;
-                Aplication myAplication = (Aplication) getApplication();
+                final Aplication myAplication = (Aplication) getApplication();
                 cod_org = Integer.parseInt(myAplication.codOrg);
                 cod_esp = Integer.parseInt(myAplication.codEspacio);
                 cod_cop = Integer.parseInt(myAplication.cod_cop);
@@ -132,39 +166,77 @@ public class NewSenal extends Activity {
                         params.put("enlace", url.getText().toString());
                         params.put("desc_senal", desc_senal);
                         FileOutputStream photo = null;
+                        SimpleFTP ftp = new SimpleFTP();
+
+                        File root = Environment.getExternalStorageDirectory();
+                       // File myDir = new File(root);
+                        File myDir = root;
+                        myDir.mkdirs();
+                        String fname = "/Image-" + desc_senal+ ".png";
+                        File file = new File(myDir, fname);
+                        if (file.exists()) file.delete();
+                        Log.i("LOAD", root + fname);
                         try {
-                            photo = new FileOutputStream("itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg");
-                            myWebView.getFavicon().compress(Bitmap.CompressFormat.JPEG, 100, photo);
-                        } catch (FileNotFoundException e) {
+                            FileOutputStream out = new FileOutputStream(file.getAbsolutePath());
+                            bmp.compress(Bitmap.CompressFormat.PNG, 90, new FileOutputStream(file.getAbsolutePath()));
+                            out.flush();
+                            out.close();
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
-                        SimpleFTP ftp = new SimpleFTP();
-                        // Connect to an FTP server on port 21.
                         try {
-                            ftp.connect("http://itresna.fptxurdinaga.in", 21, "iTresna", "Abcd_1234");
+                            ftp.connect("itresna.fptxurdinaga.in", 21, "itresna", "Abcd_1234");
                             // Set binary mode.
                             ftp.bin();
+
                             // Change to a new working directory on the FTP server.
-                            ftp.cwd("path");
+                            ftp.cwd("/web/itresna.fptxurdinaga.in/public_html/media/Senales");
+
                             // Upload some files.
-                            ftp.stor(new File("http://itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg"));
+                            ftp.stor(file);
+
                             // Quit from the FTP server.
                             ftp.disconnect();
 
-                            params.put("img_senal", "itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg");
-                            params.put("titulo", myWebView.getTitle());
-
+                            params.put("img_senal", "http://itresna.fptxurdinaga.in/media/Senales/" + "Image-" + desc_senal+ ".png ");
+                            params.put("titulo", tituloPag);
+                            System.out.println("Foto de la señal --> "+params.get("img_senal"));
                         } catch (Exception e) {
-
+                            e.printStackTrace();
+                            System.out.println("Errror -->"+e);
                         }
+
+                        // Connect to an FTP server on port 21.
                         return params;
-                    }
+                             }
                 };
+
                 RequestQueue requestQueue= Volley.newRequestQueue(NewSenal.this);
                 requestQueue.add(stringRequest);
             }
         });
     }
+    private void Permisos(){
+        int permissionCheck = ContextCompat.checkSelfPermission(
+                this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED ) {
+            if (ContextCompat.checkSelfPermission(NewSenal.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+
+
+                    // El usuario no necesitas explicación, puedes solicitar el permiso:
+                    ActivityCompat.requestPermissions(NewSenal.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            112);
+
+                    //
+                }
+        } else {
+            Log.i("Mensaje", "Tienes permiso para usar la camara.");
+        }
+    }
 }

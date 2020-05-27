@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,38 +32,48 @@ public class popUpcomentarios extends AppCompatActivity {
     AdaptadorComentario adaptadorRecycler;
     //ArrayList<Cops> listaComentarios = new ArrayList<Cops>();
     ArrayList<Comentario> comentarios = new ArrayList<>();
-
+    String cod_orgActual;
+    String cod_espActual;
+    String cod_copActual;
+    String cod_senalActual;
     //Datos de prueba para cargar los comentarios, una vez el recycler señales funcione, se cogerán de ahí los datos.
-    int cod_org=1;
-    int cod_esp=1;
-    int cod_cop=2;
-    int cod_senal=2;
+    Aplication myApplication;
+    Button boton;
+    EditText comentarioEscrito;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_upcomentarios);
-
-        reyclerViewseñales = findViewById(R.id.recyclerViewComentarios);
-        reyclerViewseñales.setLayoutManager (new LinearLayoutManager(this));
-        // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorComentario();
-        reyclerViewseñales.setAdapter(adaptadorRecycler);
-
-
         cargarComentarios();
+        System.out.println("TAMAÑO DE LA LISTA DE COMENTARIOS -->"+comentarios.size());
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                reyclerViewseñales = findViewById(R.id.recyclerViewComentarios);
+                reyclerViewseñales.setLayoutManager (new LinearLayoutManager(getApplicationContext()));
+                // Especificamos el adaptador para el recycler
+                adaptadorRecycler = new AdaptadorComentario(comentarios);
+                reyclerViewseñales.setAdapter(adaptadorRecycler);
+            }
+        }, 100);
+        boton = findViewById(R.id.enviarComentario);
+
     }
 
 
 
 
     public void cargarComentarios(){
-
-        final String cod_orgActual= String.valueOf(cod_org);
-        final String cod_espActual= String.valueOf(cod_esp);
-        final String cod_copActual= String.valueOf(cod_cop);
-        final String cod_senalActual= String.valueOf(cod_senal);
+        myApplication= (Aplication) this.getApplication();
+        cod_orgActual= myApplication.codOrg;
+        cod_espActual= myApplication.codEspacio;
+        cod_copActual= myApplication.cod_cop;
+        cod_senalActual= myApplication.cod_senal;
+        System.out.println("SEÑALLL -->"+cod_senalActual);
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
