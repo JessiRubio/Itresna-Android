@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.Manifest;
 import android.app.Activity;
@@ -127,6 +127,7 @@ public class NewSenal extends Activity {
         });
 
 
+
         btn_Anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,7 +222,7 @@ public class NewSenal extends Activity {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
-                        Intent intent = new Intent(NewSenal.this,PSenales.class);
+                        Intent intent = new Intent(NewSenal.this, PSenales.class);
                         startActivity(intent);
                     }
                 }, 1000);
@@ -252,4 +253,11 @@ public class NewSenal extends Activity {
             Log.i("Mensaje", "Tienes permiso para usar la camara.");
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    ;
 }
