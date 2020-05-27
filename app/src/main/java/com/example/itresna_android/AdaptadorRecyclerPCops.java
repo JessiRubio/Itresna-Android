@@ -88,6 +88,7 @@ AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.
                         myApplication.descripcionCop = Nombrecop;
                     }
                 }
+                myApplication.cod_cop = codigo;
                 intent.putExtra("codigo",codigo);
                 view.getContext().startActivity(intent);
             }
