@@ -1,5 +1,6 @@
 package com.example.itresna_android;
 
+/** Conexión con la base de datos **/
 public class ConexionBD {
 
 

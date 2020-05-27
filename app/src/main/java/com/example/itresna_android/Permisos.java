@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+
+/** Clase generica para los permisos. Contiene atributos, constructora y getters y setters **/
 public class Permisos {
 
     String cod_usuario;

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
+/** Clase application para gestionar los datos a los que se tiene que acceder repetidamente o desde diferentes lugares**/
 public class Aplication extends Application {
     public String Usuariologueado;
     String eslogan;

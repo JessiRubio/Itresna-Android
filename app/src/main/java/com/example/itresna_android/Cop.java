@@ -2,6 +2,8 @@ package com.example.itresna_android;
 
 import android.graphics.Bitmap;
 
+/** Clase generica para las cops. Contiene atributos, constructora y getters y setters **/
+
 public class Cop {
 
     String cod_cop;

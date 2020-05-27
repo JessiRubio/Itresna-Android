@@ -28,16 +28,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/** Clase para gestionar los pop ups de comentarios.**/
+
 public class popUpcomentarios extends AppCompatActivity {
+    // Atributos y objetos necesarios
     RecyclerView reyclerViewseñales;
     AdaptadorComentario adaptadorRecycler;
-    //ArrayList<Cops> listaComentarios = new ArrayList<Cops>();
     ArrayList<Comentario> comentarios = new ArrayList<>();
     String cod_orgActual;
     String cod_espActual;
     String cod_copActual;
     String cod_senalActual;
-    //Datos de prueba para cargar los comentarios, una vez el recycler señales funcione, se cogerán de ahí los datos.
     Aplication myApplication;
     Button btnEnviarComentario;
     EditText comentarioEscrito;
@@ -72,7 +73,7 @@ public class popUpcomentarios extends AppCompatActivity {
         btnEnviarComentario = findViewById(R.id.enviarComentario);
 
 
-
+        /**Configuramos los on click listener para que realice la función deseada**/
         btnEnviarComentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

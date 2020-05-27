@@ -1,6 +1,7 @@
 package com.example.itresna_android;
 
 import java.net.URL;
+/** Clase generica para las señales. Contiene atributos, constructora y getters y setters **/
 
 public class Senal {
 

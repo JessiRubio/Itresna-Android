@@ -53,6 +53,7 @@ import java.util.ArrayList;
 
 import java.util.Locale;
 
+/** Clase generica para gestionar las cops.**/
 
 public class PCops extends AppCompatActivity {
     int contador =0;

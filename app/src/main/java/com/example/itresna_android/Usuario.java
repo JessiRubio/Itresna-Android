@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+
+/** Clase generica para los usuarios. Contiene atributos, constructora y getters y setters **/
 public class Usuario {
 
     String cod_usuario;

@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+/** Clase generica para las cops para el recycler. Contiene atributos, constructora y getters y setters **/
+
 public class Cops {
     private String nombreImagen;
     private String nombreCop;

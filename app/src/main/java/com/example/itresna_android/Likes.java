@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+/** Clase generica para los likes. Contiene atributos y constructora **/
+
 public class Likes {
 
     String cod_senal;

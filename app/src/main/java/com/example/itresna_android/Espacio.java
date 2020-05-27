@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+/** Clase generica para las etiquetas. Contiene atributos, constructora y getters y setters **/
+
 public class Espacio {
 
     String cod_org;

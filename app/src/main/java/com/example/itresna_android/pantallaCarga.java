@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
+/** Pantalla de carga del login a Pcops para gestionar le debug de carga de info **/
 public class pantallaCarga extends AppCompatActivity {
     String eslogan;
     String espacioSeleccionado;

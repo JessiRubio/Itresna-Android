@@ -1,5 +1,7 @@
 package com.example.itresna_android;
 
+/** Clase generica para las organizaciones. Contiene atributos, constructora y getters y setters **/
+
 public class Organizacion {
 
     String cod_org;
