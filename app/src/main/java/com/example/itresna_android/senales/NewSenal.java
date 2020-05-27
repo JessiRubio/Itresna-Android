@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -20,6 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.jibble.simpleftp.SimpleFTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -120,7 +122,7 @@ public class NewSenal extends Activity {
                 ){
                     @Override
                     protected Map<String, String> getParams() {
-                        Map<String, String> params =new HashMap<>();
+                        Map<String, String> params = new HashMap<>();
                         params.put("cod_cop", String.valueOf(cod_cop));
                         params.put("cod_esp", String.valueOf(cod_esp));
                         params.put("cod_org", String.valueOf(cod_org));
@@ -129,7 +131,7 @@ public class NewSenal extends Activity {
                         params.put("desc_senal", desc_senal);
                         FileOutputStream photo = null;
                         try {
-                            photo = new FileOutputStream("itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg");
+                            photo = new FileOutputStream("itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg");
                             myWebView.getFavicon().compress(Bitmap.CompressFormat.JPEG, 100, photo);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
@@ -137,18 +139,23 @@ public class NewSenal extends Activity {
 
                         SimpleFTP ftp = new SimpleFTP();
                         // Connect to an FTP server on port 21.
-                        ftp.connect("http://itresna.fptxurdinaga.in", 21, "iTresna", "Abcd_1234");
-                        // Set binary mode.
-                        ftp.bin();
-                        // Change to a new working directory on the FTP server.
-                        ftp.cwd("path");
-                        // Upload some files.
-                        ftp.stor(new File("http://itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg"));
-                        // Quit from the FTP server.
-                        ftp.disconnect();
+                        try {
+                            ftp.connect("http://itresna.fptxurdinaga.in", 21, "iTresna", "Abcd_1234");
+                            // Set binary mode.
+                            ftp.bin();
+                            // Change to a new working directory on the FTP server.
+                            ftp.cwd("path");
+                            // Upload some files.
+                            ftp.stor(new File("http://itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg"));
+                            // Quit from the FTP server.
+                            ftp.disconnect();
 
-                        params.put("img_senal", "itresna.fptxurdinaga.in/" +myWebView.getTitle() + ".jpg");
-                        params.put("titulo", myWebView.getTitle());
+                            params.put("img_senal", "itresna.fptxurdinaga.in/" + myWebView.getTitle() + ".jpg");
+                            params.put("titulo", myWebView.getTitle());
+
+                        } catch (Exception e) {
+
+                        }
                         return params;
                     }
                 };
