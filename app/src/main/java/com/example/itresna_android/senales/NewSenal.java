@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jibble.simpleftp.SimpleFTP;
 
 import java.io.File;
 import java.io.FileNotFoundException;
