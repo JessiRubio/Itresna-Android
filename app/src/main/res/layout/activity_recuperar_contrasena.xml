@@ -127,7 +127,7 @@
         android:id="@+id/textViewMiraEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recuperar_contraseña_mira_email"
+        android:text="@string/recuperar_contrasena_mira_email"
         android:textColor="@color/colorTexto"
         app:layout_constraintBottom_toTopOf="@+id/guiahorizontal23"
         app:layout_constraintEnd_toStartOf="@+id/guiavertical14"

@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PSenales extends AppCompatActivity {
 
 
-    RecyclerView reyclerViewseñales;
+    RecyclerView reyclerViewsenales;
     AdaptadorRecyclerSenales adaptadorRecycler;
     ArrayList<Senal> senales = new ArrayList<>();
     ArrayList<Etiqueta> etiquetas = new ArrayList<>();
@@ -62,8 +62,8 @@ public class PSenales extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psenales);
 
-        reyclerViewseñales = findViewById(R.id.recicler);
-        reyclerViewseñales.setLayoutManager (new GridLayoutManager(this, 2));
+        reyclerViewsenales = findViewById(R.id.recicler);
+        reyclerViewsenales.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Recogemos los valores que el usuario ha escogido
         Intent intent = getIntent();
@@ -95,7 +95,7 @@ public class PSenales extends AppCompatActivity {
 
                 // Especificamos el adaptador para el recycler
                 adaptadorRecycler = new AdaptadorRecyclerSenales(senales, etiquetas, likes);
-                reyclerViewseñales.setAdapter(adaptadorRecycler);
+                reyclerViewsenales.setAdapter(adaptadorRecycler);
 
             }
         }, 1500);
@@ -104,7 +104,7 @@ public class PSenales extends AppCompatActivity {
         fbnewsenal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newsenal = new Intent(PSenales.this, com.example.itresna_android.Senales.NewSenal.class);
+                Intent newsenal = new Intent(PSenales.this, com.example.itresna_android.senales.NewSenal.class);
                 startActivity(newsenal);
             }
         });
@@ -146,7 +146,7 @@ public class PSenales extends AppCompatActivity {
                                 String img_senalCargado= jsonobject.getString("img_senal ");
                                 String tituloCargado= jsonobject.getString("titulo ");
 
-                                System.out.println("Señales: "+cod_senalCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
+                                System.out.println("Senales: "+cod_senalCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
                                         cod_etiquetaCargado+" "+cod_usuarioCargado+" "+desc_senalCargado+" "+enlaceCargado+" "+fecha_horaCargado+" " +
                                         img_senalCargado+" "+tituloCargado);
                                 //Se guardan en el arraylist

@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class popUpcomentarios extends AppCompatActivity {
     // Atributos y objetos necesarios
-    RecyclerView reyclerViewseñales;
+    RecyclerView reyclerViewsenales;
     AdaptadorComentario adaptadorRecycler;
     ArrayList<Comentario> comentarios = new ArrayList<>();
     String cod_orgActual;
@@ -57,17 +57,17 @@ public class popUpcomentarios extends AppCompatActivity {
         cod_senalActual= myApplication.cod_senal;
 
         cargarComentarios();
-        System.out.println("TAMAÑO DE LA LISTA DE COMENTARIOS -->"+comentarios.size());
+        System.out.println("TAMAnO DE LA LISTA DE COMENTARIOS -->"+comentarios.size());
 
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                reyclerViewseñales = findViewById(R.id.recyclerViewComentarios);
-                reyclerViewseñales.setLayoutManager (new LinearLayoutManager(getApplicationContext()));
+                reyclerViewsenales = findViewById(R.id.recyclerViewComentarios);
+                reyclerViewsenales.setLayoutManager (new LinearLayoutManager(getApplicationContext()));
                 // Especificamos el adaptador para el recycler
                 adaptadorRecycler = new AdaptadorComentario(comentarios);
-                reyclerViewseñales.setAdapter(adaptadorRecycler);
+                reyclerViewsenales.setAdapter(adaptadorRecycler);
             }
         }, 100);
         btnEnviarComentario = findViewById(R.id.enviarComentario);
@@ -128,11 +128,11 @@ public class popUpcomentarios extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             public void run() {
 
-                                reyclerViewseñales = findViewById(R.id.recyclerViewComentarios);
-                                reyclerViewseñales.setLayoutManager (new LinearLayoutManager(getApplicationContext()));
+                                reyclerViewsenales = findViewById(R.id.recyclerViewComentarios);
+                                reyclerViewsenales.setLayoutManager (new LinearLayoutManager(getApplicationContext()));
                                 // Especificamos el adaptador para el recycler
                                 adaptadorRecycler = new AdaptadorComentario(comentarios);
-                                reyclerViewseñales.setAdapter(adaptadorRecycler);
+                                reyclerViewsenales.setAdapter(adaptadorRecycler);
                             }
                         }, 100);
 
@@ -156,7 +156,7 @@ public class popUpcomentarios extends AppCompatActivity {
 
     public void cargarComentarios(){
 
-        System.out.println("SEÑALLL -->"+cod_senalActual);
+        System.out.println("SEnALLL -->"+cod_senalActual);
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,

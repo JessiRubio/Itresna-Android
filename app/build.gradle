@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     //descargar las fotos de las cops
     implementation 'com.squareup.picasso:picasso:2.71828'
-    // Librerias para poder enviar el email de recuperación de contraseña
+    // Librerias para poder enviar el email de recuperación de contrasena
     implementation files('libs/activation.jar')
     implementation files('libs/additional.jar')
     implementation files('libs/mail.jar')

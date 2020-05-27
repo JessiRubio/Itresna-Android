@@ -11,7 +11,7 @@
     <string name="menu_administracion">Administratzailea</string>
     <string name="menu_idioma">Hizkuntza aldatu</string>
     <string name="menu_cerrar_sesion">Itxi saioa</string>
-    <!-- Pop Up Señales -->
+    <!-- Pop Up Senales -->
     <string name="nueva_senal">Senial berria:</string>
     <string name="solicitud_url">URL:</string>
     <string name="solicitud_Descripcion">Azalpen:</string>
@@ -26,7 +26,7 @@
     <string name="idioma_ingles">English</string>
     <string name="btn_modificar_senal">Aldatu</string>
     <string name="recuperar_contrasena">pasahitza berreskuratu</string>
-    <string name="recuperar_contraseña_mira_email">Zure emaila begiratu</string>
+    <string name="recuperar_contrasena_mira_email">Zure emaila begiratu</string>
     <string name="recuperar_contrasena_email">Zure emaila sartu</string>
     <string name="enviar">Bidali</string>
     <string name="formato_email_invalido">Email okerra</string>

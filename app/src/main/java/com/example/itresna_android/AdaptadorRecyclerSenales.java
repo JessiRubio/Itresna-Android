@@ -97,7 +97,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             Picasso.get()
                     .load(listaSenales.get(position).img_senal)
                     .into(ivPortada);
-            System.out.println("Foto señal -->>>>"+listaSenales.get(position).img_senal);
+            System.out.println("Foto senal -->>>>"+listaSenales.get(position).img_senal);
             ivPortada.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -139,7 +139,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Aqui se borra la señal
+                    //Aqui se borra la senal
 
                     final int cod_senal= Integer.parseInt(listaSenales.get(position).cod_senal);
                     final int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
@@ -196,7 +196,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Aqui solamente se envian los datos de la señal a la pantalla ModificarSenal
+                    //Aqui solamente se envian los datos de la senal a la pantalla ModificarSenal
 
 
                     int cod_senal = Integer.parseInt(listaSenales.get(position).cod_senal);
@@ -243,7 +243,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                         }
                     }
 
-                    //Aqui se gestionan los likes de la señal
+                    //Aqui se gestionan los likes de la senal
                     final int cod_senal = Integer.parseInt(listaSenales.get(position).cod_senal);
                     final int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
                     final int cod_esp = Integer.parseInt(listaSenales.get(position).cod_esp);
@@ -251,7 +251,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     final String cod_usuario = Login.usuario.get(0).cod_usuario;
 
                     System.out.println("DATOS PASADOOOOS "+cod_senal+" "+cod_cop+" "+cod_esp+" "+cod_org+" "+cod_usuario);
-                    System.out.println("TAMAÑO ARRAYLIST "+PSenales.likes.size());
+                    System.out.println("TAMAnO ARRAYLIST "+PSenales.likes.size());
 
 
                     if (PSenales.likes.size()==0){
@@ -369,7 +369,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                                 RequestQueue requestQueue= Volley.newRequestQueue(holder.itemView.getContext());
                                 requestQueue.add(stringRequest);
 
-                                //Añade el like al arraylist
+                                //Anade el like al arraylist
                                 Likes L = new Likes(String.valueOf(cod_senal), String.valueOf(cod_cop), String.valueOf(cod_esp), String.valueOf(cod_org), cod_usuario);
                                 PSenales.likes.add(L);
 

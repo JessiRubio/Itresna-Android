@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvRecuperarContrasena= findViewById(R.id.textViewRecuperar);
         etCod_usuario= findViewById(R.id.nombreUsuario);
-        etSarbidea=findViewById(R.id.contraseñaUsuario);
+        etSarbidea=findViewById(R.id.contrasenaUsuario);
         btnEntrar = findViewById(R.id.botonEntrar);
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override

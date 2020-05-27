@@ -191,7 +191,7 @@ public class PCops extends AppCompatActivity {
         // para poder alinear el logo a la izquierda
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
-        //Aquí añadimos el custom ActionBar
+        //Aquí anadimos el custom ActionBar
         View mActionBarView = getLayoutInflater().inflate(R.layout.actionbar_personalizado, null);
         actionBar.setCustomView(mActionBarView);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -263,7 +263,7 @@ public class PCops extends AppCompatActivity {
 
     public void generarDatosRecyler(ArrayList <Cops> listaCops){
         // Este ajuste mejora la performance, solo si el
-        // contenido del recycler no altera su tamaño
+        // contenido del recycler no altera su tamano
         reyclerViewCops.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView

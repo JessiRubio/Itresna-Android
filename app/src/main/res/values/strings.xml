@@ -2,7 +2,7 @@
     <string name="app_name">iTresna</string>
     <!-- Login -->
     <string name="id_usuario">ID Usuario</string>
-    <string name="contrasena">Contraseña</string>
+    <string name="contrasena">Contrasena</string>
     <string name="btnEntrar">Entrar</string>
     <!-- PCops -->
     <string name="cops_prueba_eslogan">El eslogan de prueba</string>
@@ -11,11 +11,11 @@
     <string name="menu_administracion">Administración</string>
     <string name="menu_idioma">Cambiar Idioma</string>
     <string name="menu_cerrar_sesion">Cerrar sesión</string>
-    <!-- Pop Up Señales -->
-    <string name="nueva_senal">Nueva Señal</string>
+    <!-- Pop Up Senales -->
+    <string name="nueva_senal">Nueva Senal</string>
     <string name="solicitud_url">URL:</string>
     <string name="solicitud_Descripcion">Descripción:</string>
-    <string name="btn_anadir_senal">Añadir</string>
+    <string name="btn_anadir_senal">Anadir</string>
     <string name="btn_cancelar_nueva_senal">Cancelar</string>
     <string name="email">Email</string>
     <string name="nombre">Nombre</string>
@@ -25,9 +25,9 @@
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
     <string name="btn_modificar_senal">Modificar</string>
-    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="recuperar_contrasena">Recuperar contrasena</string>
     <string name="recuperar_contrasena_email">Intruduce tu email</string>
-    <string name="recuperar_contraseña_mira_email">Compruebe su email</string>
+    <string name="recuperar_contrasena_mira_email">Compruebe su email</string>
     <string name="enviar">Enviar</string>
     <string name="formato_email_invalido">Email invalido</string>
     <string name="recuperar_contrasena_enviando">Enviando email</string>

@@ -11,7 +11,7 @@
     <string name="menu_administracion">Administration</string>
     <string name="menu_idioma">Change Language</string>
     <string name="menu_cerrar_sesion">Log out</string>
-    <!-- Pop Up Señales -->
+    <!-- Pop Up Senales -->
     <string name="nueva_senal">New Post</string>
     <string name="solicitud_url">URL:</string>
     <string name="solicitud_Descripcion">Description:</string>
@@ -26,7 +26,7 @@
     <string name="idioma_ingles">English</string>
     <string name="btn_modificar_senal">Modify</string>
     <string name="recuperar_contrasena">Password recovery</string>
-    <string name="recuperar_contraseña_mira_email">Check your email</string>
+    <string name="recuperar_contrasena_mira_email">Check your email</string>
     <string name="recuperar_contrasena_email">Enter your email</string>
     <string name="enviar">Send</string>
     <string name="formato_email_invalido">Invalid email address</string>

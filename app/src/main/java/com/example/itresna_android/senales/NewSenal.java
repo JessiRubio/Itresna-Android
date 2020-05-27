@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.Manifest;
 import android.app.Activity;
@@ -205,7 +205,7 @@ public class NewSenal extends Activity {
 
                             params.put("img_senal", "http://itresna.fptxurdinaga.in/media/Senales/" + "Image-" + desc_senal+ ".png ");
                             params.put("titulo", tituloPag);
-                            System.out.println("Foto de la señal --> "+params.get("img_senal"));
+                            System.out.println("Foto de la senal --> "+params.get("img_senal"));
                         } catch (Exception e) {
                             e.printStackTrace();
                             System.out.println("Errror -->"+e);

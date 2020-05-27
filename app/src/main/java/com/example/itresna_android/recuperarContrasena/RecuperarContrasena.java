@@ -70,7 +70,7 @@ public class RecuperarContrasena extends AppCompatActivity {
 
 
 
-                            tvMiraEmail.setText(R.string.recuperar_contraseña_mira_email);
+                            tvMiraEmail.setText(R.string.recuperar_contrasena_mira_email);
                             tvMiraEmail.setVisibility(View.VISIBLE);
 
                             Handler handler = new Handler();
@@ -86,11 +86,11 @@ public class RecuperarContrasena extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             try {
-                                                // Se introduce el email y la contraseña. Este email enviara los correos.
+                                                // Se introduce el email y la contrasena. Este email enviara los correos.
                                                 GMailSender sender = new GMailSender("iTresna.TX@gmail.com", "iTresna1234");
                                                 // Asuto, mensaje, quien lo envia, a quien lo envia
                                                 sender.sendMail("iTresna",
-                                                        "Hola "+ nombreCargado+" "+ape1Cargado+ "\n\n\nTu contraseña es " +sarbideaCargado,
+                                                        "Hola "+ nombreCargado+" "+ape1Cargado+ "\n\n\nTu contrasena es " +sarbideaCargado,
                                                         "iTresna.TX@gmail.com", etEmail.getText().toString() );
                                                 dialog.dismiss();
                                             } catch (Exception e) {

@@ -22,10 +22,10 @@ public class ConexionBD {
     //PHP que carga las cops
     public static final String URL_Cop = ROOT_URL+"cop.php";
 
-    //PHP que carga las señales
+    //PHP que carga las senales
     public static final String URL_Senal = ROOT_URL+"senal.php";
 
-    //PHP que añade las señales
+    //PHP que anade las senales
     public static final String URL_CrearSenal = ROOT_URL+"crearSenal.php";
 
     //PHP que carga los comentarios
@@ -40,10 +40,10 @@ public class ConexionBD {
     //PHP que carga los likes
     public static final String URL_Likes = ROOT_URL+"likes.php";
 
-    //PHP que borra señales
+    //PHP que borra senales
     public static final String URL_BorrarSenal = ROOT_URL+"borrarSenal.php";
 
-    //PHP que modifica señales
+    //PHP que modifica senales
     public static final String URL_ModificarSenal = ROOT_URL+"modificarSenal.php";
 
     //PHP que crea likes
@@ -52,7 +52,7 @@ public class ConexionBD {
     //PHP que borra likes
     public static final String URL_BorrarLike = ROOT_URL+"borrarLike.php";
 
-    //PHP que recupera contraseña
+    //PHP que recupera contrasena
     public static final String URL_RecuperarContrasena = ROOT_URL+"recuperarContrasena.php";
 
     //PHP que crea comentarios
