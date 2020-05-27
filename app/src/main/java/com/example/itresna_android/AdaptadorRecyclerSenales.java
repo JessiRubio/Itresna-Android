@@ -359,7 +359,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                                 //Añade el like al arraylist
                                 Likes L = new Likes(String.valueOf(cod_senal), String.valueOf(cod_cop), String.valueOf(cod_esp), String.valueOf(cod_org), cod_usuario);
                                 PSenales.likes.add(L);
-                                
+
 
                             }
 
