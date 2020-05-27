@@ -1,4 +1,4 @@
-package com.example.itresna_android.senales;
+package com.example.itresna_android.Senales;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.Etiqueta;
 import com.example.itresna_android.Likes;
+import com.example.itresna_android.PCops;
 import com.example.itresna_android.Senal;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -103,7 +104,7 @@ public class PSenales extends AppCompatActivity {
         fbnewsenal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newsenal = new Intent(PSenales.this, com.example.itresna_android.senales.NewSenal.class);
+                Intent newsenal = new Intent(PSenales.this, com.example.itresna_android.Senales.NewSenal.class);
                 startActivity(newsenal);
             }
         });
@@ -319,5 +320,10 @@ public class PSenales extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(PSenales.this,PCops.class);
+        startActivity(intent);
+    }
 }
