@@ -54,6 +54,9 @@ public class ConexionBD {
     //PHP que recupera contraseña
     public static final String URL_RecuperarContrasena = ROOT_URL+"recuperarContrasena.php";
 
+    //PHP que crea comentarios
+    public static final String URL_CrearComentario = ROOT_URL+"crearComentario.php";
+
 
 
     // Operaciones de prueba

@@ -63,6 +63,8 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(holder.itemView.getContext(), popUpcomentarios.class);
+                    Aplication myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();
+                    myApplication.cod_senal= listaSenales.get(position).cod_senal;
                     holder.itemView.getContext().startActivity(intent);
                 }
             });
@@ -94,6 +96,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             Picasso.get()
                     .load(listaSenales.get(position).img_senal)
                     .into(ivPortada);
+            System.out.println("Foto señal -->>>>"+listaSenales.get(position).img_senal);
             ivPortada.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -359,7 +362,7 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                                 //Añade el like al arraylist
                                 Likes L = new Likes(String.valueOf(cod_senal), String.valueOf(cod_cop), String.valueOf(cod_esp), String.valueOf(cod_org), cod_usuario);
                                 PSenales.likes.add(L);
-                                
+
 
                             }
 

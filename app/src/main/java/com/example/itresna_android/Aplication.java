@@ -16,6 +16,7 @@ public class Aplication extends Application {
     public String codEspacio;
     public String decripcionEspacio;
     public String cod_cop;
+    public String cod_senal;
     public void onCreate(){
         super.onCreate();
 
