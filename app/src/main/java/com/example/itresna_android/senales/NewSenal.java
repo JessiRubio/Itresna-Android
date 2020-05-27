@@ -1,4 +1,4 @@
-package com.example.itresna_android.Senales;
+package com.example.itresna_android.senales;
 
 import android.Manifest;
 import android.app.Activity;
