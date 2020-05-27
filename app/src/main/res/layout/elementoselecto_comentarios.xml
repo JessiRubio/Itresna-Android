@@ -12,6 +12,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="36dp"
+        android:textColor="@color/colorTexto"
         android:background="@drawable/borde_redondo"
         android:padding="10dp"
         android:text="Me parece poco interesante para el alumnado ya que no supone un reto real"
@@ -26,6 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="26dp"
         android:layout_marginTop="17dp"
+        android:textColor="@color/colorTexto"
         android:text="Paco:"
         android:textSize="20dp"
         android:textStyle="bold" />

@@ -2,13 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.itresna_android">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 
     <application
-        android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
         android:name=".Aplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/app_logo"
@@ -16,12 +21,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".pantallaCarga"></activity>
+        <activity android:name=".recuperarContrasena.RecuperarContrasena"></activity>
+        <activity android:name=".pantallaCarga" />
+        <activity android:name=".senales.ModificarSenal" />
         <activity android:name=".popUpcomentarios" />
         <activity android:name=".PCops" />
-        <activity android:name=".Senales.NewSenal" />
-        <activity android:name=".Senales.PSenales" />
+        <activity android:name=".senales.NewSenal" />
+        <activity android:name=".senales.PSenales" />
         <activity
             android:name=".Login"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -35,8 +41,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
-
 
 </manifest>

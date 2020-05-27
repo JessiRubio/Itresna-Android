@@ -1,22 +1,22 @@
 package com.example.itresna_android;
 
+
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
+
 import android.os.Handler;
 import android.os.SystemClock;
+
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,7 +41,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,11 +55,10 @@ import java.util.Locale;
 
 
 public class PCops extends AppCompatActivity {
-    String espaci;
     int contador =0;
     String eslogan;
     Spinner comboBox;
-    ArrayList<String> arrayCombobox  = new ArrayList<>();
+    ArrayList <String> arrayCombobox= new ArrayList<String>();
     ArrayAdapter<String> adapter;
     RecyclerView reyclerViewCops;
     AdaptadorRecyclerPCops adaptadorRecycler;
@@ -70,38 +68,37 @@ public class PCops extends AppCompatActivity {
     RadioButton rb_eng;
     TextView tEslogan;
     ArrayList<Espacio> espacios = new ArrayList<>();
-
-    public ArrayList<Cop> getCops() {
-        return cops;
-    }
-
-    public ArrayList<Cop> cops = new ArrayList<>();
-
+    ArrayList<Cop> cops = new ArrayList<>();
+    Aplication myApplication;
     String espacioSeleccionado;
 
     private Context mContext;
     private LinearLayout mRelativeLayout;
     private PopupWindow mPopupWindow;
-    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_pcops);
-        Aplication myApplication = (Aplication) getApplication();
+
+        myApplication = (Aplication) getApplication();
         eslogan = myApplication.eslogan;
         espacios = myApplication.espacios;
         cops = myApplication.cops;
-
+        for (int i = 0; espacios.size()>i;i++){
+            System.out.println("CODIGO DE ESPACIO " + i + " == " + espacios.get(i).cod_esp+ "desc_esp: "+espacios.get(i).desc_esp);
+        }
         reyclerViewCops = findViewById(R.id.recyclerViewPCops);
         comboBox = findViewById(R.id.spinnerPCops);
         tEslogan=findViewById(R.id.txtEsloganPCops);
             for(int i=0;espacios.size()>i;i++){
+                System.out.println("desc_esp: "+espacios.get(i).desc_esp);
                 arrayCombobox.add(espacios.get(i).desc_esp);
             }
             ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_texto,arrayCombobox);
             adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             comboBox.setAdapter(adaptador);
             espacioSeleccionado = comboBox.getSelectedItem().toString();
+
 
                 cargarCops();
                 Toast.makeText(getApplicationContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
@@ -112,6 +109,8 @@ public class PCops extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Entro en for " +espacios.size(),Toast.LENGTH_LONG).show();
                     if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem().toString())){
                         codEspacio[0] = espacios.get(i).cod_esp;
+                        myApplication.decripcionEspacio = espacios.get(i).desc_esp;
+                        myApplication.codEspacio = espacios.get(i).cod_esp;
                         encontradoEspacio = true;
                         Toast.makeText(getApplicationContext(),"Entro en codigo espacio",Toast.LENGTH_LONG).show();
                     }
@@ -121,118 +120,52 @@ public class PCops extends AppCompatActivity {
                 for (int i=0;cops.size()>i;i++){
                     if (cops.get(i).cod_esp.equals(codEspacio[0])){
                         System.out.println("genero Cop = "+i);
-                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
+                        Cops prueba1 = new Cops(cops.get(i).img_cop, cops.get(i).desc_cop);
                         listaCops.add(prueba1);
                     }
                 }
                 generarDatosRecyler(listaCops);
 
-
-
-
+        tEslogan.setText(eslogan);
 
         comboBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 if(contador != 0) {
                     boolean encontradoEspacio = false;
                     espacioSeleccionado = comboBox.getSelectedItem().toString();
+                    System.out.println("COPS QUE TENEMOS EN EL ARRAY DE ESPACIOS = "+espacios.size());
                     for (int i = 0; espacios.size() > i && !encontradoEspacio; i++) {
-                        Toast.makeText(getApplicationContext(), "Entro", Toast.LENGTH_LONG).show();
-                        if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())) {
+                        System.out.println("Entro");
+                        if (espacios.get(i).desc_esp.equals(espacioSeleccionado)) {
                             espacioSeleccionado = espacios.get(i).cod_esp;
+                            myApplication.decripcionEspacio = espacios.get(i).desc_esp;
                             encontradoEspacio = true;
                             Toast.makeText(getApplicationContext(), "Entro en codigo espacio", Toast.LENGTH_LONG).show();
                         }
-                        hilo1.start();
-
-
-                        generarDatosRecyler(listaCops);
                     }
+                        cargarCops();
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // acciones que se ejecutan tras los milisegundos
+                                listaCops.clear();
+                                for (int k=0;cops.size()>k;k++){
+                                    System.out.println("COPS QUE TENEMOS EN EL ARRAY DE COPS = "+k);
+                                    if (cops.get(k).cod_esp.equals(espacioSeleccionado)){
+                                        System.out.println("genero Cop = "+k);
+                                        Cops prueba1 = new Cops(cops.get(k).img_cop, cops.get(k).desc_cop);
+                                        listaCops.add(prueba1);
+                                    }
+                                }
+                                //SystemClock.sleep(250);
+                                generarDatosRecyler(listaCops);
+                            }
+                        }, 2000);
                 }
                 contador = contador+1;
-              /*if(contador != 0){
-                    Intent intent = new Intent(PCops.this,pantallaCarga.class);
-                    intent.putExtra("carga",true);
-                    intent.putExtra("nombre_espacio",comboBox.getSelectedItem().toString());
-                    startActivity(intent);
-                  hilo1.start();
-                }
-
-                contador = contador+1;
-                /*Toast.makeText(getApplicationContext(),"Me han pulsado",Toast.LENGTH_LONG).show();
-                String codEspacio = "";
-                boolean encontradoEspacio = false;
-                for (int i = 0; espacios.size()>i && !encontradoEspacio; i++){
-                    Toast.makeText(getApplicationContext(),"Entro",Toast.LENGTH_LONG).show();
-                    if (espacios.get(i).desc_esp.equals(comboBox.getSelectedItem())){
-                        codEspacio = espacios.get(i).cod_esp;
-                        encontradoEspacio = true;
-                        Toast.makeText(getApplicationContext(),"Entro en codigo espacio",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-
-                listaCops.clear();
-                for (int i=0;cops.size()>i;i++){
-                    if (cops.get(i).cod_esp.equals(codEspacio)){
-                        System.out.println("genero Cop = "+i);
-                        Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
-                       listaCops.add(prueba1);
-                    }
-                }
-                generarDatosRecyler(listaCops);
-               /* if(comboBox.getSelectedItem() == comboBox.getSelectedItem()){
-                    Toast.makeText(getApplicationContext(), "David el Cajas", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }
-                else if (comboBox.getSelectedItem() == "David"){
-                    Toast.makeText(getApplicationContext(), "David el David", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }
-                else if (comboBox.getSelectedItem() == "El"){
-                    Toast.makeText(getApplicationContext(), "David el El", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("app_logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("app_logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("app_logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("app_logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                } else{
-                    Toast.makeText(getApplicationContext(), "David el Deseleccionado", Toast.LENGTH_SHORT).show();
-                    Cops prueba1 = new Cops("logo", "Iberdrola", "1. señal");
-                    Cops prueba2 = new Cops("logo", "Accenture", "1. señal");
-                    Cops prueba3 = new Cops("logo", "Ibermatica", "1. señal");
-                    Cops prueba4 = new Cops("logo", "Ibernautica", "1. señal");
-                    listaCops.clear();
-                    listaCops.add(prueba1);
-                    listaCops.add(prueba2);
-                    listaCops.add(prueba3);
-                    listaCops.add(prueba4);
-                    generarDatosRecyler(listaCops);
-                }*/
             }
 
             @Override
@@ -250,7 +183,8 @@ public class PCops extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        menu.findItem(R.id.menu_nombre_usuario).setTitle("xDDDD");
+        final String nombreUsuario = String.valueOf(getIntent().getStringExtra("NombreUsuario"));
+        menu.findItem(R.id.menu_nombre_usuario).setTitle(nombreUsuario);
 
         // Creamos un nuevo ActionBar que va a ser un personalizado
         // para poder alinear el logo a la izquierda
@@ -326,19 +260,16 @@ public class PCops extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generarDatosRecyler(ArrayList<Cops> hola){
+    public void generarDatosRecyler(ArrayList <Cops> listaCops){
         // Este ajuste mejora la performance, solo si el
         // contenido del recycler no altera su tamaño
-
-
-        System.out.println("TAMAÑO HOLA = " + hola.size());
         reyclerViewCops.setHasFixedSize(true);
 
         // Colocamos 3 columnas en el recyclerView
         reyclerViewCops.setLayoutManager (new GridLayoutManager(this, 2));
 
         // Especificamos el adaptador para el recycler
-        adaptadorRecycler = new AdaptadorRecyclerPCops(hola);
+        adaptadorRecycler = new AdaptadorRecyclerPCops(listaCops);
         reyclerViewCops.setAdapter(adaptadorRecycler);
     }
 
@@ -352,10 +283,21 @@ public class PCops extends AppCompatActivity {
         this.recreate();
     }
 
-    public void cargarCops(){
 
-        final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
-        final String cod_espActual= espacioSeleccionado;
+
+
+
+
+
+
+    public void cargarCops(){
+        Aplication myApplication = (Aplication) getApplication();
+        final String cod_org= myApplication.codOrg;
+        final String cod_espActual = espacioSeleccionado;
+        System.out.println("ESPACIO SELECCIONADO" + espacioSeleccionado);
+        if (contador>1){
+            cops.clear();
+        }
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -366,7 +308,6 @@ public class PCops extends AppCompatActivity {
 
                         try {
                             JSONArray jsonarrayCops  = new JSONArray(response);
-
                             for(int i=0; i < jsonarrayCops.length(); i++) {
                                 JSONObject jsonobjectCops = jsonarrayCops.getJSONObject(i);
                                 String cod_copCargado    = jsonobjectCops.getString("cod_cop");
@@ -376,11 +317,15 @@ public class PCops extends AppCompatActivity {
                                 String img_copCargado = jsonobjectCops.getString("img_cop");
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
-                                System.out.println(cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                System.out.println("Cops: "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado +" "+desc_copCargado+" "+img_copCargado);
+                                //Se guardan en el arraylist
                                 Cop C = new Cop(cod_copCargado, cod_espCargado, cod_orgCargado, desc_copCargado, img_copCargado);
                                 cops.add(C);
-
+                                Aplication myApplication = (Aplication) getApplication();
+                                myApplication.cops = cops;
+                                System.out.println("INSERTO COP " + i);
                             }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -410,23 +355,7 @@ public class PCops extends AppCompatActivity {
     }
 
 
-    final Thread hilo1 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            cargarCops();
 
-            listaCops.clear();
-            for (int i=0;cops.size()>i;i++){
-                if (cops.get(i).cod_esp.equals(espacioSeleccionado)){
-                    System.out.println("genero Cop = "+i);
-                    Cops prueba1 = new Cops("app_logo", cops.get(i).desc_cop);
-                    listaCops.add(prueba1);
-                }
-            }
-
-
-        }
-    });
 
 
 

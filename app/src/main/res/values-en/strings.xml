@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTresna-Android</string>
+    <!-- Login -->
     <string name="id_usuario">User ID</string>
     <string name="contrasena">Password</string>
+    <string name="btnEntrar">Log in</string>
     <!-- PCops -->
     <string name="cops_prueba_eslogan">The eslogan test</string>
     <!-- Menú -->
@@ -22,4 +24,12 @@
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
+    <string name="btn_modificar_senal">Modify</string>
+    <string name="recuperar_contrasena">Password recovery</string>
+    <string name="recuperar_contraseña_mira_email">Check your email</string>
+    <string name="recuperar_contrasena_email">Enter your email</string>
+    <string name="enviar">Send</string>
+    <string name="formato_email_invalido">Invalid email address</string>
+    <string name="recuperar_contrasena_enviando">Sending email</string>
+    <string name="recuperar_contrasena_espera">Please wait</string>
 </resources>

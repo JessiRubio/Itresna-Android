@@ -1,6 +1,7 @@
 package com.example.itresna_android;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,41 +11,58 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itresna_android.Senales.PSenales;
-
+import com.example.itresna_android.senales.PSenales;
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
-import java.util.List;
 
-public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
+public class
+AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder> {
     //Creamos una lista del tipo de nuestra clase
 
     private ArrayList<Cops> listaCops ;
+    String codigo;
+    String Nombrecop;
+    ArrayList<Cop> Fotos = new ArrayList<>();
+    Aplication myApplication ;
+    Bitmap foto;
+    Bitmap bmp;
+    ArrayList<Cop>listaCop;
+
 
 
 
     // Constructor del adaptador
     AdaptadorRecyclerPCops(ArrayList<Cops> listaCops) {
         this.listaCops = listaCops;
-   }
+    }
 
     // Colocamos el xml del elemento selector
     @NonNull
     @Override
     public com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_selector_pcops, parent, false);
+
         return new com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder(v);
     }
 
     // Aqui ponemos los elementos que se muestran en pantalla
     @Override
-    public void onBindViewHolder(final com.example.itresna_android.AdaptadorRecyclerPCops.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String nombre = listaCops.get(position).getNombreCop();
+
+        ArrayList<Cop> copss = new ArrayList<>();
+
+
         final String imgRecycler = listaCops.get(position).getNombreImagen();
-       // final String senal = listaCops.get(position).;
-        int resID = holder.itemView.getResources().getIdentifier(imgRecycler , "drawable", holder.itemView.getContext().getPackageName());
-        holder.imgRecycler.setImageResource(resID);
+        System.out.println("Nombre foto-->"+imgRecycler);
+
         holder.nombreCop.setText(nombre);
-        //holder.senal.setText(senal);
+        Picasso.get()
+                .load(imgRecycler)
+                .into(holder.imgRecycler);
+
+       // holder.senal.setText(senal);
+
 
         // Aquí programamos el click del elemento del recyclerview
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,9 +71,28 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
                 Intent intent = new Intent(view.getContext(), PSenales.class);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("nombreImagen", imgRecycler);
+
+
+                ArrayList<Cop> copss = new ArrayList<>();
+
+                //
                 //intent.putExtra("senal", senal);
+                myApplication = (Aplication) holder.itemView.getContext().getApplicationContext();;
+                copss = myApplication.cops;
+
+
+                for(int i=0; copss.size()>i;i++) {
+                    if (copss.get(i).getDesc_cop().equals(nombre)){
+                        codigo = copss.get(i).cod_cop;
+                        Nombrecop = copss.get(i).desc_cop;
+                        myApplication.descripcionCop = Nombrecop;
+                    }
+                }
+                myApplication.cod_cop = codigo;
+                intent.putExtra("codigo",codigo);
                 view.getContext().startActivity(intent);
             }
+
         });
     }
 
@@ -70,7 +107,6 @@ public class AdaptadorRecyclerPCops extends RecyclerView.Adapter<com.example.itr
         private TextView nombreCop;
         private ImageView imgRecycler;
         private  TextView senal;
-
         ViewHolder(View v) {
             super(v);
             imgRecycler = v.findViewById(R.id.imgRecyclerPCops);

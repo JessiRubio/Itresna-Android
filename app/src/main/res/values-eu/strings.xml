@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTresna-Android</string>
+    <!-- Login -->
     <string name="id_usuario">ID Erabiltzailea</string>
     <string name="contrasena">Pasahitza</string>
+    <string name="btnEntrar">Sartu</string>
     <!-- PCops -->
     <string name="cops_prueba_eslogan">Kaixo, ni Mika naiz</string>
     <!-- Menú -->
@@ -22,5 +24,13 @@
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_euskera">Euskera</string>
     <string name="idioma_ingles">English</string>
+    <string name="btn_modificar_senal">Aldatu</string>
+    <string name="recuperar_contrasena">pasahitza berreskuratu</string>
+    <string name="recuperar_contraseña_mira_email">Zure emaila begiratu</string>
+    <string name="recuperar_contrasena_email">Zure emaila sartu</string>
+    <string name="enviar">Bidali</string>
+    <string name="formato_email_invalido">Email okerra</string>
+    <string name="recuperar_contrasena_espera">Itxaron mesedez</string>
+    <string name="recuperar_contrasena_enviando">Emaila bidaltzen</string>
     <!-- -->
 </resources>

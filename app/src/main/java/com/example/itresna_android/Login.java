@@ -1,12 +1,18 @@
 package com.example.itresna_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,22 +21,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.itresna_android.recuperarContrasena.RecuperarContrasena;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
     Button btnEntrar;
     EditText etCod_usuario, etSarbidea;
+    public static ArrayList<Permisos> permisos = new ArrayList<>();
+    public static ArrayList<Usuario> usuario = new ArrayList<>();
+    TextView tvRecuperarContrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tvRecuperarContrasena= findViewById(R.id.textViewRecuperar);
         etCod_usuario= findViewById(R.id.nombreUsuario);
         etSarbidea=findViewById(R.id.contraseñaUsuario);
         btnEntrar = findViewById(R.id.botonEntrar);
@@ -40,6 +52,17 @@ public class Login extends AppCompatActivity {
                 // metedos de prueba para verificar que funcionan insert y select
                 //crear();
                 Login();
+                cargarPermisos();
+            }
+        });
+
+
+        tvRecuperarContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Login.this, RecuperarContrasena.class);
+                startActivity(intent);
             }
         });
 
@@ -63,17 +86,40 @@ public class Login extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
-                            System.out.println(response);
+                            //System.out.println(response);
                             if(!obj.getBoolean("error")){
 
-                                System.out.println(obj.getString("cod_usuario")+" "+obj.getString("cod_org")+" "+obj.getString("sarbidea"));
+                                String cod_usuarioCargado=obj.getString("cod_usuario");
+                                String tip_usuarioCargado=obj.getString("tip_usuario");
+                                String cod_orgCargado=obj.getString("cod_org");
+                                String sarbideaCargado=obj.getString("sarbidea");
+                                String nombreCargado=obj.getString("nombre");
+                                String ape1Cargado=obj.getString("ape1");
+                                String ape2Cargado=obj.getString("ape2");
 
-                                String cod_org=obj.getString("cod_org");
+
+                                System.out.println("Usuario: "+cod_usuarioCargado+" "+tip_usuarioCargado+" "+cod_orgCargado+" "+sarbideaCargado+" "+nombreCargado+" "+ape1Cargado+
+                                        " "+ape2Cargado);
+                                //String cod_org=obj.getString("cod_org");
                                 //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
 
+
                                 Intent intent = new Intent(Login.this, pantallaCarga.class);
-                                String valor1  = cod_org;
+                                String valor1  = cod_orgCargado;
+                                String nombreUsuario = cod_usuarioCargado;
+                                Aplication myApplication = (Aplication) getApplication();
+                                myApplication.codOrg = cod_orgCargado;
+                                System.out.println("COD ORG INSERTADO -->"+myApplication.codOrg);
+                                myApplication.Usuariologueado = cod_usuarioCargado;
+                                //Guardamos el usuario para futuras necesidades
+                                Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);
+                                usuario.add(U);
+
+                                //Intent intent = new Intent(Login.this, PCops.class);
+                                //String valor1  = cod_orgCargado;
+
                                 intent.putExtra("valor1", valor1 );
+                                intent.putExtra("NombreUsuario", nombreUsuario);
                                 //String valor2  = cod_usuario;
                                 //intent.putExtra("valor2", valor2 );
                                 startActivity(intent);
@@ -109,6 +155,68 @@ public class Login extends AppCompatActivity {
         //RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
+
+    public void cargarPermisos(){
+
+        final String cod_usuario= etCod_usuario.getText().toString();
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ConexionBD.URL_Permisos,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonarray  = new JSONArray(response);
+
+                            for(int i=0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                String cod_usuarioCargado    = jsonobject.getString("cod_usuario");
+                                String cod_copCargado     = jsonobject.getString("cod_cop");
+                                String cod_espCargado  = jsonobject.getString("cod_esp");
+                                String cod_orgCargado  = jsonobject.getString("cod_org");
+                                String ind_adminCargado = jsonobject.getString("ind_admin");
+                                //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
+
+                                System.out.println("Permisos: "+cod_usuarioCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" "+ind_adminCargado);
+                                //Se guardan en el arraylist
+                                Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
+                                permisos.add(P);
+                                System.out.println("PERMISOOOOOOOS "+permisos.size());
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("cod_usuario", cod_usuario);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
+
 
 
     //Metodo de prueba para insertar datos

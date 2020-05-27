@@ -15,11 +15,47 @@ public class ConexionBD {
     //PHP que carga las organizaciones
     public static final String URL_Org = ROOT_URL+"org.php";
 
-    //PHP qur carga los espacios
+    //PHP que carga los espacios
     public static final String URL_Esp = ROOT_URL+"espacio.php";
 
-    //PHP qur carga las cops
+    //PHP que carga las cops
     public static final String URL_Cop = ROOT_URL+"cop.php";
+
+    //PHP que carga las señales
+    public static final String URL_Senal = ROOT_URL+"senal.php";
+
+    //PHP que añade las señales
+    public static final String URL_CrearSenal = ROOT_URL+"crearSenal.php";
+
+    //PHP que carga los comentarios
+    public static final String URL_Comentario = ROOT_URL+"comentario.php";
+
+    //PHP que carga los permisos
+    public static final String URL_Permisos = ROOT_URL+"permisos.php";
+
+    //PHP que carga las etiquetas
+    public static final String URL_Etiqueta = ROOT_URL+"etiqueta.php";
+
+    //PHP que carga los likes
+    public static final String URL_Likes = ROOT_URL+"likes.php";
+
+    //PHP que borra señales
+    public static final String URL_BorrarSenal = ROOT_URL+"borrarSenal.php";
+
+    //PHP que modifica señales
+    public static final String URL_ModificarSenal = ROOT_URL+"modificarSenal.php";
+
+    //PHP que crea likes
+    public static final String URL_CrearLike = ROOT_URL+"crearLike.php";
+
+    //PHP que borra likes
+    public static final String URL_BorrarLike = ROOT_URL+"borrarLike.php";
+
+    //PHP que recupera contraseña
+    public static final String URL_RecuperarContrasena = ROOT_URL+"recuperarContrasena.php";
+
+    //PHP que crea comentarios
+    public static final String URL_CrearComentario = ROOT_URL+"crearComentario.php";
 
 
 
