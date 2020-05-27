@@ -134,10 +134,10 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     //Aqui se borra la señal
 
                     //Datos de prueba, una vez se carguen las señales, los datos se cogeran de ahi
-                    final int cod_senal= 2;
-                    final int cod_cop=1;
-                    final int cod_esp=1;
-                    final int cod_org=1;
+                    final int cod_senal= Integer.parseInt(listaSenales.get(position).cod_senal);
+                    final int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
+                    final int cod_esp = Integer.parseInt(listaSenales.get(position).cod_esp);
+                    final int cod_org = Integer.parseInt(listaSenales.get(position).cod_org);
 
                     StringRequest stringRequest =new StringRequest(Request.Method.POST,
                             ConexionBD.URL_BorrarSenal,
@@ -183,12 +183,12 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     //Aqui solamente se envian los datos de la señal a la pantalla ModificarSenal
 
                     //Datos de prueba
-                    int cod_senal=1;
-                    int cod_cop=1;
-                    int cod_esp=1;
-                    int cod_org=1;
-                    String url="htpps:";
-                    String desc="holaa";
+                    int cod_senal = Integer.parseInt(listaSenales.get(position).cod_senal);
+                    int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
+                    int cod_esp = Integer.parseInt(listaSenales.get(position).cod_esp);
+                    int cod_org = Integer.parseInt(listaSenales.get(position).cod_org);
+                    String url = listaSenales.get(position).enlace;
+                    String desc = listaSenales.get(position).desc_senal;
 
                     Intent intent = new Intent(holder.itemView.getContext(), ModificarSenal.class);
                     int valor1  = cod_senal;
@@ -215,11 +215,11 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
 
                     //Aqui se gestionan los likes de la señal
                     //Datos de prueba
-                    final int cod_senal= 1;
-                    final int cod_cop=1;
-                    final int cod_esp=1;
-                    final int cod_org=1;
-                    final String cod_usuario="jon";
+                    final int cod_senal = Integer.parseInt(listaSenales.get(position).cod_senal);;
+                    final int cod_cop = Integer.parseInt(listaSenales.get(position).cod_cop);
+                    final int cod_esp = Integer.parseInt(listaSenales.get(position).cod_esp);
+                    final int cod_org = Integer.parseInt(listaSenales.get(position).cod_org);
+                    final String cod_usuario = listaSenales.get(position).cod_usuario;
 
                     //Se conprueba si el usuario actual ha dado tiene like
                     for (int i = 0; i< PSenales.likes.size(); i++){
