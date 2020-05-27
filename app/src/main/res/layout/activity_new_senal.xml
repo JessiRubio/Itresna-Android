@@ -9,7 +9,8 @@
     android:paddingTop="45dp"
     android:paddingEnd="5dp"
     android:paddingBottom="5dp"
-    tools:context=".senales.NewSenal">
+    tools:context=".senales.NewSenal"
+    >
 
     <TextView
         android:id="@+id/tituloPopUP"
@@ -36,16 +37,7 @@
         android:ems="10"
         android:inputType="text" />
 
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+
 
     <TextView
         android:id="@+id/solicitudDescripcion"
@@ -82,5 +74,15 @@
             android:layout_weight="1"
             android:text="@string/btn_anadir_senal" />
     </LinearLayout>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885" />
 
 </LinearLayout>

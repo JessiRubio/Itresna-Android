@@ -1,8 +1,13 @@
 package com.example.itresna_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +42,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         tvRecuperarContrasena= findViewById(R.id.textViewRecuperar);
         etCod_usuario= findViewById(R.id.nombreUsuario);
         etSarbidea=findViewById(R.id.contraseñaUsuario);
@@ -105,6 +109,7 @@ public class Login extends AppCompatActivity {
                                 String nombreUsuario = cod_usuarioCargado;
                                 Aplication myApplication = (Aplication) getApplication();
                                 myApplication.codOrg = cod_orgCargado;
+                                System.out.println("COD ORG INSERTADO -->"+myApplication.codOrg);
                                 myApplication.Usuariologueado = cod_usuarioCargado;
                                 //Guardamos el usuario para futuras necesidades
                                 Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);

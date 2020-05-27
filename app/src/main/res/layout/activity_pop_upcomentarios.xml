@@ -8,7 +8,7 @@
     tools:context=".popUpcomentarios">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/comentarioEscrito"
         android:layout_width="341dp"
         android:layout_height="59dp"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="@id/guiahorizontal1" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/enviarComentario"
         android:layout_width="69dp"
         android:layout_height="56dp"
         android:background="@android:drawable/ic_menu_send"
