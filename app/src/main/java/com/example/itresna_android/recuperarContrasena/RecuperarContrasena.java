@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -129,7 +129,6 @@ public class RecuperarContrasena extends AppCompatActivity {
 
         //final String cod_org= String.valueOf(getIntent().getStringExtra("valor1"));
         final String cod_usuario= etEmail.getText().toString();
-        System.out.println(etEmail.getText().toString());
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -151,7 +150,6 @@ public class RecuperarContrasena extends AppCompatActivity {
                                 ape1Cargado=jsonobject.getString("ape1");
                                 ape2Cargado=jsonobject.getString("ape2");
 
-                                System.out.println("DATOOOOOOS "+cod_usuarioCargado +" "+sarbideaCargado +" "+nombreCargado +" "+ape1Cargado+" "+ape2Cargado);
 
 
                             }
@@ -165,7 +163,7 @@ public class RecuperarContrasena extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
                     }
                 }
         ){

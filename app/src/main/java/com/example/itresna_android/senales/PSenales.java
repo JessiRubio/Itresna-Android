@@ -19,7 +19,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -75,8 +74,6 @@ public class PSenales extends AppCompatActivity {
         cod_esp = myApplication.codEspacio;
         cod_cop = intent.getStringExtra("codigo");
         cod_cop = myApplication.cod_cop ;
-        System.out.println("ESTE ES EL CODIGO DE LA COP"+cod_cop);
-
         //Cargamos los valores de la bb que cumplen la selección
         cargarSenales();
         Handler handler = new Handler();
@@ -146,9 +143,6 @@ public class PSenales extends AppCompatActivity {
                                 String img_senalCargado= jsonobject.getString("img_senal ");
                                 String tituloCargado= jsonobject.getString("titulo ");
 
-                                System.out.println("Senales: "+cod_senalCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
-                                        cod_etiquetaCargado+" "+cod_usuarioCargado+" "+desc_senalCargado+" "+enlaceCargado+" "+fecha_horaCargado+" " +
-                                        img_senalCargado+" "+tituloCargado);
                                 //Se guardan en el arraylist
                                 Senal S = new Senal(cod_senalCargado ,cod_copCargado ,cod_espCargado,cod_orgCargado,cod_etiquetaCargado,cod_usuarioCargado,
                                         desc_senalCargado,enlaceCargado,fecha_horaCargado,img_senalCargado,tituloCargado);
@@ -164,7 +158,6 @@ public class PSenales extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -213,10 +206,6 @@ public class PSenales extends AppCompatActivity {
                                 String cod_orgCargado  = jsonobject.getString("cod_org");
                                 String desc_etiquetaCargado = jsonobject.getString("desc_etiqueta");
 
-
-                                System.out.println("Etiquetas: "+cod_etiquetaCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
-                                        desc_etiquetaCargado);
-
                                 //Se guardan en el arraylist
                                 Etiqueta E = new Etiqueta(cod_etiquetaCargado ,cod_copCargado ,cod_espCargado,cod_orgCargado,desc_etiquetaCargado);
                                 etiquetas.add(E);
@@ -231,7 +220,6 @@ public class PSenales extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -282,10 +270,6 @@ public class PSenales extends AppCompatActivity {
                                 String cod_orgCargado  = jsonobject.getString("cod_org");
                                 String cod_usuarioCargado = jsonobject.getString("cod_usuario");
 
-
-                                System.out.println("Likes: "+cod_senalCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" " +
-                                        cod_usuarioCargado);
-
                                 //Se guardan en el arraylist
                                 Likes L = new Likes(cod_senalCargado, cod_copCargado, cod_espCargado, cod_orgCargado, cod_usuarioCargado);
                                 likes.add(L);
@@ -300,7 +284,6 @@ public class PSenales extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){

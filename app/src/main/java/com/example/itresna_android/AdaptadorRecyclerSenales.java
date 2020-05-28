@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.example.itresna_android.Senales.ModificarSenal;
-import com.example.itresna_android.Senales.NewSenal;
-import com.example.itresna_android.Senales.PSenales;
+import com.example.itresna_android.senales.NewSenal;
+import com.example.itresna_android.senales.PSenales;
 import com.squareup.picasso.Picasso;
 
 
@@ -97,7 +97,6 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             Picasso.get()
                     .load(listaSenales.get(position).img_senal)
                     .into(ivPortada);
-            System.out.println("Foto senal -->>>>"+listaSenales.get(position).img_senal);
             ivPortada.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -126,7 +125,6 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
             else{
                 for (int i=0;i<Login.permisos.size();i++){
 
-                    System.out.println("TIPO DE USAURIO "+Login.usuario.get(0).tip_usuario);
                     if (Login.usuario.get(0).tip_usuario.equals("1") || Login.usuario.get(0).cod_usuario.equals(cod_usuarioSenal) || Login.permisos.get(i).cod_cop.equals(Integer.toString(cod_cop)) && Login.permisos.get(i).ind_admin.equals("1") ){
                         btnEliminar.setVisibility(View.VISIBLE);
                         btnEditar.setVisibility(View.VISIBLE);
@@ -154,7 +152,6 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
 
                                     try {
                                         JSONObject jsonObject =new JSONObject(response);
-                                        //Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -250,9 +247,6 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     final int cod_org = Integer.parseInt(listaSenales.get(position).cod_org);
                     final String cod_usuario = Login.usuario.get(0).cod_usuario;
 
-                    System.out.println("DATOS PASADOOOOS "+cod_senal+" "+cod_cop+" "+cod_esp+" "+cod_org+" "+cod_usuario);
-                    System.out.println("TAMAnO ARRAYLIST "+PSenales.likes.size());
-
 
                     if (PSenales.likes.size()==0){
                         liked=false;
@@ -261,7 +255,6 @@ public class AdaptadorRecyclerSenales extends RecyclerView.Adapter<AdaptadorRecy
                     else {
                         //Se conprueba si el usuario actual ha dado tiene like
                         for (int i = 0; i< PSenales.likes.size(); i++){
-                            System.out.println("El arraylist "+PSenales.likes.get(i).cod_usuario +" "+PSenales.likes.get(i).cod_senal );
                             if (PSenales.likes.get(i).cod_usuario.equals(cod_usuario) && PSenales.likes.get(i).cod_senal.equals(Integer.toString(cod_senal))){
                                 //System.out.println("true");
                                 liked=true;

@@ -1,29 +1,22 @@
 package com.example.itresna_android;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +50,6 @@ public class popUpcomentarios extends AppCompatActivity {
         cod_senalActual= myApplication.cod_senal;
 
         cargarComentarios();
-        System.out.println("TAMAnO DE LA LISTA DE COMENTARIOS -->"+comentarios.size());
 
 
         Handler handler = new Handler();
@@ -156,8 +148,6 @@ public class popUpcomentarios extends AppCompatActivity {
 
     public void cargarComentarios(){
 
-        System.out.println("SEnALLL -->"+cod_senalActual);
-
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 ConexionBD.URL_Comentario,
@@ -178,8 +168,6 @@ public class popUpcomentarios extends AppCompatActivity {
                                 String cod_usuarioCargado = jsonobject.getString("cod_usuario ");
                                 String comentarioCargado = jsonobject.getString("comentario ");
 
-                                System.out.println("Comenmtarios: "+cod_comentarioCargado+" "+cod_senalCargado+" "+cod_copCargado+" "+cod_espCargado+" "+cod_orgCargado+" "+cod_usuarioCargado+" "+comentarioCargado);
-
                                 //Se guardan en el arraylist
                                 Comentario C = new Comentario(cod_comentarioCargado,cod_senalCargado,cod_copCargado,cod_espCargado,cod_orgCargado,cod_usuarioCargado,comentarioCargado);
                                 comentarios.add(C);
@@ -194,7 +182,6 @@ public class popUpcomentarios extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){

@@ -46,7 +46,6 @@ public class ModificarSenal extends AppCompatActivity {
         final String url=getIntent().getStringExtra("valor5");
         final String desc=getIntent().getStringExtra("valor6");
 
-        //System.out.println("Modificar datos: "+cod_senal+" "+cod_cop+" "+cod_esp+" "+cod_org+" "+url+" "+desc);
         etUrl.setText(url);
         etDesc.setText(desc);
 
@@ -66,7 +65,6 @@ public class ModificarSenal extends AppCompatActivity {
 
                                 try {
                                     JSONObject jsonObject =new JSONObject(response);
-                                    //Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -76,9 +74,6 @@ public class ModificarSenal extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-
-                                //Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
-                                //Toast.makeText(getApplicationContext(), "volley error",Toast.LENGTH_LONG).show();
 
                             }
 

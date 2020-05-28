@@ -9,23 +9,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.itresna_android.AdaptadorComentario;
-import com.example.itresna_android.AdaptadorRecyclerSenales;
 import com.example.itresna_android.Aplication;
 import com.example.itresna_android.ConexionBD;
 import com.example.itresna_android.R;
@@ -35,18 +26,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.jibble.simpleftp.*;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -205,10 +189,8 @@ public class NewSenal extends Activity {
 
                             params.put("img_senal", "http://itresna.fptxurdinaga.in/media/Senales/" + "Image-" + desc_senal+ ".png ");
                             params.put("titulo", tituloPag);
-                            System.out.println("Foto de la senal --> "+params.get("img_senal"));
                         } catch (Exception e) {
                             e.printStackTrace();
-                            System.out.println("Errror -->"+e);
                         }
 
                         // Connect to an FTP server on port 21.

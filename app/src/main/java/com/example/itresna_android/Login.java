@@ -1,20 +1,12 @@
 package com.example.itresna_android;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,11 +14,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.itresna_android.recuperarContrasena.RecuperarContrasena;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -97,11 +87,7 @@ public class Login extends AppCompatActivity {
                                 String ape1Cargado=obj.getString("ape1");
                                 String ape2Cargado=obj.getString("ape2");
 
-
-                                System.out.println("Usuario: "+cod_usuarioCargado+" "+tip_usuarioCargado+" "+cod_orgCargado+" "+sarbideaCargado+" "+nombreCargado+" "+ape1Cargado+
-                                        " "+ape2Cargado);
                                 //String cod_org=obj.getString("cod_org");
-                                //Toast.makeText(getApplicationContext(),obj.getString("cod_usuario"), Toast.LENGTH_LONG).show();
 
 
                                 Intent intent = new Intent(Login.this, pantallaCarga.class);
@@ -109,7 +95,6 @@ public class Login extends AppCompatActivity {
                                 String nombreUsuario = cod_usuarioCargado;
                                 Aplication myApplication = (Aplication) getApplication();
                                 myApplication.codOrg = cod_orgCargado;
-                                System.out.println("COD ORG INSERTADO -->"+myApplication.codOrg);
                                 myApplication.Usuariologueado = cod_usuarioCargado;
                                 //Guardamos el usuario para futuras necesidades
                                 Usuario U = new Usuario(cod_usuarioCargado, tip_usuarioCargado, cod_orgCargado, sarbideaCargado, nombreCargado, ape1Cargado,ape2Cargado);
@@ -125,7 +110,6 @@ public class Login extends AppCompatActivity {
                                 startActivity(intent);
 
                             }else{
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -135,7 +119,6 @@ public class Login extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -180,12 +163,9 @@ public class Login extends AppCompatActivity {
                                 String ind_adminCargado = jsonobject.getString("ind_admin");
                                 //String ind_cop_graficosCargado= jsonobjectCops.getString("ind_cop_graficos");
 
-                                System.out.println("Permisos: "+cod_usuarioCargado +" "+cod_copCargado +" "+cod_espCargado +" "+cod_orgCargado+" "+ind_adminCargado);
                                 //Se guardan en el arraylist
                                 Permisos P = new Permisos(cod_usuarioCargado, cod_copCargado, cod_espCargado, cod_orgCargado, ind_adminCargado);
                                 permisos.add(P);
-                                System.out.println("PERMISOOOOOOOS "+permisos.size());
-
 
                             }
 
@@ -197,7 +177,6 @@ public class Login extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -234,7 +213,6 @@ public class Login extends AppCompatActivity {
 
                         try {
                             JSONObject jsonObject =new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -245,8 +223,6 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), "volley error",Toast.LENGTH_LONG).show();
 
                     }
 
